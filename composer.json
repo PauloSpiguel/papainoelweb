@@ -1,5 +1,5 @@
 {
-    "name": "paulospiguel/papainoelweb",
+    "name": "PauloSpiguel/papainoelweb",
     "authors": [
         {
             "name": "P R Spiguel Tecnologia",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\hcodebr\\php-classes\\src"
+            "NewTech\\": "vendor\\hcodebr\\php-classes\\src"
         }
     }
 }
