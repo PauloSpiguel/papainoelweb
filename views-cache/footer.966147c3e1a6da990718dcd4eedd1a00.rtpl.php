@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="footer-top-area">
+<?php if(!class_exists('Rain\Tpl')){exit;}?>    <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
@@ -53,8 +53,8 @@
             </div>
         </div>
     </div> <!-- End footer top area -->
-
-<div class="footer-bottom-area">
+    
+    <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -74,8 +74,8 @@
             </div>
         </div>
     </div> <!-- End footer bottom area -->
-
-     <!-- Latest jQuery form server -->
+   
+    <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
     
     <!-- Bootstrap JS form CDN -->
@@ -93,11 +93,9 @@
     
     <!-- Slider -->
     <script type="text/javascript" src="../res/site/js/bxslider.min.js"></script>
-	<script type="text/javascript" src="../res/site/js/script.slider.js"></script>
-	
-
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-	</body>
-
+    <script type="text/javascript" src="../res/site/js/script.slider.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script  src="../res/site/js/index.form.js"></script>
+  </body>
 </html>
