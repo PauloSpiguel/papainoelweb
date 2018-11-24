@@ -66,7 +66,7 @@
                                     <li><a href="#">Secretaria de Educação</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/admin/login"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>

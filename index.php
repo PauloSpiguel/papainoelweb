@@ -59,5 +59,75 @@ $app->get('/admin/logout', function () {
     exit;
 
 });
+##################### ROTA USERS #####################
+$app->get('/admin/users', function(){
+
+    User::verifyLogin();
+
+    $users = User::listAll();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("users", array(
+        "users" => $users
+    ));
+
+});
+##################### ROTA USERS CREATE #####################
+$app->get('/admin/users/create', function(){
+
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("users-create");
+
+});
+##################### ROTA USERS UPDATE #####################
+$app->get('/admin/users/:iduser', function($iduser){
+
+    User::verifyLogin();
+
+    $user = new User();
+
+    $user->get((int)$iduser);
+
+    $page = new PageAdmin();
+
+    $page->setTpl("users-update", array(
+        "user"=>$user->getValues()
+    ));
+
+});
+##################### ROTA SAVE USERS #####################
+$app->post('/admin/users/create', function(){
+
+    User::verifyLogin();
+
+    $user = new User();
+
+    $_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+
+    $user->setData($_POST);
+
+    $user->save();
+
+    header("Location: /admin/users");
+    exit;
+
+
+});
+##################### ROTA UPDATE USERS #####################
+$app->post('/admin/users/:iduser', function($iduser){
+
+    User::verifyLogin();
+
+});
+##################### ROTA SAVE USERS #####################
+$app->delete('/admin/users/:iduser', function($iduser){
+
+    User::verifyLogin();
+
+});
 
 $app->run();
