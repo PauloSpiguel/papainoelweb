@@ -9,8 +9,10 @@ use Rain\Tpl;
  */
 class Mailer
 {
+
+	private $mail;
 	
-	public function __construct($toAddress, $toNome, $subject, $tplName, $data = array())
+	public function __construct($toAddress, $toName, $subject, $tplName, $data = array())
 	{
 		
 
@@ -44,7 +46,7 @@ class Mailer
 		$this->mail->SMTPDebug = 0;
 
 		//Set the hostname of the mail server
-		$this->mail->Host = HOST;
+		$this->mail->Host = HOST_MAILER;
 		// use
         // $this->mail->Host = gethostbyname('smtp.gmail.com');
         // if your network does not support SMTP over IPv6
@@ -59,13 +61,13 @@ class Mailer
 		$this->mail->SMTPAuth = true;
 
 		//Username to use for SMTP authentication - use full email address for gmail
-		$this->mail->Username = USERNAME;
+		$this->mail->Username = USERNAME_MAILER;
 
 		//Password to use for SMTP authentication
-		$this->mail->Password = PASSWORD;
+		$this->mail->Password = PASSWORD_MAILER;
 
 		//Set who the message is to be sent from
-		$this->mail->setFrom(USERNAME, NAME_FROM);
+		$this->mail->setFrom(USERNAME_MAILER, utf8_decode(NAME_FROM));
 
 		//Set an alternative reply-to address
         //$this->mail->addReplyTo('contato.newtech@bol.com.br', 'NewTech Infomática');
@@ -85,8 +87,13 @@ class Mailer
 
 		//Attach an image file
         //$this->mail->addAttachment('images/phpmailer_mini.png');
-
 		
+	}
+
+	public function send(){
+
+		return $this->mail->send();
+
 	}
 }
 

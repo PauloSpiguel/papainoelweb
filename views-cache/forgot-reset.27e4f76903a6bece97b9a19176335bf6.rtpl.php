@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Recuperação de Senha | SisPapaiNoelWeb - $company</title>
+  <title>Recuperação de Senha | SisPapaiNoelWeb - Centenário do Sul</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -30,7 +30,7 @@
   </div>
   
    <div class="help-block text-center">
-     Olá {$name}, digite uma nova senha:
+     Olá <?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>, digite uma nova senha:
     </div>
 
   <!-- START LOCK SCREEN ITEM -->
@@ -38,7 +38,7 @@
 
     <!-- lockscreen credentials (contains the form) -->
     <form  action="/admin/forgot/reset" method="post">
-      <input type="hidden" name="code" value="{$code}">
+      <input type="hidden" name="code" value="<?php echo htmlspecialchars( $code, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
       <div class="input-group">
         <input type="password" class="form-control" placeholder="Digite a nova senha" name="password">
         <div class="input-group-btn">
@@ -52,8 +52,8 @@
   <!-- /.lockscreen-item -->
   
   <div class="lockscreen-footer text-center">
-    Copyright &copy; 2018 <b><a href="http://almsaeedstudio.com" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
-    Todos os direitos reservados
+    Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>
+    All rights reserved
   </div>
 </div>
 <!-- /.center -->

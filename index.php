@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "vendor/autoload.php";
+require_once "vendor/hcodebr/php-classes/src/DB/Secret.php";
 
 use \NewTech\Model\User;
 use \NewTech\Page;
@@ -171,6 +172,37 @@ $app->get('/admin/forgot', function () {
 $app->post('/admin/forgot', function(){
 
     $user = User::getForgot($_POST["email"]);
+
+    header("Location: /admin/forgot/sent");
+    exit;
+
+});
+################## ROTA FORGOT-SENT ###################
+$app->get('/admin/forgot/sent', function(){
+
+   $page = new PageAdmin([
+    "header" => false,
+    "footer" => false
+]);
+
+   $page->setTpl("forgot-sent");
+
+});
+################## ROTA FORGOT-RESET ###################
+$app->get('/admin/forgot/reset', function(){
+
+    $user = User::validForgotDecrypt($_GET["code"]);
+
+    $page = new PageAdmin([
+        "header" => false,
+        "footer" => false
+    ]);
+
+    $page->setTpl("forgot-reset", array(
+        "company"=>utf8_decode(COMPANY),
+        "name"=>$user["desperson"],
+        "code"=>$_GET["code"]
+    ));
 
 });
 
