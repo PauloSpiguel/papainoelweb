@@ -6,6 +6,8 @@
   <title>Recuperação de Senha | SisPapaiNoelWeb - Centenário do Sul</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Favicon HTML -->
+  <link rel="shortcut icon" type="image/png" href="../../res/site/img/favicon32x32.ico">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="/res/admin/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -38,7 +40,7 @@
     </div>
   </div>
   <div class="lockscreen-footer text-center">
-    Copyright &copy; 2018 <b><a href="http://almsaeedstudio.com" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
+    Copyright &copy; 2018 <b><a href="#" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
     Todos os direitos reservados
   </div>
 </div>

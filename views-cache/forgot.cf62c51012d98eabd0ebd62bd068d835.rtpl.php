@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Airmail Ping</title>
+  <title>Recuperação de Senha - SisPapaiNoelWeb</title>
   <style type="text/css">
 
   * {
@@ -328,36 +328,36 @@
     width: 100% !important;
   }
 
-  </style>
+</style>
 
-  <style type="text/css" media="only screen">
+<style type="text/css" media="only screen">
 
-  @media only screen {
+@media only screen {
 
-    table[class*="head-wrap"],
-    table[class*="body-wrap"],
-    table[class*="footer-wrap"] {
-      width: 100% !important;
-    }
-
-    td[class*="container"] {
-      margin: 0 auto !important;
-    }
-
+  table[class*="head-wrap"],
+  table[class*="body-wrap"],
+  table[class*="footer-wrap"] {
+    width: 100% !important;
   }
 
-  @media only screen and (max-width: 505px) {
-
-    *[class*="w320"] {
-      width: 320px !important;
-    }
-
-    table[class="soapbox"] td[class*="soapbox-title"],
-    table[class="body"] td[class*="body-padded"] {
-      padding-top: 24px;
-    }
+  td[class*="container"] {
+    margin: 0 auto !important;
   }
-  </style>
+
+}
+
+@media only screen and (max-width: 505px) {
+
+  *[class*="w320"] {
+    width: 320px !important;
+  }
+
+  table[class="soapbox"] td[class*="soapbox-title"],
+  table[class="body"] td[class*="body-padded"] {
+    padding-top: 24px;
+  }
+}
+</style>
 </head>
 
 <body bgcolor="#ffffff">
@@ -376,47 +376,47 @@
           <!--[if gte mso 9]>
             </v:textbox>
           </v:rect>
-          <![endif]-->
-        </td>
-      </tr>
-      <tr class="header-background">
-        <td class="header container" align="center">
-          <div class="content">
-            <span class="brand">
-              <a href="#">
-                SPNWeb - Centenário do Sul
-              </a>
-            </span>
-          </div>
-        </td>
-      </tr>
-    </table>
+        <![endif]-->
+      </td>
+    </tr>
+    <tr class="header-background">
+      <td class="header container" align="center">
+        <div class="content">
+          <span class="brand">
+            <a href="#">
+              SPNWeb - Centenário do Sul
+            </a>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </table>
 
-    <table class="body-wrap w320">
-      <tr>
-        <td></td>
-        <td class="container">
-          <div class="content">
-            <table cellspacing="0">
-              <tr>
-                <td>
-                  <table class="soapbox">
-                    <tr>
-                      <td class="soapbox-title">Recuperação de Senha</td>
-                    </tr>
-                  </table>
-                  <table class="body">
-                    <tr>
-                      <td class="body-padding"></td>
-                      <td class="body-padded">
-                        <div class="body-title">Olá <?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>,</div>
-                        <table class="body-text">
-                          <tr>
-                            <td class="body-text-cell">
-                              Para redefinir a sua senha acesse o link <a href="<?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?></a>.
-                            </td>
-                          </tr>
-                        </table>
+  <table class="body-wrap w320">
+    <tr>
+      <td></td>
+      <td class="container">
+        <div class="content">
+          <table cellspacing="0">
+            <tr>
+              <td>
+                <table class="soapbox">
+                  <tr>
+                    <td class="soapbox-title">Recuperação de Senha</td>
+                  </tr>
+                </table>
+                <table class="body">
+                  <tr>
+                    <td class="body-padding"></td>
+                    <td class="body-padded">
+                      <div class="body-title">Olá <?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>,</div>
+                      <table class="body-text">
+                        <tr>
+                          <td class="body-text-cell">
+                            Para redefinir a sua senha acesse o link <a href="<?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?></a>.
+                          </td>
+                        </tr>
+                      </table>
                         <div><!--[if mso]>
                           <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="#" style="height:38px;v-text-anchor:middle;width:230px;" arcsize="11%" strokecolor="#407429" fill="t">
                             <v:fill type="tile" src="https://www.filepicker.io/api/file/N8GiNGsmT6mK6ORk00S7" color="#41CC00" />
@@ -429,7 +429,7 @@
                           <tr>
                             <td class="body-signature-cell">
                               <p>Obrigado!</p>
-                              <p class="body-signature"><img src="https://www.filepicker.io/api/file/2R9HpqboTPaB4NyF35xt" alt="Company Name"></p>
+                              <p class="body-signature"><img src="https://www.filepicker.io/api/file/2R9HpqboTPaB4NyF35xt" alt="NewTech Indormática"></p>
                             </td>
                           </tr>
                         </table>

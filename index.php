@@ -125,9 +125,7 @@ $app->post('/admin/users/create', function () {
     $_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 
     $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
-
         "cost"=>12
-
     ]);
 
     $user->setData($_POST);
@@ -180,12 +178,12 @@ $app->post('/admin/forgot', function(){
 ################## ROTA FORGOT-SENT ###################
 $app->get('/admin/forgot/sent', function(){
 
-   $page = new PageAdmin([
+ $page = new PageAdmin([
     "header" => false,
     "footer" => false
 ]);
 
-   $page->setTpl("forgot-sent");
+ $page->setTpl("forgot-sent");
 
 });
 ################## ROTA FORGOT-RESET ###################
@@ -199,10 +197,35 @@ $app->get('/admin/forgot/reset', function(){
     ]);
 
     $page->setTpl("forgot-reset", array(
-        "company"=>utf8_decode(COMPANY),
-        "name"=>$user["desperson"],
-        "code"=>$_GET["code"]
+        "company"   =>utf8_decode(COMPANY),
+        "name"      =>$user["desperson"],
+        "code"      =>$_GET["code"]
     ));
+
+});
+################## ROTA FORGOT-RESET-POST ###################
+$app->post('/admin/forgot/reset', function(){
+
+    $userForgot = User::validForgotDecrypt($_POST["code"]);
+
+    User::setForgotUsed($userForgot["idrecovery"]);
+
+    $user = new User();
+
+    $user->get((int)$userForgot["iduser"]);
+
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT, [
+        "cost"=>12
+    ]);
+
+    $user->setPassword($password);
+
+    $page = new PageAdmin([
+        "header" => false,
+        "footer" => false
+    ]);
+
+    $page->setTpl("forgot-reset-success");
 
 });
 

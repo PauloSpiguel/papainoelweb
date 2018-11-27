@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -22,39 +22,24 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <![endif]-->
 </head>
 <body class="hold-transition lockscreen">
-  <!-- Automatic element centering -->
-  <div class="lockscreen-wrapper">
-    <div class="lockscreen-logo">
-      <a href="#"><b style="color: #F00">SPN</b>Web</a>
-    </div>
-
-    <div class="help-block text-center">
-     Olá {$name}, digite uma nova senha:
-   </div>
-
-   <!-- START LOCK SCREEN ITEM -->
-   <div class="lockscreen-item">
-
-    <!-- lockscreen credentials (contains the form) -->
-    <form  action="/admin/forgot/reset" method="post">
-      <input type="hidden" name="code" value="{$code}">
-      <div class="input-group">
-        <input type="password" class="form-control" placeholder="Digite a nova senha" name="password">
-        <div class="input-group-btn">
-          <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
-        </div>
-      </div>
-    </form>
-    <!-- /.lockscreen credentials -->
-
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+  <div class="lockscreen-logo">
+    <a href="#"><b style="color: #F00">SPN</b>Web</a>
   </div>
+
   <!-- /.lockscreen-item -->
-  
+  <div class="help-block text-center">
+    <div class="callout callout-success">
+      <h4>Senha Alterada!</h4>
+      <p>Tente fazer o login com sua nova senha.<br><a href="/admin/login">Clique aqui</a> para fazer o login.</p>
+    </div>
+  </div>
   <div class="lockscreen-footer text-center">
-    Copyright &copy; 2018 <b><a href="#" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
+    Copyright &copy; 2018 <b><a href="http://almsaeedstudio.com" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
     Todos os direitos reservados
   </div>
 </div>

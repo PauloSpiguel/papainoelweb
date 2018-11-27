@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Recuperação de Senha | SisPapaiNoelWeb - Centenário do Sul</title>
+  <title>Recuperação de Senha | SisPapaiNoelWeb - $company</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Favicon HTML -->
+  <link rel="shortcut icon" type="image/png" href="../../res/site/img/favicon32x32.ico">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="/res/admin/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -20,21 +22,21 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+<![endif]-->
 </head>
 <body class="hold-transition lockscreen">
-<!-- Automatic element centering -->
-<div class="lockscreen-wrapper">
-  <div class="lockscreen-logo">
-    <a href="#"><b style="color: #F00">SPN</b>Web</a>
-  </div>
-  
-   <div class="help-block text-center">
-     Olá <?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>, digite uma nova senha:
+  <!-- Automatic element centering -->
+  <div class="lockscreen-wrapper">
+    <div class="lockscreen-logo">
+      <a href="#"><b style="color: #F00">SPN</b>Web</a>
     </div>
 
-  <!-- START LOCK SCREEN ITEM -->
-  <div class="lockscreen-item">
+    <div class="help-block text-center">
+     Olá <?php echo htmlspecialchars( $name, ENT_COMPAT, 'UTF-8', FALSE ); ?>, digite uma nova senha:
+   </div>
+
+   <!-- START LOCK SCREEN ITEM -->
+   <div class="lockscreen-item">
 
     <!-- lockscreen credentials (contains the form) -->
     <form  action="/admin/forgot/reset" method="post">
@@ -52,8 +54,8 @@
   <!-- /.lockscreen-item -->
   
   <div class="lockscreen-footer text-center">
-    Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>
-    All rights reserved
+    Copyright &copy; 2018 <b><a href="#" class="text-black">Paulo Spiguel | Seção de TI - Governo Municipal</a></b><br>
+    Todos os direitos reservados
   </div>
 </div>
 <!-- /.center -->
