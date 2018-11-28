@@ -6755,3 +6755,69 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+/*# sourceMappingURL=bootstrap.css.map 
+ADIÇÃO DE CSS PERSONALIZADAS
+*/
+.form-custom{
+  /*text-transform: uppercase;*/
+}
+.form-select{
+  display: flex; 
+  width: 100%;
+}
+
+#hidden_div{
+  display: none;
+  margin-left: 5px;
+}
+
+@media (max-width: 380px) {
+  .form-select{
+    display: block; 
+    width: 100%;
+  }
+  #hidden_div{
+    margin-left: 0;
+  }
+}
+
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+legend {
+    display: block;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: threedface;
+    border-image: initial;
+}
+
+.GroupTitle {
+    color: #006393;
+    text-indent: 0;
+}
+.GroupTitle {
+    font-size: 14pt;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.email-type {
+  text-transform: lowercase;
+}
+

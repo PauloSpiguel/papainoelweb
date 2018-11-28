@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Favicon HTML -->
   <link rel="shortcut icon" type="image/png" href="../../res/site/img/favicon32x32.ico">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="../../res/admin/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../res/admin/bootstrap/css/bootstrap.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -245,7 +245,7 @@ desired effect
       <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="q" class="form-control" placeholder="Pesquisar...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -256,10 +256,10 @@ desired effect
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">HEADER</li>
+        <li class="header">MENU ADMINISTRATIVO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a href="/admin/locals"><i class="fa fa-building-o"></i> <span>Locais</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
