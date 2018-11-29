@@ -65,5 +65,25 @@
 <script src="/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/res/admin/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function mostra(){
+    document.getElementById('divInfos').style.display = "block";
+  }
+
+
+  function expandirContrairDiv(id)
+  {
+    var img = document.getElementById('img' + id).src;
+    if (img.indexOf('btnMais.gif') &gt; 0)
+    document.getElementById('img' + id).src = 'imagens/btnMenos.gif';
+    else
+      document.getElementById('img' + id).src = 'imagens/btnMais.gif';
+    var div = document.getElementById('div' + id);
+    if (div.style.display == 'none')
+      div.style.display = 'block';
+    else
+      div.style.display = 'none';
+  }
+</script>
 </body>
 </html>
