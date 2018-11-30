@@ -32,72 +32,67 @@
           </div>
           <fieldset class="GRUPO">
            <legend>
-            <a href="javascript:expandirContrairDiv('Infos');">
-              <a href="#"><i class="fa fa-plus-circle" id="imgInfos"></i>
-              </a><b>ENDEREÇO</b>
-            </legend>
-            <div id="divInfos" style="display: none;">
-              <div class="form-select">
-                <div class="form-group" style="float: right; width: 100%">
-                  <label for="despublicplace">Logradouro</label>
-                  <input style="width: 99%" class="form-control" id="despublicplace" name="despublicplace" placeholder="Digite o endereço do local" type="text" onkeyup="corrigirValor(this)">
-                </div>
-                <div class="form-group">
-                  <label for="nrnumber">Número</label>
-                  <input type="number" class="form-control" id="nrnumber" name="nrnumber" placeholder="Número"></input>
-                </div>
+            <a href="#" class="mostraClass" onclick="mostra('divInfos')"><i class="fa fa-plus-circle" id="imgInfos"></i><b style="color: #000"> ENDEREÇO</b></a>
+          </legend>
+          <div id="divInfos" style="display: none;">
+            <div class="form-select">
+              <div class="form-group" style="float: right; width: 100%">
+                <label for="despublicplace">Logradouro</label>
+                <input style="width: 99%" class="form-control" id="despublicplace" name="despublicplace" placeholder="Digite o endereço do local" type="text" onkeyup="corrigirValor(this)">
               </div>
-              <div class="form-select">
-                <div class="form-group" style="float: right; width: 40%; margin-right: 10px;">
-                  <label for="desregion">Bairro</label>
-                  <input style="width: 100%" class="form-control" id="desregion" name="desregion" placeholder="Digite o bairro" type="text" onkeyup="corrigirValor(this)">
-                </div>
-                <div style="float: left; margin-right: 10px; width: 50%" class="">
-                  <label for="descity">Cidade</label>
-                  <input type="text" class="form-control" id="descity" name="descity" placeholder="Digite a cidade" onkeyup="corrigirValor(this)">
-                </div>
-                <div style="float: right; width: 10%; " class="">
-                  <label for="desstate">UF</label><br>
-                  <select style="height: 35px; width: 100%" name="desstate" id="desstate">
-                    <option value="Null">Selecione</option>
-                    <option value="Paraná">PR</option>
-                    <option value="Outro">Outro</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-select">
-                <div style="float: right; width: 100%" class="form-group">
-                  <label for="complement" class="control-label">Complemento:</label>
-                  <input name="descomplement" type="text" class="form-control" id="complement" placeholder="Digite um complemento" onkeyup="corrigirValor(this)">
-                </div>
+              <div class="form-group">
+                <label for="nrnumber">Número</label>
+                <input type="number" class="form-control" id="nrnumber" name="nrnumber" placeholder="Número"></input>
               </div>
             </div>
-          </fieldset>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <div class="form-select">
+              <div class="form-group" style="float: right; width: 40%; margin-right: 10px;">
+                <label for="desregion">Bairro</label>
+                <input style="width: 100%" class="form-control" id="desregion" name="desregion" placeholder="Digite o bairro" type="text" onkeyup="corrigirValor(this)">
+              </div>
+              <div style="float: left; margin-right: 10px; width: 50%" class="">
+                <label for="descity">Cidade</label>
+                <input type="text" class="form-control" id="descity" name="descity" placeholder="Digite a cidade" onkeyup="corrigirValor(this)">
+              </div>
+              <div style="float: right; width: 10%; " class="">
+                <label for="desstate">UF</label><br>
+                <select style="height: 35px; width: 100%" name="desstate" id="desstate">
+                  <option value="Null">Selecione</option>
+                  <option value="Paraná">PR</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-select">
+              <div style="float: right; width: 100%" class="form-group">
+                <label for="complement" class="control-label">Complemento:</label>
+                <input name="descomplement" type="text" class="form-control" id="complement" placeholder="Digite um complemento" onkeyup="corrigirValor(this)">
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
+        </fieldset>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Cadastrar</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 
 </section>
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script type="text/javascript">
-  function expandirContrairDiv(id)
-  {
-    var img = document.getElementById('img' + id).src;
-    if (img.indexOf('btnMais.gif') &gt; 0)
-    document.getElementById('img' + id).src = 'imagens/btnMenos.gif';
-    else
-      document.getElementById('img' + id).src = 'imagens/btnMais.gif';
-    var div = document.getElementById('div' + id);
-    if (div.style.display == 'none')
-      div.style.display = 'block';
-    else
-      div.style.display = 'none';
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script>
+  function mostra(id){
+    if(document.getElementById(id).style.display == 'block'){
+      document.getElementById(id).style.display = 'none';
+    }else{ document.getElementById(id).style.display = 'block';}
   }
+
+  $('.mostraClass').click(function(){
+    $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
+  });
 </script>

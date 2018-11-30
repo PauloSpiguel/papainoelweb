@@ -5,6 +5,7 @@ namespace NewTech\Model;
 use \NewTech\DB\Sql;
 use \NewTech\Model;
 use \NewTech\Mailer;
+use \NewTech\Model\User;
 
 /**
  *
@@ -29,6 +30,8 @@ class Delivery extends Model
 
 	public function save()
 	{
+
+
 
 		$sql = new Sql();
 
