@@ -9,7 +9,7 @@ use \NewTech\Mailer;
 /**
  *
  */
-class local extends Model
+class Local extends Model
 {
 	
 	public static function listAll()

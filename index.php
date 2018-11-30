@@ -9,6 +9,7 @@ use \NewTech\PageAdmin;
 use \Slim\Slim;
 use \NewTech\Model\User;
 use \NewTech\Model\Local;
+use \NewTech\Model\Delivery;
 
 $app = new Slim();
 
@@ -235,7 +236,7 @@ $app->get("/admin/locals", function(){
 
 	User::verifyLogin();
 
-	$locals = local::listAll();
+	$locals = Local::listAll();
 
 	$page = new PageAdmin();
 
@@ -315,6 +316,20 @@ $app->post("/admin/locals/:idlocal", function($idlocal){
 
 	header("Location: /admin/locals");
 	exit;
+
+});
+################## ROTA DELIVERY ###################
+$app->get("/admin/deliveries", function(){
+
+    User::verifyLogin();
+
+    $demands = Delivery::listAll();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("deliveries", [
+        'demands' => $demands
+    ]);
 
 });
 

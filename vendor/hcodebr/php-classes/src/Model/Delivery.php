@@ -9,7 +9,7 @@ use \NewTech\Mailer;
 /**
  *
  */
-class local extends Model
+class Delivery extends Model
 {
 	
 	public static function listAll()
@@ -17,7 +17,14 @@ class local extends Model
 
 		$sql = new Sql();
 
-		return $sql->select("SELECT * FROM tb_locals ORDER BY deslocal");
+		return $sql->select("SELECT * FROM tb_demands a 
+		JOIN tb_kids b
+		ON a.idkid = b.idkid
+		JOIN tb_persons c
+		ON b.idperson = c.idperson
+		JOIN tb_locals d
+		ON a.idlocal = d.idlocal
+		ORDER BY a.dtregister");
 	}
 
 	public function save()
