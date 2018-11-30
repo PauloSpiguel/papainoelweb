@@ -35,7 +35,7 @@
               </div>
               <div class="form-group" style="float: right; width: 70%; margin-left: 5px">
                 <label for="dessex">Sexo</label>
-                <select id="dessex" name="dessex" style="height: 36px; width: 100%">
+                <select id="dessex" name="dessex" style="height: 34px; width: 100%">
                  <option value="" disabled selected>Sexo</option>
                  <option value="1">Feminino</option>
                  <option value="2">Masculino</option>
@@ -82,29 +82,29 @@
                 <input name="descomplement" type="text" class="form-control" id="complement" placeholder="Digite um Complemento" onkeyup="corrigirValor(this)">
               </div>
             </div>
-            <div>
-              <label class="control-label">Fora desta Cidade?</label>
-                <input type="radio" name="" value="0">
-                <input type="radio" name="" value="1">
-            </div>
-            <div class="form-select">
-              <div class="form-group" style="float: left; width: 50%" >
-                <label for="descity">Cidade</label>
-                <input type="text" class="form-control" id="descity" name="descity" placeholder="Digite sua Cidade" onkeyup="corrigirValor(this)">
+            <fieldset class="GRUPO">
+             <legend>
+              <a href="#" class="mostraClass" onclick="mostra('divInfos')"><i class="fa fa-plus-circle" id="imgInfos"></i><b style="color: #000; font-size: 0.8em"> Outra Cidade</b></a>
+              <div class="form-select" id="divInfos" style="display: none; font-size: 14px">
+                <div class="form-group" style="float: left; width: 50%; margin-left: 5px" >
+                  <label for="descity">Cidade</label>
+                  <input type="text" class="form-control" id="descity" name="descity" placeholder="Digite sua Cidade" onkeyup="corrigirValor(this)">
+                </div>
+                <div class="form-group" style="width: 10%; margin-left: 5px">
+                  <label for="desstate">UF</label><br>
+                  <select style="height: 34px; width: 100%" name="desstate" id="desstate">
+                    <option value="Null">Selecione</option>
+                    <option value="Paraná">PR</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+                <div class="form-group" style="float: right; width: 40%; margin-left: 5px;  margin-right: 5px">
+                  <label for="country" class="control-label">Pais:</label>
+                  <input name="descountry" type="text" class="form-control" id="country" placeholder="Digite o Pais" onkeyup="corrigirValor(this)">
+                </div>
               </div>
-              <div class="form-group" style="width: 10%; margin-left: 5px">
-                <label for="desstate">UF</label><br>
-                <select style="height: 35px; width: 100%" name="desstate" id="desstate">
-                  <option value="Null">Selecione</option>
-                  <option value="Paraná">PR</option>
-                  <option value="Outro">Outro</option>
-                </select>
-              </div>
-              <div class="form-group" style="float: right; width: 40%; margin-left: 5px;">
-                <label for="country" class="control-label">Pais:</label>
-                <input name="descountry" type="text" class="form-control" id="country" placeholder="Digite o Pais" onkeyup="corrigirValor(this)">
-              </div>
-            </div>
+            </fieldset>
+
           </fieldset>
           <!-- /.box-body -->
           <div class="box-footer">
@@ -118,6 +118,7 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script type="text/javascript" DEFER="DEFER">
   // INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
   window.onload=function(){
@@ -148,4 +149,14 @@
     v = z.value.toUpperCase();
     z.value = v;
   }
+
+  function mostra(id){
+    if(document.getElementById(id).style.display == 'flex'){
+      document.getElementById(id).style.display = 'none';
+    }else{ document.getElementById(id).style.display = 'flex';}
+  }
+
+  $('.mostraClass').click(function(){
+    $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
+  });
 </script>
