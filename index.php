@@ -3,13 +3,12 @@ session_start();
 require_once "vendor/autoload.php";
 require_once "vendor/hcodebr/php-classes/src/DB/Secret.php";
 
-
+use \NewTech\Model\Delivery;
+use \NewTech\Model\Local;
+use \NewTech\Model\User;
 use \NewTech\Page;
 use \NewTech\PageAdmin;
 use \Slim\Slim;
-use \NewTech\Model\User;
-use \NewTech\Model\Local;
-use \NewTech\Model\Delivery;
 
 $app = new Slim();
 
@@ -128,7 +127,7 @@ $app->post('/admin/users/create', function () {
     $_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 
     $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
-        "cost"=>12
+        "cost" => 12,
     ]);
 
     $user->setData($_POST);
@@ -163,14 +162,14 @@ $app->get('/admin/forgot', function () {
 
     $page = new PageAdmin([
         "header" => false,
-        "footer" => false
+        "footer" => false,
     ]);
 
     $page->setTpl("forgot");
 
 });
 ################## ROTA FORGOT-EMAIL ###################
-$app->post('/admin/forgot', function(){
+$app->post('/admin/forgot', function () {
 
     $user = User::getForgot($_POST["email"]);
 
@@ -179,35 +178,35 @@ $app->post('/admin/forgot', function(){
 
 });
 ################## ROTA FORGOT-SENT ###################
-$app->get('/admin/forgot/sent', function(){
+$app->get('/admin/forgot/sent', function () {
 
- $page = new PageAdmin([
-    "header" => false,
-    "footer" => false
-]);
+    $page = new PageAdmin([
+        "header" => false,
+        "footer" => false,
+    ]);
 
- $page->setTpl("forgot-sent");
+    $page->setTpl("forgot-sent");
 
 });
 ################## ROTA FORGOT-RESET ###################
-$app->get('/admin/forgot/reset', function(){
+$app->get('/admin/forgot/reset', function () {
 
     $user = User::validForgotDecrypt($_GET["code"]);
 
     $page = new PageAdmin([
         "header" => false,
-        "footer" => false
+        "footer" => false,
     ]);
 
     $page->setTpl("forgot-reset", array(
-        "company"   =>utf8_decode(COMPANY),
-        "name"      =>$user["desperson"],
-        "code"      =>$_GET["code"]
+        "company" => utf8_decode(COMPANY),
+        "name"    => $user["desperson"],
+        "code"    => $_GET["code"],
     ));
 
 });
 ################## ROTA FORGOT-RESET-POST ###################
-$app->post('/admin/forgot/reset', function(){
+$app->post('/admin/forgot/reset', function () {
 
     $userForgot = User::validForgotDecrypt($_POST["code"]);
 
@@ -215,111 +214,111 @@ $app->post('/admin/forgot/reset', function(){
 
     $user = new User();
 
-    $user->get((int)$userForgot["iduser"]);
+    $user->get((int) $userForgot["iduser"]);
 
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT, [
-        "cost"=>12
+        "cost" => 12,
     ]);
 
     $user->setPassword($password);
 
     $page = new PageAdmin([
         "header" => false,
-        "footer" => false
+        "footer" => false,
     ]);
 
     $page->setTpl("forgot-reset-success");
 
 });
 ################## ROTA LOCALS ###################
-$app->get("/admin/locals", function(){
+$app->get("/admin/locals", function () {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$locals = Local::listAll();
+    $locals = Local::listAll();
 
-	$page = new PageAdmin();
+    $page = new PageAdmin();
 
-	$page->setTpl("locals", [
-		"locals" => $locals
-	]);
+    $page->setTpl("locals", [
+        "locals" => $locals,
+    ]);
 
 });
 ################## ROTA LOCALS-CREATE ###################
-$app->get("/admin/locals/create", function(){
+$app->get("/admin/locals/create", function () {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$page = new PageAdmin();
+    $page = new PageAdmin();
 
-	$page->setTpl("locals-create");
+    $page->setTpl("locals-create");
 
 });
 ################## ROTA LOCALS-CREATE-POST ###################
-$app->post("/admin/locals/create", function(){
+$app->post("/admin/locals/create", function () {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$local = new Local();
+    $local = new Local();
 
-	$local->setData($_POST);
+    $local->setData($_POST);
 
-	$local->save();
+    $local->save();
 
-	header("Location: /admin/locals");
-	exit;
+    header("Location: /admin/locals");
+    exit;
 
 });
 ################## ROTA LOCALS-DELETE ###################
-$app->get("/admin/locals/:idlocal/delete", function($idlocal){
+$app->get("/admin/locals/:idlocal/delete", function ($idlocal) {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$local = new Local();
+    $local = new Local();
 
-	$local->get((int)$idlocal);
+    $local->get((int) $idlocal);
 
-	$local->delete();
+    $local->delete();
 
-	header("Location: /admin/locals");
-	exit;
+    header("Location: /admin/locals");
+    exit;
 
 });
 ################## ROTA LOCALS-UPDATE ###################
-$app->get("/admin/locals/:idlocal", function($idlocal){
+$app->get("/admin/locals/:idlocal", function ($idlocal) {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$local = new Local();
+    $local = new Local();
 
-	$local->get((int)$idlocal);
+    $local->get((int) $idlocal);
 
-	$page = new PageAdmin();
+    $page = new PageAdmin();
 
-	$page->setTpl("locals-update", [
-		"local" =>$local->getValues()
-	]);
+    $page->setTpl("locals-update", [
+        "local" => $local->getValues(),
+    ]);
 
 });
 ################## ROTA LOCALS-UPDATE-POST ###################
-$app->post("/admin/locals/:idlocal", function($idlocal){
+$app->post("/admin/locals/:idlocal", function ($idlocal) {
 
-	User::verifyLogin();
+    User::verifyLogin();
 
-	$local = new Local();
+    $local = new Local();
 
-	$local->get((int)$idlocal);
+    $local->get((int) $idlocal);
 
-	$local->setData($_POST);
+    $local->setData($_POST);
 
-	$local->save();
+    $local->save();
 
-	header("Location: /admin/locals");
-	exit;
+    header("Location: /admin/locals");
+    exit;
 
 });
 ################## ROTA DELIVERY ###################
-$app->get("/admin/deliveries", function(){
+$app->get("/admin/deliveries", function () {
 
     User::verifyLogin();
 
@@ -328,10 +327,34 @@ $app->get("/admin/deliveries", function(){
     $page = new PageAdmin();
 
     $page->setTpl("deliveries", [
-        'demands' => $demands
+        'demands' => $demands,
     ]);
 
 });
+################## ROTA DELIVERY-CREATE ###################
+$app->get("/admin/deliveries/create", function () {
 
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("deliveries-create");
+
+});
+################## ROTA LOCALS-UPDATE-POST ###################
+$app->post("/admin/locals/create", function () {
+
+    User::verifyLogin();
+
+    $delivery = new Delivery();
+
+    $delivery->setData($_POST);
+
+    $delivery->save();
+
+    header("Location: /admin/deliveries");
+    exit;
+
+});
 
 $app->run();
