@@ -1,19 +1,29 @@
 <?php
-
 namespace NewTech\Model;
 
 use \NewTech\DB\Sql;
 use \NewTech\Model;
 use \NewTech\Mailer;
+use \NewTech\Delivery;
 
-/**
- *
- */
 class User extends Model
 {
 	const SESSION = "User";
+	const ERROR = "UserError";
+
+	public static function userSession(){
+
+		$user = User::getFromSession();
+
+		$data['iduser'] = $user->getiduser();
+
+		return $data;
+
+	}
 
 	public static function getFromSession(){
+
+		$user = new User();
 
 		if (isset($_SESSION[User::SESSION]) && (int)$_SESSION[User::SESSION]['iduser'] > 0){
 
@@ -32,7 +42,7 @@ class User extends Model
 			||
 			!(int) $_SESSION[User::SESSION]["iduser"] > 0
 		) {
-			//Não Está Logado
+	//Não Está Logado
 			return false;
 
 		} else {
@@ -210,11 +220,11 @@ class User extends Model
 				$iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
 				$code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', SECRET_KEY, 0, $iv);
 				$result = base64_encode($iv.$code);
-                    //if ($inadmin === true) {
+		//if ($inadmin === true) {
 				$link = LINK_HOST . "/admin/forgot/reset?code=$result";
-                   //} else {
-                       //$link = "http://www.sisouvcentenario.newtechtecnologia.com/forgot/reset?code=$result";
-                   //} 
+		//} else {
+		//$link = "http://www.sisouvcentenario.newtechtecnologia.com/forgot/reset?code=$result";
+		//} 
 				$mailer = new Mailer($data["desemail"], $data["desperson"], utf8_decode("Redefinir sua senha do SisPapaiNoelWeb - Centenário do Sul"), "forgot", array(
 					"name"=>$data['desperson'],
 					"link"=>$link
@@ -280,4 +290,30 @@ class User extends Model
 		));
 
 	}
+/*
+	public static function getError($msg){
+
+		$msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
+
+		User::clearError();
+
+		return $msg;
+
+	}
+
+	public static function clearError(){
+
+		$_SESSION[User::ERROR] = NULL;
+	}
+
+	public static function setErrorRegister($msg){
+
+		$_SESSION[User::ERROR_REGISTER] = $msg;
+	}
+*/
 }
+
+?>
+
+
+

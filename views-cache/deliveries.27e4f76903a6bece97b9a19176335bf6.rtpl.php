@@ -19,7 +19,7 @@
       <div class="box box-primary">
 
         <div class="box-header">
-          <a href="/admin/users/create" class="btn btn-success">Entregar Senha</a>
+          <a href="/admin/deliveries/create" class="btn btn-success">Entregar Senha</a>
         </div>
 
         <div class="box-body no-padding">
