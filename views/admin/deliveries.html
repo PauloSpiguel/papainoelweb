@@ -55,9 +55,9 @@
                 <td>{if="$value.dessex == 1"}Feminino{else}Masculino{/if}</td>
                 <td>{$value.desperson}</td/>
                   <!--<td>{$value.deslocal}</td/>-->
-                    <td>{$value.dtregister}</td/>
+                    <td>{$value.dtpassword}</td/>
                       <td>
-                       <a href="#" onclick="alert('Imprimindo...')" class="btn btn-success btn-xs"><i class="fa fa-print"></i></a>
+                       <a href="/admin/deliveries/print" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-print"></i></a>
                        <a href="/admin/deliveries/{$value.iddemand}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                        <!--<a href="/admin/deliveries/{$value.iddemand}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>-->
                      </td>

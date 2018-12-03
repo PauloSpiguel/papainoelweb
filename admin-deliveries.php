@@ -1,11 +1,9 @@
 <?php
 
-use \NewTech\PageAdmin;
-use \NewTech\DB\Sql;
-use \NewTech\Model\User;
 use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;
-
+use \NewTech\Model\User;
+use \NewTech\PageAdmin;
 
 ################## ROTA DELIVERY ###################
 $app->get("/admin/deliveries", function () {
@@ -13,27 +11,27 @@ $app->get("/admin/deliveries", function () {
     User::verifyLogin();
 
     $search = (isset($_GET['search'])) ? $_GET['search'] : '';
-    $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+    $page   = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 
-    if($search != ''){
+    if ($search != '') {
 
         $pagination = Delivery::getPage($page, $search);
 
-    }else{
+    } else {
 
         $pagination = Delivery::getPage($page);
     }
 
     $pages = [];
 
-    for ($x = 0; $x < $pagination['pages']; $x++){
+    for ($x = 0; $x < $pagination['pages']; $x++) {
 
         array_push($pages, [
-            'href' => '/admin/deliveries?'.http_build_query([
-             'page' => $x+1,
-             'search' => $search 
-         ]), 
-            'text'=>$x+1
+            'href' => '/admin/deliveries?' . http_build_query([
+                'page'   => $x + 1,
+                'search' => $search,
+            ]),
+            'text' => $x + 1,
         ]);
     }
 
@@ -41,8 +39,8 @@ $app->get("/admin/deliveries", function () {
 
     $page->setTpl("deliveries", [
         "demands" => $pagination['data'],
-        "search" => $search, 
-        "pages" => $pages
+        "search"  => $search,
+        "pages"   => $pages,
     ]);
 
 });
@@ -58,7 +56,7 @@ $app->get("/admin/deliveries/create", function () {
     $page = new PageAdmin();
 
     $page->setTpl("deliveries-create", [
-        "locals" => $locals
+        "locals" => $locals,
     ]);
 
 });
@@ -69,22 +67,55 @@ $app->post("/admin/deliveries/create", function () {
 
     $user = User::userSession();
 
-    $delivery = new Delivery(); 
+    $delivery = new Delivery();
 
     $delivery->setData(array(
-        "iduser" => $user['iduser'],
-        "desqrcode" => 'QRCODE'
+        "iduser"    => $user['iduser'],
+        "desqrcode" => 'QRCODE',
     ));
 
     $delivery->setData($_POST);
 
     //var_dump($delivery);
 
-    $delivery->save();  
+    $delivery->save();
 
     header("Location: /admin/deliveries");
     exit;
 
 });
+##################### ROTA DELIVERY UPDATE #####################
+$app->get('/admin/deliveries/:iddemand', function ($iddemand) {
 
-?>
+    User::verifyLogin();
+
+    $delivery = new Delivery();
+
+    $delivery->get((int) $iddemand);
+
+    $page = new PageAdmin();
+
+    $page->setTpl("deliveries-update", array(
+        "delivery" => $delivery->getValues(),
+    ));
+
+});
+################## ROTA GERA-PDF ###################
+$app->get("/admin/deliveries/print", function () {
+
+    User::verifyLogin();
+
+    $data     = Delivery::listAll();
+    $datetime = date('d/m/Y H:i:s');
+
+    $page = new PageAdmin([
+        "header" => false,
+        "footer" => false,
+    ]);
+
+    $page->setTpl("print", [
+        "data"    => $data,
+        "dateNow" => $datetime,
+    ]);
+
+});

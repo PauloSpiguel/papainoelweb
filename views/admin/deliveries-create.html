@@ -17,6 +17,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-success">
+
         <div class="box-header with-border">
           <h3 class="box-title">Lançar Entrega de Senha</h3>
         </div>
@@ -24,13 +25,12 @@
         <!-- form start -->
         <form role="form" action="/admin/deliveries/create" method="post">
           <div class="box-body">
-
             <fieldset style="margin-bottom: 10px">
               <legend>Data/Senha</legend>
               <div class="form-select">
                 <div class="form-group" style="float: left; width: 30%">
                   <label  style="font-size: 1.6em" for="dtpassword">Data Senha:</label>
-                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-19" max="2018-12-26" style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
+                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-19" max="2018-12-26" required style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
                 </div>
                 <div class="form-group" style="float: right; width: 20%; margin-left: 5px">
                   <label style="font-size: 1.6em" for="passDelivery">Senha Entregues:</label>
@@ -44,12 +44,12 @@
             </fieldset>
             <div class="form-group">
               <label for="deskid"><span class="important">* </span>Nome da criança</label>
-              <input type="text" class="form-control" id="deskid" name="deskid" placeholder="Digite o nome da criança" onkeyup="corrigirValor(this)"></input>
+              <input type="text" class="form-control" id="deskid" name="deskid" placeholder="Digite o nome da criança" onkeyup="corrigirValor(this)" required></input>
             </div>
             <div class="form-select">
               <div class="form-group" style="float: right; width: 30%">
                 <label for="dtbirthday"><span class="important">* </span>Data Nascimento</label>
-                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date">
+                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" required>
               </div>
               <div class="form-group" style="margin-left: 5px; width: 10%;">
                 <label for="calcYear">Idade</label>
@@ -57,7 +57,7 @@
               </div>
               <div class="form-group" style="float: right; width: 60%; margin-left: 5px">
                 <label for="dessex"><span class="important">* </span>Sexo</label>
-                <select id="dessex" name="dessex" style="height: 34px; width: 100%">
+                <select id="dessex" name="dessex" style="height: 34px; width: 100%" required>
                  <option value="" disabled selected>Sexo</option>
                  <option value="1">Feminino</option>
                  <option value="2">Masculino</option>
@@ -66,7 +66,7 @@
            </div>
            <div class="form-group">
             <label for="desperson"><span class="important">* </span>Nome do responsável:</label>
-            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)"></input>
+            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)" required></input>
           </div>
           <div class="form-group" style=" width: 100%">
             <label for="nrcpf">CPF:</label>
@@ -86,7 +86,7 @@
           <div class="form-select" style="display: flex;">        
            <div class="form-group" style="float: left; width: 70%">
             <label for="idlocal"><span class="important">* </span>Local</label>
-            <select style="height: 34px; width: 100%" name="idlocal" id="idlocal">
+            <select style="height: 34px; width: 100%" name="idlocal" id="idlocal" required>
               <option value="" disabled selected>Selecione um Local</option>
               {loop="$locals"}
               <option value="{$value.idlocal}">{$value.deslocal}</option>
