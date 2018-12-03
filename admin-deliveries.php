@@ -12,12 +12,37 @@ $app->get("/admin/deliveries", function () {
 
     User::verifyLogin();
 
-    $demands = Delivery::listAll();
+    $search = (isset($_GET['search'])) ? $_GET['search'] : '';
+    $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
+    if($search != ''){
+
+        $pagination = Delivery::getPage($page, $search);
+
+    }else{
+
+        $pagination = Delivery::getPage($page);
+    }
+
+    $pages = [];
+
+    for ($x = 0; $x < $pagination['pages']; $x++){
+
+        array_push($pages, [
+            'href' => '/admin/deliveries?'.http_build_query([
+             'page' => $x+1,
+             'search' => $search 
+         ]), 
+            'text'=>$x+1
+        ]);
+    }
 
     $page = new PageAdmin();
 
     $page->setTpl("deliveries", [
-        'demands' => $demands,
+        "demands" => $pagination['data'],
+        "search" => $search, 
+        "pages" => $pages
     ]);
 
 });
@@ -47,17 +72,18 @@ $app->post("/admin/deliveries/create", function () {
     $delivery = new Delivery(); 
 
     $delivery->setData(array(
-        "iduser" => $user['iduser']
+        "iduser" => $user['iduser'],
+        "desqrcode" => 'QRCODE'
     ));
 
     $delivery->setData($_POST);
 
-    var_dump($delivery);
+    //var_dump($delivery);
 
     $delivery->save();  
 
-    //header("Location: /admin/deliveries");
-    //exit;
+    header("Location: /admin/deliveries");
+    exit;
 
 });
 

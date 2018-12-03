@@ -103,8 +103,8 @@
           <legend class="GroupTitle">Endereço:</legend>
           <div class="form-select">
             <div class="form-group" style="float: right; width: 90%">
-              <label for="despublicplace"><span class="important">* </span>Logradouro:</label>
-              <input class="form-control" id="despublicplace" name="despublicplace" placeholder="Digite seu Endereço" type="text" onkeyup="corrigirValor(this)">
+              <label for="desaddress"><span class="important">* </span>Logradouro:</label>
+              <input class="form-control" id="desaddress" name="desaddress" placeholder="Digite seu Endereço" type="text" onkeyup="corrigirValor(this)">
             </div>
             <div class="form-group" style="float: right; width: 10%; margin-left: 5px">
               <label for="desnumber"><span class="important">* </span>Número:</label>
