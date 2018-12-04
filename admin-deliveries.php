@@ -76,12 +76,12 @@ $app->post("/admin/deliveries/create", function () {
 
     $delivery->setData($_POST);
 
-    //var_dump($delivery);
+    var_dump($delivery);
 
     $delivery->save();
 
-    header("Location: /admin/deliveries");
-    exit;
+    //header("Location: /admin/deliveries");
+    //exit;
 
 });
 ##################### ROTA DELIVERY UPDATE #####################

@@ -20,49 +20,74 @@ class Delivery extends Model
             ORDER BY a.dtpassword");
     }
 
+    /*public function save()
+    {
+
+    if ($this->getdesaddress() == '') {
+    $address = utf8_decode('Endereço não informado');
+    } else {
+
+    $address = $this->getdesaddress();
+    }
+
+    $sql = new Sql();
+
+    $results = $sql->select("CALL sp_demands_save (:iddemand, :desperson, :desemail, :nrphone, :nrcpf, :desaddress, :desnumber, :desregion, :descomplement, :descity, :desstate, :descountry, :zipcode, :deskid, :dessex, :dtbirthday, :nrmatriculation, :idkid, :nrpassword, :dtpassword, :desqrcode, :idlocal, :desobservation, :iduser)", array(
+    ":iddemand"        => $this->getiddemand(),
+    ":desperson"       => $this->getdesperson(),
+    ":desemail"        => $this->getdesemail(),
+    ":nrphone"         => $this->getnrphone(),
+    ":nrcpf"           => $this->getnrcpf(),
+    ":desaddress"      => $address,
+    ":desnumber"       => $this->getdesnumber(),
+    ":desregion"       => $this->getdesregion(),
+    ":descomplement"   => $this->getdescomplement(),
+    ":descity"         => $this->getdescity(),
+    ":desstate"        => $this->getdesstate(),
+    ":descountry"      => $this->getdescountry(),
+    ":zipcode"         => $this->getzipcode(),
+    ":deskid"          => $this->getdeskid(),
+    ":dessex"          => $this->getdessex(),
+    ":dtbirthday"      => $this->getdtbirthday(),
+    ":nrmatriculation" => $this->getnrmatriculation(),
+    ":idkid"           => $this->getidkid(),
+    ":nrpassword"      => $this->getnrpassword(),
+    ":dtpassword"      => $this->getdtpassword(),
+    ":desqrcode"       => $this->getdesqrcode(),
+    ":idlocal"         => $this->getidlocal(),
+    ":desobservation"  => $this->getdesobservation(),
+    ":iduser"          => $this->getiduser(),
+    ));
+
+    $this->setData($results[0]);
+
+    }*/
+
     public function save()
     {
 
-        /*if ($this->getdesaddress() == '') {
-        $address = utf8_decode('Endereço não informado');
+        if ($this->getdesaddress() == '') {
+
+            $address = utf8_decode('Endereço não informado');
+
         } else {
 
-        $address = $this->getdesaddress();
+            $address = $this->getdesaddress();
         }
-        $sql = new Sql();
-         */
 
-        $results = $sql->select("CALL sp_demands_save (:iddemand, :desperson, :desemail, :nrphone, :nrcpf, :desaddress, :desnumber, :desregion, :descomplement, :descity, :desstate, :descountry, :zipcode, :deskid, :dessex, :dtbirthday, :nrmatriculation, :idkid, :nrpassword, :dtpassword, :desqrcode, :idlocal, :desobservation, :iduser)", array(
-            ":iddemand"        => $this->getiddemand(),
-            ":desperson"       => $this->getdesperson(),
-            ":desemail"        => $this->getdesemail(),
-            ":nrphone"         => $this->getnrphone(),
-            ":nrcpf"           => $this->getnrcpf(),
-            ":desaddress"      => $this->getdesaddress(),
-            ":desnumber"       => $this->getdesnumber(),
-            ":desregion"       => $this->getdesregion(),
-            ":descomplement"   => $this->getdescomplement(),
-            ":descity"         => $this->getdescity(),
-            ":desstate"        => $this->getdesstate(),
-            ":descountry"      => $this->getdescountry(),
-            ":zipcode"         => $this->getzipcode(),
-            ":deskid"          => $this->getdeskid(),
-            ":dessex"          => $this->getdessex(),
-            ":dtbirthday"      => $this->getdtbirthday(),
-            ":nrmatriculation" => $this->getnrmatriculation(),
-            ":idkid"           => $this->getidkid(),
-            ":nrpassword"      => $this->getnrpassword(),
-            ":dtpassword"      => $this->getdtpassword(),
-            ":desqrcode"       => $this->getdesqrcode(),
-            ":idlocal"         => $this->getidlocal(),
-            ":desobservation"  => $this->getdesobservation(),
-            ":iduser"          => $this->getiduser(),
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_demands_save2 (:iddemand, :desaddress, :desperson, :deskid, :iduser)", array(
+            ":iddemand"   => $this->getiddemand(),
+            ":desaddress" => $this->getdesaddress(),
+            ":desperson"  => $this->getdesperson(),
+            ":deskid"     => $this->getdeskid(),
+            ":iduser"     => $this->getiduser(),
         ));
 
         $this->setData($results[0]);
 
     }
-
     public function get($iddemand)
     {
 
@@ -96,29 +121,29 @@ class Delivery extends Model
         if ($search != '') {
 
             $results = $sql->select("
-                SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
-                FROM tb_demands a
-                INNER JOIN tb_kids b ON a.idkid = b.idkid
-                INNER JOIN tb_persons c ON b.idperson = c.idperson
-                INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
-                WHERE b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
-                ORDER BY a.nrpassword DESC
-                LIMIT $start, $itemsPerPage;
-                ", [
+            SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
+            FROM tb_demands a
+            INNER JOIN tb_kids b ON a.idkid = b.idkid
+            INNER JOIN tb_persons c ON b.idperson = c.idperson
+            INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
+            WHERE b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
+            ORDER BY a.nrpassword DESC
+            LIMIT $start, $itemsPerPage;
+            ", [
                 ":search" => '%' . $search . '%',
             ]);
 
         } else {
 
             $results = $sql->select("
-                SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
-                FROM tb_demands a
-                INNER JOIN tb_kids b ON a.idkid = b.idkid
-                INNER JOIN tb_persons c ON b.idperson = c.idperson
-                INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
-                ORDER BY a.nrpassword DESC
-                LIMIT $start, $itemsPerPage;
-                ");
+            SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
+            FROM tb_demands a
+            INNER JOIN tb_kids b ON a.idkid = b.idkid
+            INNER JOIN tb_persons c ON b.idperson = c.idperson
+            INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
+            ORDER BY a.nrpassword DESC
+            LIMIT $start, $itemsPerPage;
+            ");
 
         }
 

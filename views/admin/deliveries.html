@@ -51,11 +51,11 @@
               <tr>
                 <td>{$value.nrpassword}</td>
                 <td>{$value.deskid}</td>
-                <td>{$value.dtbirthday}</td>
+                <td>{function="date('d/m/Y', strtotime($value.dtbirthday))"}</td>
                 <td>{if="$value.dessex == 1"}Feminino{else}Masculino{/if}</td>
                 <td>{$value.desperson}</td/>
                   <!--<td>{$value.deslocal}</td/>-->
-                    <td>{$value.dtpassword}</td/>
+                    <td>{function="date('d/m/Y', strtotime($value.dtpassword))"}</td/>
                       <td>
                        <a href="/admin/deliveries/print" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-print"></i></a>
                        <a href="/admin/deliveries/{$value.iddemand}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>

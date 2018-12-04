@@ -51,11 +51,11 @@
               <tr>
                 <td><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td><?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                <td><?php echo htmlspecialchars( $value1["dtbirthday"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                <td><?php echo date('d/m/Y', strtotime($value1["dtbirthday"])); ?></td>
                 <td><?php if( $value1["dessex"] == 1 ){ ?>Feminino<?php }else{ ?>Masculino<?php } ?></td>
                 <td><?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td/>
                   <!--<td><?php echo htmlspecialchars( $value1["deslocal"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td/>-->
-                    <td><?php echo htmlspecialchars( $value1["dtpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td/>
+                    <td><?php echo date('d/m/Y', strtotime($value1["dtpassword"])); ?></td/>
                       <td>
                        <a href="/admin/deliveries/print" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-print"></i></a>
                        <a href="/admin/deliveries/<?php echo htmlspecialchars( $value1["iddemand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
