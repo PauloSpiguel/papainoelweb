@@ -76,12 +76,12 @@ $app->post("/admin/deliveries/create", function () {
 
     $delivery->setData($_POST);
 
-    var_dump($delivery);
+    //var_dump($delivery);
 
     $delivery->save();
 
-    //header("Location: /admin/deliveries");
-    //exit;
+    header("Location: /admin/deliveries");
+    exit;
 
 });
 ##################### ROTA DELIVERY UPDATE #####################
@@ -101,12 +101,17 @@ $app->get('/admin/deliveries/:iddemand', function ($iddemand) {
 
 });
 ################## ROTA GERA-PDF ###################
-$app->get("/admin/deliveries/print", function () {
+$app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
 
     User::verifyLogin();
 
-    $data     = Delivery::listAll();
+    $data = new Delivery();
+
+    $data->get((int) $iddemand);
+
     $datetime = date('d/m/Y H:i:s');
+
+    $dayW = $data->dateW();
 
     $page = new PageAdmin([
         "header" => false,
@@ -114,8 +119,10 @@ $app->get("/admin/deliveries/print", function () {
     ]);
 
     $page->setTpl("print", [
-        "data"    => $data,
+        "data"    => $data->getValues(),
         "dateNow" => $datetime,
+        "dayW"    => $dayW
+
     ]);
 
 });

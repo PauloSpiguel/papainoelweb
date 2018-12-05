@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -94,24 +94,24 @@
       <tr>
         <th colspan="3">
         Emitindo em: </br>
-        {$dateNow}
+        <?php echo htmlspecialchars( $dateNow, ENT_COMPAT, 'UTF-8', FALSE ); ?>
       </th>
     </tr>
     <tr>
       <th colspan="3" >
         Nome:<br />
-        <p style="font-size: 2em"><h1 style="font-size: 3em">{$data.deskid}</h1></p>
+        <p style="font-size: 2em"><h1 style="font-size: 3em"><?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></p>
       </th>
     </tr>
     <tr>
       <th class="ttu" colspan="3">
-        <b>Sua senha é: <h1 style="font-size: 6em">{$data.nrpassword}</h1></b>
+        <b>Sua senha é: <h1 style="font-size: 6em"><?php echo htmlspecialchars( $data["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
       </th>
     </tr>
     <tr>
       <th class="ttu" colspan="3">
-        <b>Data emprega presente: <h1 style="font-size: 4em">{function="date('d/m/Y', strtotime($data.dtpassword))"}</h1></b></br>
-        <b><h1 style="font-size: 2em; margin-top: 0">{$dayW}</h1></b>
+        <b>Data emprega presente: <h1 style="font-size: 4em"><?php echo date('d/m/Y', strtotime($data["dtpassword"])); ?></h1></b></br>
+        <b><h1 style="font-size: 2em; margin-top: 0"><?php echo htmlspecialchars( $dayW, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
       </th>
     </tr>
   </thead>
@@ -143,11 +143,11 @@
   </tr>
   <tr class="ttu">
     <td colspan="2">Nome Responsável:</td>
-    <td align="right">{$data.idperson}</td>
+    <td align="right"><?php echo htmlspecialchars( $data["idperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
   </tr>
   <tr class="ttu">
     <td colspan="2">Idade:</td>
-    <td align="right">{$data.dtbirthday}</td>
+    <td align="right"><?php echo htmlspecialchars( $data["dtbirthday"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
   </tr>
   <tr class="ttu">
     <td colspan="2">Telefone:</td>
