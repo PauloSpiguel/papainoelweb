@@ -1,3 +1,11 @@
 #Ignora arquivos da pasta.
-
-[^.]*
+#[^.]*
+# Ignora arquivos especificos #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

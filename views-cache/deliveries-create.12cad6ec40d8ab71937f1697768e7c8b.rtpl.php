@@ -66,7 +66,7 @@
            </div>
            <div class="form-group">
             <label for="desperson"><span class="important">* </span>Nome do responsável:</label>
-            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)" required></input>
+            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)"></input>
           </div>
           <div class="form-group" style=" width: 100%">
             <label for="nrcpf">CPF:</label>
@@ -177,11 +177,49 @@
   // INICIO FUNÇÃO BUSCA REPETIDOS
   $("#deskid").blur(function(){
     var busca = $("#deskid").val();
-    if (busca.length < 3){
-      alert("Este campo não pode ser vazio ou nome inválido!")
+    if (busca.length < 4){
+      swal({
+          title: "Atenção?",
+          text: "Nome digitado é inválido ou vázio!",
+          type: "warning",
+          showCancelButton: false,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'OK',
+          cancelButtonText: "No, cancel operação!",
+          closeOnConfirm: true,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            document.getElementById('deskid').focus();
+          } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
     }else{
       $.post('../../vendor/hcodebr/php-classes/src/DB/Double.php', {busca: busca}, function(data){
-        alert(data);
+        if(data != 'não cadastrado'){
+          var datetime = data;
+          swal({
+          title: "Atenção? Nome informado já contem registrado.",
+          text: datetime + " Deseja continuar?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Sim',
+          cancelButtonText: "Não, Cancelar e sair!",
+          closeOnConfirm: true,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            document.getElementById('dtbirthday').focus();
+          } else {
+            window.location.href="/admin/deliveries";
+          }
+        });
+        }
+        
       });
 
     } 

@@ -61,6 +61,11 @@
       padding: 10px 0;
       border-top: 2px dashed #BCBCBC;
     }
+    .printer-ticket tfoot .sup2 td {
+      padding: 20px 0;
+      margin: 20px 0;
+      border-top: 2px solid #000;
+    }
     .printer-ticket tfoot .sup.p--0 td {
       padding-bottom: 0;
     }
@@ -81,55 +86,92 @@
     .printer-ticket img{
       margin: 0 25% 
     }
+    .ta-center { 
+      text-align: center; 
+    }
+    .flex { display: flex; }
 
-  </style>
+    .f-d-column { flex-direction: column; }
 
-</head>
-<body >
-  <table class="printer-ticket">
-    <thead>
-     <tr>
-      <tr>
-        <th class="title" colspan="3">
-          <img  style="width: 200px; margin: 0px" src="/res/admin/dist/img/logoCent.png" alt="">
-        </th>
-      </tr>
-      <tr>
-        <th class="title" colspan="3" style="text-align: center">
-          <h1 style="font-size: 14px; margin: 0">PREFEITURA MUNICIPAL DE CENTENÁRIO DO SUL  </h1></br>
-          <h1 style="font-size: 1em; margin: 0">PASSAPORTE DE SENHA DE NATAL</h1>
-          <h1 style="font-size: 1em; margin: 2px 0">ANO (2018)</h1>
-        </th>
-        <!--<th><img  style="width: 70px; margin: -1px" src="/res/admin/dist/img/brasao.png" alt=""></th>-->
-      </tr>
-      <tr>
+    hr{
+      border:0;
+      border-bottom:1px solid #000;
+      width: 400px;
+      text-align: left;
 
-      </tr>
-      <tr>
-        <th colspan="3">
-          <span>Emitindo em:</span> </br>
-          <?php echo htmlspecialchars( $dateNow, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-        </th>
-      </tr>
-      <tr>
-        <th colspan="3" >
-          <span>Nome da Criança:</span><br />
-          <p style="font-size: 2em"><h1 style="font-size: 3em"><?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></p>
-        </th>
-      </tr>
-      <tr>
-        <th class="ttu" colspan="3">
-          <b>Sua senha é: <h1 style="font-size: 6em"><?php echo htmlspecialchars( $data["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
-        </th>
-      </tr>
-      <tr>
-        <th class="ttu" colspan="3">
-          <b>Data emprega presente: <h1 style="font-size: 4em; margin-bottom: 10px"><?php echo date('d/m/Y', strtotime($data["dtpassword"])); ?></h1></b></br>
-          <b><h1 style="font-size: 2em; margin-top: 0"><?php echo htmlspecialchars( $dayW, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
+    }
+    #nota {
+      background: #ffe3a0;
+      width: 400px;
+      height: 100%;
+      font-family: Calibri;
+      font-size: 9pt;
+    }
+
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    #body {
+      width: 400px;
+      margin-top: 70px;
+      background-color: #ffe3a0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+
+
+    </style>
+
+  </head>
+  <body >
+    <div id="nota">
+      <table class="printer-ticket">
+        <thead>
+         <tr>
+          <tr>
+            <th class="title" colspan="3">
+              <img  style="width: 200px; margin: 0px" src="/res/admin/dist/img/logoCent.png" alt="">
+            </th>
+          </tr>
+          <tr>
+            <th class="title" colspan="3" style="text-align: center">
+              <h1 style="font-size: 14px; margin: 0">PREFEITURA MUNICIPAL DE CENTENÁRIO DO SUL</h1></br>
+              <h1 style="font-size: 1em; margin: 0">PASSAPORTE DE SENHA DE NATAL</h1>
+              <h1 style="font-size: 1em; margin: 2px 0">ANO (2018)</h1>
+            </th>
+            <!--<th><img  style="width: 70px; margin: -1px" src="/res/admin/dist/img/brasao.png" alt=""></th>-->
+          </tr>
+          <tr>
+
+          </tr>
+          <tr>
+            <th colspan="3">
+              <span>Emitido em:</span></br>
+              <?php echo htmlspecialchars( $dateNow, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="3" >
+              <span>Nome:</span><br />
+              <p style="font-size: 2em"><h1 style="font-size: 3em"><?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></p>
+            </th>
+          </tr>
+          <tr>
+            <th class="ttu" colspan="3">
+              <b>Sua senha é: <h1 style="font-size: 6em"><?php echo htmlspecialchars( $data["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
+            </th>
+          </tr>
+          <tr>
+            <th class="ttu" colspan="3">
+              <b>Data entrega do presente: <h1 style="font-size: 4em; margin-bottom: 10px"><?php echo date('d/m/Y', strtotime($data["dtpassword"])); ?></h1></b></br>
+              <b><h1 style="font-size: 2em; margin-top: 0"><?php echo htmlspecialchars( $dayW, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
   <!--<tr class="top">
     <td colspan="3">Dados Adicionais:</td>
   </tr>
@@ -156,14 +198,12 @@
     </td>
   </tr>
   <tr class="ttu" style="width: 150">
-    <td colspan="2">Nome Responsável:</td>
+    <td colspan="2">Responsável:</td>
     <td align="right"><b><?php echo htmlspecialchars( $data["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
   </tr>
   <tr class="ttu">
     <td colspan="2">Idade:</td>
-    <td align="right">
-      <b><?php echo date('Y') - date('Y', strtotime($data["dtbirthday"])); ?> Anos</b>
-    </td>
+    <td align="right"><b><?php echo date('Y') - date('Y', strtotime($data["dtbirthday"])); ?> Anos</b></td>
   </tr>
   <tr class="ttu" >
     <td colspan="2">Telefone:</td>
@@ -185,8 +225,113 @@
       Seção de Infomática - Centenário do Sul | P R Spiguel Tecnologia
     </td>
   </tr>
+  
+  <tr class="sup">
+    <td></td>
+    <td><img  style="margin: 0 15%; width: 300px" src="/res/admin/dist/img/corteTesoura.png" alt=""></td>
+    <td></td>
+  </tr>
 </tfoot>
 </table>
+</div>
+<div id="nota">
+  <table style="width:100%">
+    <tr>
+      <td>
+        <center>
+          <h1>PASSAPORTE TRENZINHO</h1>
+        </center>
+      </td>
+    </tr>
+    <hr/>
+  </table>
+</div>
 
-</body>
-</html>
+<div>
+	<img  style="margin-top: 200px; width: 400px; transform: rotate(90deg)scale(1.60, 1.85)" src="/res/admin/dist/img/tren.png" alt="">
+ </dir>
+
+ <!--<div id="body" class="transformed">
+ <div class="tickt">
+    <div class="contianer">
+      <h1>PASSAPORTE TRENZINHO</h1>
+      <div class="lef-1">
+        <div class="date">
+          <h2>23</h2>
+        </div>
+        <div class="text">
+          <p>dj music event</p>
+          <h2>live in sydney</h2>
+          <div class="upper">
+            <span class="s1"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
+            <span class="s2"><p>Wednesday 28 December 2014 08:55 pm to 12 am</p></span>
+          </div>
+          <div class="upper">
+            <span class="s1"> <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+            <span class="s2"><p>nexen square for people australia,sydneym</p></span>
+          </div>
+        </div>
+        <span class="l-last">tickets</span>
+      </div>
+    </div>
+
+
+
+    <div class="ticket-design">
+      <header>
+        <div class="logo">
+          <img src="https://i.stack.imgur.com/I7wrc.png">
+        </div>
+      </header>
+      <div class="mainSection">
+        <div class="leftSection">
+          <div class="qrcode">
+            <img src="https://i.stack.imgur.com/Rdojb.png">
+          </div>
+        </div>
+        <div class="rightSection">
+          <div class="eventDetails">
+            <div class="eventDetail">
+              <small>Demo Name</small>
+              <strong>Ticketing Event</strong>
+            </div>
+          </div>
+          <div class="infos">
+            <div class="places">
+              <div class="box">
+                <small>Date and Time</small>
+                <strong>Sunday 30th July 17 (12:00pm/4:00pm)</strong>
+              </div>
+            </div>
+            <div class="times">
+              <div class="box">
+                <small>Location</small>
+                <strong>97-99 Pitt Street
+                  Sydney, New South Wales
+                Australia, 2000</strong>
+              </div>
+            </div>
+          </div>
+          <div class="strap">
+            <div class="box">
+              <div class="passenger">
+                <small>Ticket Type</small>
+                <strong>Day 2 Ticket</strong>
+              </div>
+              <div class="date">
+                <small>Payment Status</small>
+                <strong>AUD 30</strong>
+              </div>
+            </div>
+            <div class="eventLogo">
+              <img src="https://i.stack.imgur.com/I7wrc.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+
+
+
+  </body>
+  </html>
