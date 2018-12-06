@@ -2,7 +2,7 @@
 #[^.]*
 # Ignora arquivos especificos #
 ######################
-.gitignore
+
 .DS_Store
 .DS_Store?
 ._*
