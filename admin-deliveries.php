@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("America/Sao_Paulo");
+setlocale(LC_ALL, 'pt_BR');
 
 use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;

@@ -37,11 +37,11 @@
     .printer-ticket,
     .printer-ticket * {
       font-family: Tahoma, Geneva, sans-serif;
-      font-size: 10px;
+      font-size: 14px;
     }
     .printer-ticket th:nth-child(2),
     .printer-ticket td:nth-child(2) {
-      width: 50px;
+      width: 200px;
     }
     .printer-ticket th:nth-child(3),
     .printer-ticket td:nth-child(3) {
@@ -52,14 +52,14 @@
       font-weight: inherit;
       padding: 10px 0;
       text-align: center;
-      border-bottom: 1px dashed #BCBCBC;
+      border-bottom: 2px dashed #BCBCBC;
     }
     .printer-ticket tbody tr:last-child td {
       padding-bottom: 10px;
     }
     .printer-ticket tfoot .sup td {
       padding: 10px 0;
-      border-top: 1px dashed #BCBCBC;
+      border-top: 2px dashed #BCBCBC;
     }
     .printer-ticket tfoot .sup.p--0 td {
       padding-bottom: 0;
@@ -74,6 +74,13 @@
     .printer-ticket .last td {
       padding-bottom: 10px;
     }
+    .printer-ticket span{
+      font-size: 18px
+    }
+
+    .printer-ticket img{
+      margin: 0 25% 
+    }
 
   </style>
 
@@ -81,41 +88,48 @@
 <body >
   <table class="printer-ticket">
     <thead>
+     <tr>
+      <tr>
+        <th class="title" colspan="3">
+          <img  style="width: 200px; margin: 0px" src="/res/admin/dist/img/logoCent.png" alt="">
+        </th>
+      </tr>
       <tr>
         <th class="title" colspan="3" style="text-align: center">
-          <h1 style="font-size: 1.5em; margin-bottom: 0">Governo Municipal </h1></br>
-          <h1 style="font-size: 1em; margin-top: 0">Centenário do Sul</h1>
+          <h1 style="font-size: 14px; margin: 0">PREFEITURA MUNICIPAL DE CENTENÁRIO DO SUL  </h1></br>
+          <h1 style="font-size: 1em; margin: 0">PASSAPORTE DE SENHA DE NATAL</h1>
+          <h1 style="font-size: 1em; margin: 2px 0">ANO (2018)</h1>
         </th>
-
+        <!--<th><img  style="width: 70px; margin: -1px" src="/res/admin/dist/img/brasao.png" alt=""></th>-->
       </tr>
       <tr>
 
       </tr>
       <tr>
         <th colspan="3">
-        Emitindo em: </br>
-        <?php echo htmlspecialchars( $dateNow, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-      </th>
-    </tr>
-    <tr>
-      <th colspan="3" >
-        Nome:<br />
-        <p style="font-size: 2em"><h1 style="font-size: 3em"><?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></p>
-      </th>
-    </tr>
-    <tr>
-      <th class="ttu" colspan="3">
-        <b>Sua senha é: <h1 style="font-size: 6em"><?php echo htmlspecialchars( $data["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
-      </th>
-    </tr>
-    <tr>
-      <th class="ttu" colspan="3">
-        <b>Data emprega presente: <h1 style="font-size: 4em"><?php echo date('d/m/Y', strtotime($data["dtpassword"])); ?></h1></b></br>
-        <b><h1 style="font-size: 2em; margin-top: 0"><?php echo htmlspecialchars( $dayW, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
+          <span>Emitindo em:</span> </br>
+          <?php echo htmlspecialchars( $dateNow, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="3" >
+          <span>Nome da Criança:</span><br />
+          <p style="font-size: 2em"><h1 style="font-size: 3em"><?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></p>
+        </th>
+      </tr>
+      <tr>
+        <th class="ttu" colspan="3">
+          <b>Sua senha é: <h1 style="font-size: 6em"><?php echo htmlspecialchars( $data["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
+        </th>
+      </tr>
+      <tr>
+        <th class="ttu" colspan="3">
+          <b>Data emprega presente: <h1 style="font-size: 4em; margin-bottom: 10px"><?php echo date('d/m/Y', strtotime($data["dtpassword"])); ?></h1></b></br>
+          <b><h1 style="font-size: 2em; margin-top: 0"><?php echo htmlspecialchars( $dayW, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1></b>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
   <!--<tr class="top">
     <td colspan="3">Dados Adicionais:</td>
   </tr>
@@ -130,7 +144,7 @@
   </tr>-->
   <tr>
     <td></td>
-    <td><img  style="width: 200px" src="/res/admin/dist/img/qrsample.png" alt=""></td>
+    <td><img  style="width: 250px" src="/res/admin/dist/img/qrcode.png" alt=""></td>
     <td></td>
   </tr>
 
@@ -141,34 +155,36 @@
       <b>Dados Adicionais:</b>
     </td>
   </tr>
-  <tr class="ttu">
+  <tr class="ttu" style="width: 150">
     <td colspan="2">Nome Responsável:</td>
-    <td align="right"><?php echo htmlspecialchars( $data["idperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+    <td align="right"><b><?php echo htmlspecialchars( $data["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
   </tr>
   <tr class="ttu">
     <td colspan="2">Idade:</td>
-    <td align="right"><?php echo htmlspecialchars( $data["dtbirthday"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+    <td align="right">
+      <b><?php echo date('Y') - date('Y', strtotime($data["dtbirthday"])); ?> Anos</b>
+    </td>
   </tr>
-  <tr class="ttu">
+  <tr class="ttu" >
     <td colspan="2">Telefone:</td>
-    <td align="right">439999999</td>
+    <td align="right"><b><?php echo htmlspecialchars( $data["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></td>
   </tr>
   <tr class="sup">
     <td colspan="3" align="center">
-    Local entrega senha: </br>
-    <b>Praça principal - Enfrente a prefeitura</b>
-  </td>
-</tr>
-<tr class="sup">
-  <td colspan="3" align="center">
-    <b>Desenvolvimento</b>
-  </td>
-</tr>
-<tr class="sup">
-  <td colspan="3" align="center">
-    Seção de Infomática - Centenário do Sul | P R Spiguel Tecnologia
-  </td>
-</tr>
+      <span>Local de entrega:</span> </br>
+      <b>PRAÇA CENTRAL - ENFRENTE A PREFEITURA</b>
+    </td>
+  </tr>
+  <tr class="sup">
+    <td colspan="3" align="center">
+      <b>ESTE PASSAPORTE É INDIVIDUAL E INTRANSFERÍVEL</b>
+    </td>
+  </tr>
+  <tr class="sup">
+    <td colspan="3" align="center">
+      Seção de Infomática - Centenário do Sul | P R Spiguel Tecnologia
+    </td>
+  </tr>
 </tfoot>
 </table>
 

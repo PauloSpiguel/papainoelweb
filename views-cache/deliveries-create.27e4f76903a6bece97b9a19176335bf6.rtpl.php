@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group" style="float: right; width: 50%; margin-left: 5px">
                   <label id="msg" style="font-size: 1.6em" for="nrpassword">Número da Senha:</label>
-                  <input class="form-control" style=" height: 70px; font-size: 2em; background:#d2d6de" id="nrpassword" name="nrpassword" type="number"></input>
+                  <input class="form-control" style=" height: 70px; font-size: 2em; background:#d2d6de; cursor: default" id="nrpassword" name="nrpassword" type="number" disabled></input>
                 </div>
               </div>
             </fieldset>
@@ -174,7 +174,60 @@
 <!-- /.content-wrapper-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript" DEFER="DEFER">
-  // INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
+  // INICIO FUNÇÃO BUSCA REPETIDOS
+  $("#deskid").blur(function(){
+    var busca = $("#deskid").val();
+    if (busca.length < 4){
+      swal({
+          title: "Atenção?",
+          text: "Nome digitado é inválido ou vázio!",
+          type: "warning",
+          showCancelButton: false,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'OK',
+          cancelButtonText: "No, cancel operação!",
+          closeOnConfirm: true,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            document.getElementById('deskid').focus();
+          } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
+    }else{
+      $.post('../../vendor/hcodebr/php-classes/src/DB/Double.php', {busca: busca}, function(data){
+        if(data != 'não cadastrado'){
+          var datetime = data;
+          swal({
+          title: "Atenção? Nome informado já contem registrado.",
+          text: datetime + " Deseja continuar?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Sim',
+          cancelButtonText: "Não, Cancelar e sair!",
+          closeOnConfirm: true,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+          if (isConfirm){
+            document.getElementById('dtbirthday').focus();
+          } else {
+            window.location.href="/admin/deliveries";
+          }
+        });
+        }
+        
+      });
+
+    } 
+    
+  });
+  
+
+  // INICIO FUNÇÃO CALCULA IDADE
   $("#dtbirthday").on('blur', function() {
     calcular_idade();
   });
@@ -204,41 +257,41 @@
       }
     }
   }
-
-  $(document).ready( function() {
-    $('#dtpassword').change(function(){
-      var dados = $(this).serialize();
-      $.ajax({
-        url : '../../vendor/hcodebr/php-classes/src/DB/Search.php',
-        method : 'POST',
-        data: dados,
-        dataType: 'html',
-        deforeSend: function(){
-          $("#passDelivery").val('Aguarde...');
-        },
-        success: function(data){
-          if(data.passDelivery = true) {
-           $("#passDelivery").empty().val(data);
-         }else{
-          alert(data);
-        }
+// INICIO FUNÇÃO DE PERQUISA REGISTROS NO BANCO DEMANDS
+$(document).ready( function() {
+  $('#dtpassword').change(function(){
+    var dados = $(this).serialize();
+    $.ajax({
+      url : '../../vendor/hcodebr/php-classes/src/DB/Search.php',
+      method : 'POST',
+      data: dados,
+      dataType: 'html',
+      deforeSend: function(){
+        $("#passDelivery").val('Aguarde...');
+      },
+      success: function(data){
+        if(data.passDelivery = true) {
+         $("#passDelivery").empty().val(data);
+       }else{
+        alert(data);
       }
-    });
-      return false;    
-    })
+    }
   });
+    return false;    
+  })
+});
+// INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
+window.onload=function(){
+  var campoRG = document.getElementById('destypedoc').value;
+  var display = campoRG == 'RG' ? 'block' : 'none';
+  document.getElementById('hidden_div').style.display = display;
 
-  window.onload=function(){
-    var campoRG = document.getElementById('destypedoc').value;
-    var display = campoRG == 'RG' ? 'block' : 'none';
-    document.getElementById('hidden_div').style.display = display;
 
-
-    document.getElementById('destypedoc').addEventListener('change', function () {
-      var style = this.value == 'RG' ? 'block' : 'none';
-      document.getElementById('hidden_div').style.display = style;
-    });
-  }
+  document.getElementById('destypedoc').addEventListener('change', function () {
+    var style = this.value == 'RG' ? 'block' : 'none';
+    document.getElementById('hidden_div').style.display = style;
+  });
+}
   // INICIO FUNÇÃO DE MASCARA MAIUSCULA
   var ignorar = ["das", "dos", "e", "é", "do", "da", "de"];
 

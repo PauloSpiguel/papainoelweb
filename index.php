@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("America/Sao_Paulo");
+setlocale(LC_ALL, 'pt_BR');
 session_start();
 require_once "vendor/autoload.php";
 require_once "vendor/hcodebr/php-classes/src/DB/Secret.php";
