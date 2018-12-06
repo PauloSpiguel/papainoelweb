@@ -2,6 +2,7 @@
 #[^.]*
 # Ignora arquivos especificos #
 ######################
+.gitignore
 .DS_Store
 .DS_Store?
 ._*
@@ -9,3 +10,4 @@
 .Trashes
 ehthumbs.db
 Thumbs1.db
+
