@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="code_generator.phps" server="31.170.161.234" local="131872017086191466" remote="131886723600000000" Dst="2" />
+<file name="contactform.phps" server="31.170.161.234" local="131872017086191466" remote="131886723600000000" Dst="2" />
+<file name="contents.html" server="31.170.161.234" local="131872017086211466" remote="131886723600000000" Dst="2" />
+<file name="contentsutf8.html" server="31.170.161.234" local="131872017086211466" remote="131886723600000000" Dst="2" />
+<file name="DKIM.phps" server="31.170.161.234" local="131872017086181466" remote="131886723600000000" Dst="2" />
+<file name="gmail.phps" server="31.170.161.234" local="131872017086221466" remote="131886723600000000" Dst="2" />
+<file name="exceptions.phps" server="31.170.161.234" local="131872017086221466" remote="131886723600000000" Dst="2" />
+<file name="gmail_xoauth.phps" server="31.170.161.234" local="131872017086231466" remote="131886723600000000" Dst="2" />
+<file name="index.html" server="31.170.161.234" local="131872017086251466" remote="131886723600000000" Dst="2" />
+<file name="mailing_list.phps" server="31.170.161.234" local="131872017086261466" remote="131886723600000000" Dst="2" />
+<file name="mail.phps" server="31.170.161.234" local="131872017086251466" remote="131886723600000000" Dst="2" />
+<file name="pop_before_smtp.phps" server="31.170.161.234" local="131872017086271466" remote="131886723600000000" Dst="2" />
+<file name="sendmail.phps" server="31.170.161.234" local="131872017086341466" remote="131886723600000000" Dst="2" />
+<file name="signed-mail.phps" server="31.170.161.234" local="131872017086351466" remote="131886723600000000" Dst="2" />
+<file name="send_file_upload.phps" server="31.170.161.234" local="131872017086331466" remote="131886723600000000" Dst="2" />
+<file name="send_multiple_file_upload.phps" server="31.170.161.234" local="131872017086331466" remote="131886723600000000" Dst="2" />
+<file name="smtp.phps" server="31.170.161.234" local="131872017086351466" remote="131886723600000000" Dst="2" />
+<file name="smtp_check.phps" server="31.170.161.234" local="131872017086361466" remote="131886723600000000" Dst="2" />
+<file name="smtp_no_auth.phps" server="31.170.161.234" local="131872017086361466" remote="131886723600000000" Dst="2" />
+<file name="ssl_options.phps" server="31.170.161.234" local="131872017086371466" remote="131886723600000000" Dst="2" />
+</dwsync>

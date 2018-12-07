@@ -32,7 +32,7 @@
       width: 100%;
       max-width: 400px;
       font-weight: light;
-      line-height: 1.3em;
+      line-height: 1.1em;
     }
     .printer-ticket,
     .printer-ticket * {
@@ -123,55 +123,55 @@
 
 
 
-    </style>
+  </style>
 
-  </head>
-  <body >
-    <div id="nota">
-      <table class="printer-ticket">
-        <thead>
-         <tr>
-          <tr>
-            <th class="title" colspan="3">
-              <img  style="width: 200px; margin: 0px" src="/res/admin/dist/img/logoCent.png" alt="">
-            </th>
-          </tr>
-          <tr>
-            <th class="title" colspan="3" style="text-align: center">
-              <h1 style="font-size: 14px; margin: 0">PREFEITURA MUNICIPAL DE CENTENÁRIO DO SUL</h1></br>
-              <h1 style="font-size: 1em; margin: 0">PASSAPORTE DE SENHA DE NATAL</h1>
-              <h1 style="font-size: 1em; margin: 2px 0">ANO (2018)</h1>
-            </th>
-            <!--<th><img  style="width: 70px; margin: -1px" src="/res/admin/dist/img/brasao.png" alt=""></th>-->
-          </tr>
-          <tr>
+</head>
+<body >
+  <div id="nota">
+    <table class="printer-ticket">
+      <thead>
+       <tr>
+        <tr>
+          <th class="title" colspan="3">
+            <img  style="width: 200px; margin: 0px" src="/res/admin/dist/img/logoCent.png" alt="">
+          </th>
+        </tr>
+        <tr>
+          <th class="title" colspan="3" style="text-align: center">
+            <h1 style="font-size: 14px; margin: 0">PREFEITURA MUNICIPAL DE CENTENÁRIO DO SUL</h1></br>
+            <h1 style="font-size: 1em; margin: 0">PASSAPORTE DE SENHA DE NATAL</h1>
+            <h1 style="font-size: 1em; margin: 2px 0">ANO (2018)</h1>
+          </th>
+          <!--<th><img  style="width: 70px; margin: -1px" src="/res/admin/dist/img/brasao.png" alt=""></th>-->
+        </tr>
+        <tr>
 
-          </tr>
-          <tr>
-            <th colspan="3">
-              <span>Emitido em:</span></br>
-              {$dateNow}
-            </th>
-          </tr>
-          <tr>
-            <th colspan="3" >
-              <span>Nome:</span><br />
-              <p style="font-size: 2em"><h1 style="font-size: 3em">{$data.deskid}</h1></p>
-            </th>
-          </tr>
-          <tr>
-            <th class="ttu" colspan="3">
-              <b>Sua senha é: <h1 style="font-size: 6em">{$data.nrpassword}</h1></b>
-            </th>
-          </tr>
-          <tr>
-            <th class="ttu" colspan="3">
-              <b>Data entrega do presente: <h1 style="font-size: 4em; margin-bottom: 10px">{function="date('d/m/Y', strtotime($data.dtpassword))"}</h1></b></br>
-              <b><h1 style="font-size: 2em; margin-top: 0">{$dayW}</h1></b>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+        </tr>
+        <tr>
+          <th colspan="3">
+            <span>Emitido em:</span></br>
+            {$dateNow}
+          </th>
+        </tr>
+        <tr>
+          <th colspan="3" >
+            <span>Nome:</span><br />
+            <p style="font-size: 2em;"><h1 style="font-size: 3em;line-height: 1em;">{$data.deskid}</h1></p>
+          </th>
+        </tr>
+        <tr>
+          <th class="ttu" colspan="3">
+            <b>Sua senha é: <h1 style="font-size: 6em">{$data.nrpassword}</h1></b>
+          </th>
+        </tr>
+        <tr>
+          <th class="ttu" colspan="3">
+            <b>Data entrega do presente: <h1 style="font-size: 4em; margin-bottom: 10px">{function="date('d/m/Y', strtotime($data.dtpassword))"}</h1></b></br>
+            <b><h1 style="font-size: 2em; margin-top: 0">{$dayW}</h1></b>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
   <!--<tr class="top">
     <td colspan="3">Dados Adicionais:</td>
   </tr>
@@ -186,8 +186,8 @@
   </tr>-->
   <tr>
     <td></td>
-    <!--<td><img  style="width: 250px" src="/res/admin/dist/img/qrcode.png" alt=""></td>-->
-    <td><img  style="width: 250px" src="../../vendor/hcodebr/php-classes/src/DB/QRcode.php?"{$data.deskid} alt="QR Code"></td>
+    <td><img  style="width: 250px" src="/res/admin/dist/img/qrcode.png" alt=""></td>
+    <!-- <td><img  style="width: 250px" src="../../vendor/hcodebr/php-classes/src/DB/QRcode.php?"{$data.deskid} alt="QR Code"></td>-->
     <td></td>
   </tr>
 
@@ -198,17 +198,29 @@
       <b>Dados Adicionais:</b>
     </td>
   </tr>
-  <tr class="ttu" style="width: 150">
-    <td colspan="2">Responsável:</td>
-    <td align="right"><b>{$data.desperson}</b></td>
-  </tr>
   <tr class="ttu">
     <td colspan="2">Idade:</td>
     <td align="right"><b>{function="date('Y') - date('Y', strtotime($data.dtbirthday))"} Anos</b></td>
   </tr>
+  <tr class="ttu">
+    <td colspan="2">Sexo:</td>
+    <td align="right"><b>{if="$data.dessex == 1"}Feminino{else}Masculino{/if}</b></td>
+  </tr>
+  <tr class="ttu" style="width: 150">
+    <td colspan="2">Responsável:</td>
+    <td align="right"><b>{$data.desperson}</b></td>
+  </tr>
   <tr class="ttu" >
     <td colspan="2">Telefone:</td>
     <td align="right"><b>{$data.nrphone}</b></td>
+  </tr>
+  <tr class="ttu" >
+    <td colspan="2">Escola:</td>
+    <td align="right"><b>{$data.deslocal}</b></td>
+  </tr>
+  <tr class="ttu" >
+    <td colspan="2">Matricula:</td>
+    <td align="right"><b>{$data.nrmatriculation}</b></td>
   </tr>
   <tr class="sup">
     <td colspan="3" align="center">
@@ -223,15 +235,17 @@
   </tr>
   <tr class="sup">
     <td colspan="3" align="center">
-      Seção de Infomática - Centenário do Sul | P R Spiguel Tecnologia
-    </td>
-  </tr>
-  
-  <tr class="sup">
-    <td></td>
-    <td><img  style="margin: 0 15%; width: 300px" src="/res/admin/dist/img/corteTesoura.png" alt=""></td>
-    <td></td>
-  </tr>
+      Seção de Infomática - Centenário do Sul <br/>
+    P R Spiguel Tecnologia </br>
+    SisPNWEB - V. 1.0
+  </td>
+</tr>
+
+<tr class="sup">
+  <td></td>
+  <td><img  style="margin: 0 15%; width: 300px" src="/res/admin/dist/img/corteTesoura.png" alt=""></td>
+  <td></td>
+</tr>
 </tfoot>
 </table>
 </div>
@@ -250,7 +264,7 @@
 
 <div>
 	<img  style="margin-top: 200px; width: 400px; transform: rotate(90deg)scale(1.60, 1.85)" src="/res/admin/dist/img/tren.png" alt="">
- </dir>
+</dir>
 
  <!--<div id="body" class="transformed">
  <div class="tickt">

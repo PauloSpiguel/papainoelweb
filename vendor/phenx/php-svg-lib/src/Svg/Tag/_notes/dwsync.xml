@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AbstractTag.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Anchor.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Circle.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Ellipse.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="ClipPath.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Group.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Image.php" server="31.170.161.234" local="131883115489925688" remote="131886723600000000" Dst="2" />
+<file name="Line.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="LinearGradient.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Path.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Polygon.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Polyline.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Rect.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Shape.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="RadialGradient.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Stop.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="StyleTag.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="Text.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+<file name="UseTag.php" server="31.170.161.234" local="131883115490025687" remote="131886723600000000" Dst="2" />
+</dwsync>

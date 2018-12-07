@@ -117,9 +117,9 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
 
     //var_dump($data["deskid"]);
 
-    for ( $a=0; count($data)<$a; $a++ ) {
-        echo $data['idkid'][$a];
-    }
+    /*for ( $a=0; count($data)<$a; $a++ ) {
+    echo $data['idkid'][$a];
+    }*/
 
     $page = new PageAdmin([
         "header" => false,
@@ -129,7 +129,7 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
     $page->setTpl("print", [
         "data"    => $data->getValues(),
         "dateNow" => $datetime,
-        "dayW"    => $dayW
+        "dayW"    => $dayW,
 
     ]);
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="alerts.less" server="31.170.161.234" local="131873753525650460" remote="131886714000000000" Dst="2" />
+<file name="background-variant.less" server="31.170.161.234" local="131873753525660460" remote="131886714000000000" Dst="2" />
+<file name="border-radius.less" server="31.170.161.234" local="131873753525670460" remote="131886714000000000" Dst="2" />
+<file name="buttons.less" server="31.170.161.234" local="131873753525670460" remote="131886714000000000" Dst="2" />
+<file name="center-block.less" server="31.170.161.234" local="131873753525670460" remote="131886714000000000" Dst="2" />
+<file name="clearfix.less" server="31.170.161.234" local="131873753525680460" remote="131886714000000000" Dst="2" />
+<file name="forms.less" server="31.170.161.234" local="131873753525680460" remote="131886714000000000" Dst="2" />
+<file name="gradients.less" server="31.170.161.234" local="131873753525690460" remote="131886714000000000" Dst="2" />
+<file name="grid-framework.less" server="31.170.161.234" local="131873753525710460" remote="131886714000000000" Dst="2" />
+<file name="grid.less" server="31.170.161.234" local="131873753525710460" remote="131886714000000000" Dst="2" />
+<file name="hide-text.less" server="31.170.161.234" local="131873753525720460" remote="131886714000000000" Dst="2" />
+<file name="image.less" server="31.170.161.234" local="131873753525720460" remote="131886714000000000" Dst="2" />
+<file name="labels.less" server="31.170.161.234" local="131873753525720460" remote="131886714000000000" Dst="2" />
+<file name="list-group.less" server="31.170.161.234" local="131873753525730460" remote="131886714000000000" Dst="2" />
+<file name="nav-divider.less" server="31.170.161.234" local="131873753525730460" remote="131886714000000000" Dst="2" />
+<file name="nav-vertical-align.less" server="31.170.161.234" local="131873753525730460" remote="131886714000000000" Dst="2" />
+<file name="opacity.less" server="31.170.161.234" local="131873753525740460" remote="131886714000000000" Dst="2" />
+<file name="pagination.less" server="31.170.161.234" local="131873753525750460" remote="131886714000000000" Dst="2" />
+<file name="panels.less" server="31.170.161.234" local="131873753525750460" remote="131886714000000000" Dst="2" />
+<file name="progress-bar.less" server="31.170.161.234" local="131873753525750460" remote="131886714000000000" Dst="2" />
+<file name="reset-text.less" server="31.170.161.234" local="131873753525760460" remote="131886714000000000" Dst="2" />
+<file name="resize.less" server="31.170.161.234" local="131873753525770460" remote="131886714000000000" Dst="2" />
+<file name="reset-filter.less" server="31.170.161.234" local="131873753525760460" remote="131886714000000000" Dst="2" />
+<file name="responsive-visibility.less" server="31.170.161.234" local="131873753525770460" remote="131886714000000000" Dst="2" />
+<file name="size.less" server="31.170.161.234" local="131873753525770460" remote="131886714000000000" Dst="2" />
+<file name="tab-focus.less" server="31.170.161.234" local="131873753525780460" remote="131886714000000000" Dst="2" />
+<file name="table-row.less" server="31.170.161.234" local="131873753525780460" remote="131886714000000000" Dst="2" />
+<file name="text-emphasis.less" server="31.170.161.234" local="131873753525790460" remote="131886714000000000" Dst="2" />
+<file name="text-overflow.less" server="31.170.161.234" local="131873753525790460" remote="131886714000000000" Dst="2" />
+<file name="vendor-prefixes.less" server="31.170.161.234" local="131873753525800460" remote="131886714000000000" Dst="2" />
+</dwsync>

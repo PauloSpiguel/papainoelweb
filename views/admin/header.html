@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
       -->
   <link rel="stylesheet" href="../../res/admin/dist/css/skins/skin-blue.css">
-
+  <script src="../../res/admin/dist/js/shortcut.js"></script>
   <script src="../../res/admin/dist/js/sweetalert.js"></script>
   <script src="../../res/admin/dist/js/moment-with-locales.min.js"></script>
   <link rel="stylesheet" href="../../res/admin/dist/css/sweetalert.css">

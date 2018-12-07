@@ -81,4 +81,19 @@
     </section>
     <!-- /.content -->
   </div>
-<!-- /.content-wrapper -->
+  <!-- /.content-wrapper -->
+  
+  <script>
+    ################ TECLAS DE ATALHO #####################
+
+    shortcut.add("Right",function() 
+    {
+      alert("Foi pressionado a seta para a direita!");
+    });
+
+    shortcut.add("CTRL+X",function() 
+    {
+      alert("Foi pressionado a sequencia de teclas CTRL+X!");
+    });
+
+  </script>

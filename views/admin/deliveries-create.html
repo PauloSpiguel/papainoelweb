@@ -30,7 +30,7 @@
               <div class="form-select">
                 <div class="form-group" style="float: left; width: 30%">
                   <label  style="font-size: 1.6em" for="dtpassword">Data Senha:</label>
-                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-19" max="2018-12-26" required style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
+                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-16" max="2018-12-18" required autofocus style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
                 </div>
                 <div class="form-group" style="float: right; width: 20%; margin-left: 5px">
                   <label style="font-size: 1.6em" for="passDelivery">Senha Entregues:</label>
@@ -49,7 +49,8 @@
             <div class="form-select">
               <div class="form-group" style="float: right; width: 30%">
                 <label for="dtbirthday"><span class="important">* </span>Data Nascimento</label>
-                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" required>
+                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" 
+                max="2018-12-07" required>
               </div>
               <div class="form-group" style="margin-left: 5px; width: 10%;">
                 <label for="calcYear">Idade</label>
@@ -179,45 +180,45 @@
     var busca = $("#deskid").val();
     if (busca.length < 4){
       swal({
-          title: "Atenção?",
-          text: "Nome digitado é inválido ou vázio!",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'OK',
-          cancelButtonText: "No, cancel operação!",
-          closeOnConfirm: true,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            document.getElementById('deskid').focus();
-          } else {
-            swal("Cancelled", "Your imaginary file is safe :)", "error");
-          }
-        });
+        title: "Atenção?",
+        text: "Nome digitado é inválido ou vázio!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonClass: 'btn-danger',
+        confirmButtonText: 'OK',
+        cancelButtonText: "No, cancel operação!",
+        closeOnConfirm: true,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm){
+          document.getElementById('deskid').focus();
+        } else {
+          document.getElementById('deskid').focus();
+        }
+      });
     }else{
       $.post('../../vendor/hcodebr/php-classes/src/DB/Double.php', {busca: busca}, function(data){
         if(data != 'não cadastrado'){
           var datetime = data;
           swal({
-          title: "Atenção? Nome informado já contem registrado.",
-          text: datetime + " Deseja continuar?",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'Sim',
-          cancelButtonText: "Não, Cancelar e sair!",
-          closeOnConfirm: true,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            document.getElementById('dtbirthday').focus();
-          } else {
-            window.location.href="/admin/deliveries";
-          }
-        });
+            title: "Atenção? Nome informado já contem registrado.",
+            text: datetime + " Deseja continuar?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: 'btn-danger',
+            confirmButtonText: 'Sim',
+            cancelButtonText: "Não, Cancelar e sair!",
+            closeOnConfirm: true,
+            closeOnCancel: false
+          },
+          function(isConfirm){
+            if (isConfirm){
+              document.getElementById('dtbirthday').focus();
+            } else {
+              window.location.href="/admin/deliveries";
+            }
+          });
         }
         
       });
@@ -319,5 +320,6 @@ window.onload=function(){
   $('.mostraClass').click(function(){
     $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
   });
+
 </script>
 

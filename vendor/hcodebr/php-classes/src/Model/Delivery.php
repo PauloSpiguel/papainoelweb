@@ -115,7 +115,7 @@ class Delivery extends Model
 
         $sql = new Sql();
 
-        $results = $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, c.nrphone, d.deslocal
+        $results = $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, b.nrmatriculation, c.desperson, c.nrphone, d.deslocal
 		FROM tb_demands a
 		INNER JOIN tb_kids b ON a.idkid = b.idkid
 		INNER JOIN tb_persons c ON b.idperson = c.idperson
