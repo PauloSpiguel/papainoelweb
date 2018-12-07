@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Secret.php.php';
+require_once 'Secret.php';
 
 $conn = mysqli_connect($servidor, $usuario, $senha, $bancodedados);
 if (mysqli_connect_errno()) {
