@@ -115,11 +115,7 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
 
     $dayW = $data->dateW();
 
-    //var_dump($data["deskid"]);
-
-    /*for ( $a=0; count($data)<$a; $a++ ) {
-    echo $data['idkid'][$a];
-    }*/
+    //echo utf8_encode($data->getdesperson());//Pega informações do gets
 
     $page = new PageAdmin([
         "header" => false,
@@ -130,7 +126,6 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
         "data"    => $data->getValues(),
         "dateNow" => $datetime,
         "dayW"    => $dayW,
-
     ]);
 
 });

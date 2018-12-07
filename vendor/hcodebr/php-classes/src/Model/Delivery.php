@@ -24,49 +24,6 @@ class Delivery extends Model
 			ORDER BY a.dtpassword");
     }
 
-    /*public function save()
-    {
-
-    if ($this->getdesaddress() == '') {
-    $address = utf8_decode('Endereço não informado');
-    } else {
-
-    $address = $this->getdesaddress();
-    }
-
-    $sql = new Sql();
-
-    $results = $sql->select("CALL sp_demands_save (:iddemand, :desperson, :desemail, :nrphone, :nrcpf, :desaddress, :desnumber, :desregion, :descomplement, :descity, :desstate, :descountry, :zipcode, :deskid, :dessex, :dtbirthday, :nrmatriculation, :idkid, :nrpassword, :dtpassword, :desqrcode, :idlocal, :desobservation, :iduser)", array(
-    ":iddemand"        => $this->getiddemand(),
-    ":desperson"       => $this->getdesperson(),
-    ":desemail"        => $this->getdesemail(),
-    ":nrphone"         => $this->getnrphone(),
-    ":nrcpf"           => $this->getnrcpf(),
-    ":desaddress"      => $address,
-    ":desnumber"       => $this->getdesnumber(),
-    ":desregion"       => $this->getdesregion(),
-    ":descomplement"   => $this->getdescomplement(),
-    ":descity"         => $this->getdescity(),
-    ":desstate"        => $this->getdesstate(),
-    ":descountry"      => $this->getdescountry(),
-    ":zipcode"         => $this->getzipcode(),
-    ":deskid"          => $this->getdeskid(),
-    ":dessex"          => $this->getdessex(),
-    ":dtbirthday"      => $this->getdtbirthday(),
-    ":nrmatriculation" => $this->getnrmatriculation(),
-    ":idkid"           => $this->getidkid(),
-    ":nrpassword"      => $this->getnrpassword(),
-    ":dtpassword"      => $this->getdtpassword(),
-    ":desqrcode"       => $this->getdesqrcode(),
-    ":idlocal"         => $this->getidlocal(),
-    ":desobservation"  => $this->getdesobservation(),
-    ":iduser"          => $this->getiduser(),
-    ));
-
-    $this->setData($results[0]);
-
-    }*/
-
     public function save()
     {
 
@@ -138,7 +95,7 @@ class Delivery extends Model
         ]);
     }
 
-    public static function getPage($page = 1, $search = '', $itemsPerPage = 10)
+    public static function getPage($page = 1, $search = '', $itemsPerPage = 20)
     {
 
         $start = ($page - 1) * $itemsPerPage;
@@ -191,6 +148,13 @@ class Delivery extends Model
         date_default_timezone_set('America/Sao_Paulo');
         //return strftime('%A, %d de %B de %Y', strtotime($date));
         return strftime('%A', strtotime($this->getdtpassword()));
+
+    }
+
+    public function qrCode()
+    {
+
+        return $this->getdtpassword();
 
     }
 
