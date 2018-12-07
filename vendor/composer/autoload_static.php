@@ -15,6 +15,10 @@ class ComposerStaticInit30493aef559194abbbaa44270c6653ac
         array (
             'FontLib\\' => 8,
         ),
+        'E' => 
+        array (
+            'Endroid\\Installer\\' => 18,
+        ),
         'D' => 
         array (
             'Dompdf\\' => 7,
@@ -29,6 +33,10 @@ class ComposerStaticInit30493aef559194abbbaa44270c6653ac
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Endroid\\Installer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/installer/src',
         ),
         'Dompdf\\' => 
         array (

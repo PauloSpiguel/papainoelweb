@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'NewTech\\' => array($vendorDir . '/hcodebr/php-classes/src'),
     'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src/FontLib'),
+    'Endroid\\Installer\\' => array($vendorDir . '/endroid/installer/src'),
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
 );

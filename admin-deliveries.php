@@ -115,6 +115,12 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
 
     $dayW = $data->dateW();
 
+    //var_dump($data["deskid"]);
+
+    for ( $a=0; count($data)<$a; $a++ ) {
+        echo $data['idkid'][$a];
+    }
+
     $page = new PageAdmin([
         "header" => false,
         "footer" => false,
