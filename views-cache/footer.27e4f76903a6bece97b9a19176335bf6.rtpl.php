@@ -5,7 +5,7 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="#">Seção de Informática | Governo Municipal de Centenário do sul & P R Spiguel Tecologia</a>.</strong> Todos os direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -19,7 +19,7 @@
     <div class="tab-content">
       <!-- Home tab content -->
       <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <h3 class="control-sidebar-heading">Atividades Recentes</h3>
         <ul class="control-sidebar-menu">
           <li>
             <a href="javascript:;">
@@ -62,7 +62,7 @@
       <!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
+          <h3 class="control-sidebar-heading">Configurações Gerais</h3>
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
@@ -82,23 +82,72 @@
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
+   immediately after the control sidebar -->
+   <div class="control-sidebar-bg"></div>
+ </div>
+ <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
+ <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
-<script src="../../res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../res/admin/dist/js/app.min.js"></script>
+ <!-- jQuery 2.2.3 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+ <script src="../../res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+ <!-- Bootstrap 3.3.6 -->
+ <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="../../res/admin/dist/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+ <script type="text/javascript" charset="utf-8" async defer>
+  // INICIO FUNÇÃO CALCULA IDADE
+  $("#dtbirthday").on('blur', function() {
+    calcular_idade();
+  });
+  // INICIO FUNÇÃO DE PERQUISA REGISTROS NO BANCO DEMANDS
+  $("#dtpassword").on('change', function() {
+    contaRegistros();
+  });
+  //MOSTRA/OCULTA
+  $('.mostraClass').click(function(){
+    $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
+  });
+  //FUNÇÃO MOSTRA/OCULTA
+  function mostra(id){
+    if(document.getElementById(id).style.display == 'flex'){
+      document.getElementById(id).style.display = 'none';
+    }else{ document.getElementById(id).style.display = 'flex';}
+  }
+
+  // INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
+  window.onload=function(){
+    var campoRG = document.getElementById('destypedoc').value;
+    var display = campoRG == 'RG' ? 'block' : 'none';
+    document.getElementById('hidden_div').style.display = display;
+
+
+    document.getElementById('destypedoc').addEventListener('change', function () {
+      var style = this.value == 'RG' ? 'block' : 'none';
+      document.getElementById('hidden_div').style.display = style;
+    });
+  }
+  // INICIO FUNÇÃO DE MASCARA MAIUSCULA
+  var ignorar = ["das", "dos", "e", "é", "do", "da", "de"];
+
+  function caixaAlta(string) {
+    return String(string).toLowerCase().replace(/([^A-zÀ-ú]?)([A-zÀ-ú]+)/g, function(match, separator, word) {
+      if (ignorar.indexOf(word) != -1) return separator + word;
+      return separator + word.charAt(0).toUpperCase() + word.slice(1);
+    });
+  }
+  function corrigirValor(el) {
+    el.value = caixaAlta(el.value);
+  }
+   // INICIO FUNÇÃO DE MASCARA MAIUSCULA
+   function maiuscula(z){
+    v = z.value.toUpperCase();
+    z.value = v;
+  }
+
+</script>
+
 </body>
 </html>

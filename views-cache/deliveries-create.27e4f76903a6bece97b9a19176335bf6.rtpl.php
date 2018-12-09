@@ -30,7 +30,7 @@
               <div class="form-select">
                 <div class="form-group" style="float: left; width: 30%">
                   <label  style="font-size: 1.6em" for="dtpassword">Data Senha:</label>
-                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-19" max="2018-12-26" required style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
+                  <input class="form-control" id="dtpassword" name="dtpassword" type="date" min="2018-12-16" max="2018-12-18" required autofocus style="height: 70px; font-size: 2em;  background:#d2d6de"></input>
                 </div>
                 <div class="form-group" style="float: right; width: 20%; margin-left: 5px">
                   <label style="font-size: 1.6em" for="passDelivery">Senha Entregues:</label>
@@ -49,7 +49,8 @@
             <div class="form-select">
               <div class="form-group" style="float: right; width: 30%">
                 <label for="dtbirthday"><span class="important">* </span>Data Nascimento</label>
-                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" required>
+                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" 
+                max="2018-12-07" required>
               </div>
               <div class="form-group" style="margin-left: 5px; width: 10%;">
                 <label for="calcYear">Idade</label>
@@ -66,7 +67,7 @@
            </div>
            <div class="form-group">
             <label for="desperson"><span class="important">* </span>Nome do responsável:</label>
-            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)" required></input>
+            <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome" onkeyup="corrigirValor(this)"></input>
           </div>
           <div class="form-group" style=" width: 100%">
             <label for="nrcpf">CPF:</label>
@@ -172,152 +173,24 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<div id="result"></div>
+<textarea onblur="generate_qrcode(this.value)" cols="50" rows="5"></textarea>
 <script type="text/javascript" DEFER="DEFER">
-  // INICIO FUNÇÃO BUSCA REPETIDOS
-  $("#deskid").blur(function(){
-    var busca = $("#deskid").val();
-    if (busca.length < 4){
-      swal({
-          title: "Atenção?",
-          text: "Nome digitado é inválido ou vázio!",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'OK',
-          cancelButtonText: "No, cancel operação!",
-          closeOnConfirm: true,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            document.getElementById('deskid').focus();
-          } else {
-            swal("Cancelled", "Your imaginary file is safe :)", "error");
-          }
-        });
-    }else{
-      $.post('../../vendor/hcodebr/php-classes/src/DB/Double.php', {busca: busca}, function(data){
-        if(data != 'não cadastrado'){
-          var datetime = data;
-          swal({
-          title: "Atenção? Nome informado já contem registrado.",
-          text: datetime + " Deseja continuar?",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'Sim',
-          cancelButtonText: "Não, Cancelar e sair!",
-          closeOnConfirm: true,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm){
-            document.getElementById('dtbirthday').focus();
-          } else {
-            window.location.href="/admin/deliveries";
-          }
-        });
-        }
-        
-      });
+ function generate_qrcode(sample){
+   $.ajax({
+     type: 'post',
+     url: '../../vendor/hcodebr/php-classes/src/DB/generatorQRcode.php',
+     data : {sample:sample},
+     success: function(code){
+      $('#result').html(code);
 
-    } 
-    
-  });
-  
-
-  // INICIO FUNÇÃO CALCULA IDADE
-  $("#dtbirthday").on('blur', function() {
-    calcular_idade();
-  });
-
-  function calcular_idade() {
-    if ($('#dtbirthday').val() != '') {
-      var dataInput = new Date($("#dtbirthday").val());
-      if (!isNaN(dataInput)) {
-        var dataAtual = new Date();
-        var diferenca = dataAtual.getFullYear() -
-        dataInput.getFullYear();
-        $("#calcYear").val(diferenca);
-        if(diferenca > 11){       
-          var r=confirm("Idade acima do permitido! Deseja continuar mesmo assim?");
-          if (r==true)
-          {
-            $("#calcYear").val(diferenca);
-            return true;
-          }
-          else
-          {
-            $("#calcYear").val('Data inválida');
-            window.location.href="/admin/deliveries";
-            return false; 
-          }
-        }
-      }
-    }
-  }
-// INICIO FUNÇÃO DE PERQUISA REGISTROS NO BANCO DEMANDS
-$(document).ready( function() {
-  $('#dtpassword').change(function(){
-    var dados = $(this).serialize();
-    $.ajax({
-      url : '../../vendor/hcodebr/php-classes/src/DB/Search.php',
-      method : 'POST',
-      data: dados,
-      dataType: 'html',
-      deforeSend: function(){
-        $("#passDelivery").val('Aguarde...');
-      },
-      success: function(data){
-        if(data.passDelivery = true) {
-         $("#passDelivery").empty().val(data);
-       }else{
-        alert(data);
-      }
     }
   });
-    return false;    
-  })
-});
-// INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
-window.onload=function(){
-  var campoRG = document.getElementById('destypedoc').value;
-  var display = campoRG == 'RG' ? 'block' : 'none';
-  document.getElementById('hidden_div').style.display = display;
+ }
 
-
-  document.getElementById('destypedoc').addEventListener('change', function () {
-    var style = this.value == 'RG' ? 'block' : 'none';
-    document.getElementById('hidden_div').style.display = style;
+  // INICIO FUNÇÃO BUSCA REPETIDO
+  $("#deskid").on('blur', function() {
+    buscaRepetido();
   });
-}
-  // INICIO FUNÇÃO DE MASCARA MAIUSCULA
-  var ignorar = ["das", "dos", "e", "é", "do", "da", "de"];
 
-  function caixaAlta(string) {
-    return String(string).toLowerCase().replace(/([^A-zÀ-ú]?)([A-zÀ-ú]+)/g, function(match, separator, word) {
-      if (ignorar.indexOf(word) != -1) return separator + word;
-      return separator + word.charAt(0).toUpperCase() + word.slice(1);
-    });
-  }
-  function corrigirValor(el) {
-    el.value = caixaAlta(el.value);
-  }
-  // INICIO FUNÇÃO DE MASCARA MAIUSCULA
-  function maiuscula(z){
-    v = z.value.toUpperCase();
-    z.value = v;
-  }
-
-  function mostra(id){
-    if(document.getElementById(id).style.display == 'flex'){
-      document.getElementById(id).style.display = 'none';
-    }else{ document.getElementById(id).style.display = 'flex';}
-  }
-
-  $('.mostraClass').click(function(){
-    $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
-  });
 </script>
-

@@ -92,6 +92,8 @@ $app->post('/admin/users/:iduser', function ($iduser) {
 
     $user->get((int) $iduser);
 
+    //var_dump($_POST);
+
     $user->setData($_POST);
 
     $user->update();

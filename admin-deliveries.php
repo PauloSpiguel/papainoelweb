@@ -86,12 +86,14 @@ $app->post("/admin/deliveries/create", function () {
     exit;
 
 });
-##################### ROTA DELIVERY UPDATE #####################
+##################### ROTA LOAD-DELIVERY UPDATE #####################
 $app->get('/admin/deliveries/:iddemand', function ($iddemand) {
 
     User::verifyLogin();
 
     $delivery = new Delivery();
+
+    $locals = Local::listAll();
 
     $delivery->get((int) $iddemand);
 
@@ -99,7 +101,34 @@ $app->get('/admin/deliveries/:iddemand', function ($iddemand) {
 
     $page->setTpl("deliveries-update", array(
         "delivery" => $delivery->getValues(),
+        "locals"   => $locals
     ));
+
+});
+##################### ROTA SAVE-UPDATE DELIVERY #####################
+$app->post('/admin/deliveries/:iduser', function ($iddemand) {
+
+    User::verifyLogin();
+
+    $user = User::userSession();
+
+    $delivery = new Delivery();
+
+    $delivery->get((int) $iddemand);
+
+    $delivery->setData($_POST);
+
+    //$delivery->setData(array(
+       // "iduser"    => $user['iduser'],
+        //"desqrcode" => 'QRCODE'
+    //));
+
+    //var_dump($delivery);
+
+    $delivery->update();
+
+    header("Location: /admin/deliveries");
+    exit;
 
 });
 ################## ROTA GERA-PDF ###################
