@@ -6,6 +6,7 @@ use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;
 use \NewTech\Model\User;
 use \NewTech\PageAdmin;
+use \chillerlan\QRCode\{QRCode, QROptions};
 
 ################## ROTA DELIVERY ###################
 $app->get("/admin/deliveries", function () {
@@ -144,6 +145,24 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
 
     $dayW = $data->dateW();
 
+    $options = new QROptions([
+        'version'    => 5,
+        'outputType' => QRCode::OUTPUT_IMAGE_PNG,
+        'eccLevel'   => QRCode::ECC_L,
+    ]);
+
+    $qrData = $data->getdeskid() . 
+    " Autenticação de senha.
+     Prefeitura de Centenário do Sul";
+// invoke a fresh QRCode instance
+    $qrcode = new QRCode($options);
+
+// and dump the output
+    $qrcode->render($qrData);
+
+// ...with additional cache file
+    $qrcode->render($qrData, 'res/admin/dist/img/qrcode.png');
+
     //echo utf8_encode($data->getdesperson());//Pega informações do gets
 
     $page = new PageAdmin([
@@ -155,6 +174,7 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
         "data"    => $data->getValues(),
         "dateNow" => $datetime,
         "dayW"    => $dayW,
+        "qrcode"  => $qrcode  
     ]);
 
 });

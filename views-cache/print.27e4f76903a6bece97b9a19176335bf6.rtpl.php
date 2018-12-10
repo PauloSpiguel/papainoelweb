@@ -179,7 +179,6 @@
   <tr>
     <td></td>
     <td><img  style="width: 250px" src="/res/admin/dist/img/qrcode.png" alt=""></td>
-     <!--<td><img  style="width: 250px" src="../../vendor/hcodebr/php-classes/src/DB/QRcode.php?"<?php echo htmlspecialchars( $data["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?> alt="QR Code"></td>-->
      <td></td>
    </tr>
  </tbody>

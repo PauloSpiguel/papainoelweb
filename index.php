@@ -5,6 +5,7 @@ session_start();
 require_once "vendor/autoload.php";
 require_once "vendor/hcodebr/php-classes/src/DB/Secret.php";
 require_once "vendor/phpqrcode/qrlib.php";
+require_once "vendor/phpqrcode/qrlib.php";
 
 use \Slim\Slim;
 

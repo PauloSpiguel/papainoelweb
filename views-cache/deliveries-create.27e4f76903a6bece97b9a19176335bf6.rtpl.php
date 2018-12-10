@@ -173,21 +173,7 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper-->
-<div id="result"></div>
-<textarea onblur="generate_qrcode(this.value)" cols="50" rows="5"></textarea>
 <script type="text/javascript" DEFER="DEFER">
- function generate_qrcode(sample){
-   $.ajax({
-     type: 'post',
-     url: '../../vendor/hcodebr/php-classes/src/DB/generatorQRcode.php',
-     data : {sample:sample},
-     success: function(code){
-      $('#result').html(code);
-
-    }
-  });
- }
-
   // INICIO FUNÇÃO BUSCA REPETIDO
   $("#deskid").on('blur', function() {
     buscaRepetido();
