@@ -98,66 +98,118 @@
    <script src="../../res/admin/dist/js/app.min.js"></script>
 
    <script type="text/javascript" charset="utf-8" async defer>
-  // INICIO FUNÇÃO CALCULA IDADE
-  $(function(){
-    $('table#myTable tbody tr').hover(
-      function(){
+ 
+  //################ TECLAS DE ATALHO #####################
+  shortcut.add("Right",function() 
+  {
+    alert("Foi pressionado a seta para a direita!");
+  });
 
-        $(this).addClass('destaque');
-      },
-      function(){
-        $(this).removeClass('destaque');
-      }
-      );
+  shortcut.add("F9",function() 
+  {
+     window.location.href="/admin/deliveries/create";
+  });
+
+  //################ MODAL #####################
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    var recipientdeskid = button.data('whateverdeskid')  
+    var recipientdtbirthday = button.data('whateverdtbirthday')
+    var recipientperson = button.data('whateverperson')
+    var recipientnrphone = button.data('whatevernrphone')
+    var recipientemail = button.data('whateveremail')
+    var recipientpublicplace = button.data('whateverpublicplace')
+    var recipientnrnumber = button.data('whatevernrnumber')
+    var recipientregion = button.data('whateverregion')
+    var recipientcity = button.data('whatevercity')
+    var recipientstate = button.data('whateverstate')
+    var recipientcountry = button.data('whatevercountry')
+    var recipientcomplement = button.data('whatevercomplement')
+    //document.write(recipientemail)
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('Detalhes: ID ' + recipient)
+    modal.find('#id-curso').val(recipient)
+    modal.find('#deskid').val(recipientdeskid)
+    modal.find('#dtbirthday').val(recipientdtbirthday)
+    modal.find('#recipient-person').val(recipientperson)
+    modal.find('#nrphone').val(recipientnrphone)
+    modal.find('#email').val(recipientemail)
+    modal.find('#publicplace').val(recipientpublicplace)
+    modal.find('#nrnumber').val(recipientnrnumber)
+    modal.find('#region').val(recipientregion)
+    modal.find('#city').val(recipientcity)
+    modal.find('#state').val(recipientstate)
+    modal.find('#country').val(recipientcountry)
+    modal.find('#complement').val(recipientcomplement)
+    /*FUNÇÃO PARA ALTER O ACTION DO FORMULARIO*/
+    $('#updateButton').click(function(){
+      $('#modalForm').attr('action', '/admin/deliveries/' + recipient);
+    });
   })
-  // INICIO FUNÇÃO CALCULA IDADE
-  $("#dtbirthday").on('blur', function() {
-    calcular_idade();
-  });
-  // INICIO FUNÇÃO DE PERQUISA REGISTROS NO BANCO DEMANDS
-  $("#dtpassword").on('change', function() {
-    contaRegistros();
-  });
-  //MOSTRA/OCULTA
-  $('.mostraClass').click(function(){
-    $(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
-  });
-  //FUNÇÃO MOSTRA/OCULTA
-  function mostra(id){
-    if(document.getElementById(id).style.display == 'flex'){
-      document.getElementById(id).style.display = 'none';
-    }else{ document.getElementById(id).style.display = 'flex';}
-  }
 
-  // INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
-  window.onload=function(){
-    var campoRG = document.getElementById('destypedoc').value;
-    var display = campoRG == 'RG' ? 'block' : 'none';
-    document.getElementById('hidden_div').style.display = display;
+// INICIO FUNÇÃO ORDENA TABELA DELIVERIES
+$(function(){
+$('table#myTable tbody tr').hover(
+function(){
+
+$(this).addClass('destaque');
+},
+function(){
+$(this).removeClass('destaque');
+}
+);
+})
+// INICIO FUNÇÃO CALCULA IDADE
+$("#dtbirthday").on('blur', function() {
+calcular_idade();
+});
+// INICIO FUNÇÃO DE PERQUISA REGISTROS NO BANCO DEMANDS
+$("#dtpassword").on('change', function() {
+contaRegistros();
+});
+//MOSTRA/OCULTA
+$('.mostraClass').click(function(){
+$(this).find('i').toggleClass('fa-minus-circle fa-plus-circle')
+});
+//FUNÇÃO MOSTRA/OCULTA
+function mostra(id){
+if(document.getElementById(id).style.display == 'flex'){
+document.getElementById(id).style.display = 'none';
+}else{ document.getElementById(id).style.display = 'flex';}
+}
+
+// INICIO FUNÇÃO DE MOSTRA ORGÃO EMISSOR
+window.onload=function(){
+var campoRG = document.getElementById('destypedoc').value;
+var display = campoRG == 'RG' ? 'block' : 'none';
+document.getElementById('hidden_div').style.display = display;
 
 
-    document.getElementById('destypedoc').addEventListener('change', function () {
-      var style = this.value == 'RG' ? 'block' : 'none';
-      document.getElementById('hidden_div').style.display = style;
-    });
-  }
-  // INICIO FUNÇÃO DE MASCARA MAIUSCULA
-  var ignorar = ["das", "dos", "e", "é", "do", "da", "de"];
+document.getElementById('destypedoc').addEventListener('change', function () {
+var style = this.value == 'RG' ? 'block' : 'none';
+document.getElementById('hidden_div').style.display = style;
+});
+}
+// INICIO FUNÇÃO DE MASCARA MAIUSCULA
+var ignorar = ["das", "dos", "e", "é", "do", "da", "de"];
 
-  function caixaAlta(string) {
-    return String(string).toLowerCase().replace(/([^A-zÀ-ú]?)([A-zÀ-ú]+)/g, function(match, separator, word) {
-      if (ignorar.indexOf(word) != -1) return separator + word;
-      return separator + word.charAt(0).toUpperCase() + word.slice(1);
-    });
-  }
-  function corrigirValor(el) {
-    el.value = caixaAlta(el.value);
-  }
-   // INICIO FUNÇÃO DE MASCARA MAIUSCULA
-   function maiuscula(z){
-    v = z.value.toUpperCase();
-    z.value = v;
-  }
+function caixaAlta(string) {
+return String(string).toLowerCase().replace(/([^A-zÀ-ú]?)([A-zÀ-ú]+)/g, function(match, separator, word) {
+if (ignorar.indexOf(word) != -1) return separator + word;
+return separator + word.charAt(0).toUpperCase() + word.slice(1);
+});
+}
+function corrigirValor(el) {
+el.value = caixaAlta(el.value);
+}
+// INICIO FUNÇÃO DE MASCARA MAIUSCULA
+function maiuscula(z){
+v = z.value.toUpperCase();
+z.value = v;
+}
 
 </script>
 
