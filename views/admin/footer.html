@@ -90,14 +90,26 @@
  <!-- REQUIRED JS SCRIPTS -->
 
  <!-- jQuery 2.2.3 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
- <script src="../../res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
- <!-- Bootstrap 3.3.6 -->
- <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
- <!-- AdminLTE App -->
- <script src="../../res/admin/dist/js/app.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+   <script src="../../res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+   <!-- Bootstrap 3.3.6 -->
+   <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
+   <!-- AdminLTE App -->
+   <script src="../../res/admin/dist/js/app.min.js"></script>
 
- <script type="text/javascript" charset="utf-8" async defer>
+   <script type="text/javascript" charset="utf-8" async defer>
+  // INICIO FUNÇÃO CALCULA IDADE
+  $(function(){
+    $('table#myTable tbody tr').hover(
+      function(){
+
+        $(this).addClass('destaque');
+      },
+      function(){
+        $(this).removeClass('destaque');
+      }
+      );
+  })
   // INICIO FUNÇÃO CALCULA IDADE
   $("#dtbirthday").on('blur', function() {
     calcular_idade();
