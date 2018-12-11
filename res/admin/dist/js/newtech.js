@@ -2,7 +2,6 @@
   * CRIAÇÃO DE JS PERSONALIZADOS
   */
  
-
 // INICIO FUNÇÃO BUSCA REPETIDOS
 function buscaRepetido() {
   var busca = $("#deskid").val();

@@ -19,7 +19,7 @@
       <div class="box box-primary">
 
         <div class="box-header">
-          <a href="/admin/deliveries/create" class="btn btn-success">Entregar Senha</a>
+          <a href="/admin/deliveries/create" class="btn btn-success">Entregar Senha (F9)</a>
           <div class="box-tools">
             <form action="/admin/deliveries">
               <div class="input-group input-group-sm" style="width: 150px;">
@@ -168,59 +168,3 @@
     </div>
   </div>
   <!-- Fim Modal -->
-  
-  <script type="text/javascript">
-
-
-    ################ TECLAS DE ATALHO #####################
-
-    shortcut.add("Right",function() 
-    {
-      alert("Foi pressionado a seta para a direita!");
-    });
-
-    shortcut.add("CTRL+X",function() 
-    {
-      alert("Foi pressionado a sequencia de teclas CTRL+X!");
-    });
-    ################ MODAL #####################
-    $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    var recipientdeskid = button.data('whateverdeskid')  
-    var recipientdtbirthday = button.data('whateverdtbirthday')
-    var recipientperson = button.data('whateverperson')
-    var recipientnrphone = button.data('whatevernrphone')
-    var recipientemail = button.data('whateveremail')
-    var recipientpublicplace = button.data('whateverpublicplace')
-    var recipientnrnumber = button.data('whatevernrnumber')
-    var recipientregion = button.data('whateverregion')
-    var recipientcity = button.data('whatevercity')
-    var recipientstate = button.data('whateverstate')
-    var recipientcountry = button.data('whatevercountry')
-    var recipientcomplement = button.data('whatevercomplement')
-    //document.write(recipientemail)
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('Detalhes: ID ' + recipient)
-    modal.find('#id-curso').val(recipient)
-    modal.find('#deskid').val(recipientdeskid)
-    modal.find('#dtbirthday').val(recipientdtbirthday)
-    modal.find('#recipient-person').val(recipientperson)
-    modal.find('#nrphone').val(recipientnrphone)
-    modal.find('#email').val(recipientemail)
-    modal.find('#publicplace').val(recipientpublicplace)
-    modal.find('#nrnumber').val(recipientnrnumber)
-    modal.find('#region').val(recipientregion)
-    modal.find('#city').val(recipientcity)
-    modal.find('#state').val(recipientstate)
-    modal.find('#country').val(recipientcountry)
-    modal.find('#complement').val(recipientcomplement)
-    /*FUNÇÃO PARA ALTER O ACTION DO FORMULARIO*/
-    $('#updateButton').click(function(){
-      $('#modalForm').attr('action', '/admin/deliveries/' + recipient);
-    });
-  })
-
-</script>

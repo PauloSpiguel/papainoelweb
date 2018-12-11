@@ -49,8 +49,7 @@
             <div class="form-select">
               <div class="form-group" style="float: right; width: 30%">
                 <label for="dtbirthday"><span class="important">* </span>Data Nascimento</label>
-                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" 
-                max="2018-12-07" required>
+                <input style="width: 100%" class="form-control" id="dtbirthday" name="dtbirthday" type="date" min="1900-01-01" max="2018-12-07" required>
               </div>
               <div class="form-group" style="margin-left: 5px; width: 10%;">
                 <label for="calcYear">Idade</label>
@@ -173,10 +172,3 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper-->
-<script type="text/javascript" DEFER="DEFER">
-  // INICIO FUNÇÃO BUSCA REPETIDO
-  $("#deskid").on('blur', function() {
-    buscaRepetido();
-  });
-
-</script>

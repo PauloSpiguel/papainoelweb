@@ -2,11 +2,11 @@
 date_default_timezone_set("America/Sao_Paulo");
 setlocale(LC_ALL, 'pt_BR');
 
+use \chillerlan\QRCode\QRCode;
+use \chillerlan\QRCode\QROptions;
 use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;
-use \NewTech\Model\User;
-use \NewTech\PageAdmin;
-use \chillerlan\QRCode\{QRCode, QROptions};
+use \NewTech\Model\User;use \NewTech\PageAdmin;
 
 ################## ROTA DELIVERY ###################
 $app->get("/admin/deliveries", function () {
@@ -45,6 +45,21 @@ $app->get("/admin/deliveries", function () {
         "search"  => $search,
         "pages"   => $pages,
     ]);
+
+});
+##################### ROTA DELETE DELIVERIES #####################
+$app->get('/admin/deliveries/:iddemand/delete', function ($iddemand) {
+
+    User::verifyLogin();
+
+    $delivery = new Delivery();
+
+    $delivery->get((int) $iddemand);
+
+    $delivery->delete();
+
+    header("Location: /admin/deliveries");
+    exit;
 
 });
 ################## ROTA DELIVERY-CREATE ###################
@@ -102,7 +117,7 @@ $app->get('/admin/deliveries/:iddemand', function ($iddemand) {
 
     $page->setTpl("deliveries-update", array(
         "delivery" => $delivery->getValues(),
-        "locals"   => $locals
+        "locals"   => $locals,
     ));
 
 });
@@ -120,8 +135,8 @@ $app->post('/admin/deliveries/:iduser', function ($iddemand) {
     $delivery->setData($_POST);
 
     //$delivery->setData(array(
-       // "iduser"    => $user['iduser'],
-        //"desqrcode" => 'QRCODE'
+    // "iduser"    => $user['iduser'],
+    //"desqrcode" => 'QRCODE'
     //));
 
     //var_dump($delivery);
@@ -151,8 +166,8 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
         'eccLevel'   => QRCode::ECC_L,
     ]);
 
-    $qrData = $data->getdeskid() . 
-    " Autenticação de senha.
+    $qrData = $data->getdeskid() .
+        " Autenticação de senha.
      Prefeitura de Centenário do Sul";
 // invoke a fresh QRCode instance
     $qrcode = new QRCode($options);
@@ -174,7 +189,7 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
         "data"    => $data->getValues(),
         "dateNow" => $datetime,
         "dayW"    => $dayW,
-        "qrcode"  => $qrcode  
+        "qrcode"  => $qrcode,
     ]);
 
 });

@@ -172,10 +172,3 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper-->
-<script type="text/javascript" DEFER="DEFER">
-  // INICIO FUNÇÃO BUSCA REPETIDO
-  $("#deskid").on('blur', function() {
-    buscaRepetido();
-  });
-
-</script>
