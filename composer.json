@@ -11,8 +11,8 @@
     	"slim/slim":"2.0",
     	"rain/raintpl":"3.0.0",
         "dompdf/dompdf": "^0.8.2",
-        "endroid/installer": "^1.0.3",
-        "chillerlan/php-qrcode": "dev-master"
+        "chillerlan/php-qrcode": "dev-master",
+        "endroid/qr-code": "^3.5"
     },
     "autoload": {
         "psr-4": {

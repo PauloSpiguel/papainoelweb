@@ -25,7 +25,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../../res/admin/dist/js/sweetalert.js"></script>
   <script src="../../res/admin/dist/js/moment-with-locales.min.js"></script>
   <link rel="stylesheet" href="../../res/admin/dist/css/sweetalert.css">
+  <!-- choose a theme file -->
+  <link rel="stylesheet" href="../../res/admin/dist/css/theme.default.css">
+  <!-- load jQuery and tablesorter scripts -->
+  <script type="text/javascript" src="../../res/admin/dist/js/jquery-latest.js"></script>
+  <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.js"></script>
+  <!-- tablesorter widgets (optional) -->
+  <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.widgets.js"></script>
+
+  <style type="text/css" media="screen">
+  .destaque{
+    /*background-color: coral;*/
+    font-weight:900;
+    
+  }
+</style>
 </head>
+
 <!--
 BODY TAG OPTIONS:
 =================
