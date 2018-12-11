@@ -62,7 +62,7 @@ function buscaRepetido() {
       var diferenca = dataAtual.getFullYear() -
       dataInput.getFullYear();
       $("#calcYear").val(diferenca);
-      if(diferenca > 11){       
+      if(diferenca > 10){       
         var r=confirm("Idade acima do permitido! Deseja continuar mesmo assim?");
         if (r==true)
         {
