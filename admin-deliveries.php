@@ -7,46 +7,6 @@ use \chillerlan\QRCode\QROptions;
 use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;
 use \NewTech\Model\User;use \NewTech\PageAdmin;
-
-################## ROTA DELIVERY ###################
-$app->get("/admin/deliveries", function () {
-
-    User::verifyLogin();
-
-    $search = (isset($_GET['search'])) ? $_GET['search'] : '';
-    $page   = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
-
-    if ($search != '') {
-
-        $pagination = Delivery::getPage($page, $search);
-
-    } else {
-
-        $pagination = Delivery::getPage($page);
-    }
-
-    $pages = [];
-
-    for ($x = 0; $x < $pagination['pages']; $x++) {
-
-        array_push($pages, [
-            'href' => '/admin/deliveries?' . http_build_query([
-                'page'   => $x + 1,
-                'search' => $search,
-            ]),
-            'text' => $x + 1,
-        ]);
-    }
-
-    $page = new PageAdmin();
-
-    $page->setTpl("deliveries", [
-        "demands" => $pagination['data'],
-        "search"  => $search,
-        "pages"   => $pages,
-    ]);
-
-});
 ##################### ROTA DELETE DELIVERIES #####################
 $app->get('/admin/deliveries/:iddemand/delete', function ($iddemand) {
 
@@ -62,6 +22,8 @@ $app->get('/admin/deliveries/:iddemand/delete', function ($iddemand) {
     exit;
 
 });
+
+
 ################## ROTA DELIVERY-CREATE ###################
 $app->get("/admin/deliveries/create", function () {
 
@@ -167,8 +129,8 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
     ]);
 
     $qrData = $data->getdeskid() .
-        " Autenticação de senha.
-     Prefeitura de Centenário do Sul";
+    " Autenticação de senha.
+    Prefeitura de Centenário do Sul";
 // invoke a fresh QRCode instance
     $qrcode = new QRCode($options);
 
@@ -190,6 +152,45 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
         "dateNow" => $datetime,
         "dayW"    => $dayW,
         "qrcode"  => $qrcode,
+    ]);
+
+});
+################## ROTA DELIVERY ###################
+$app->get("/admin/deliveries", function () {
+
+    User::verifyLogin();
+
+    $search = (isset($_GET['search'])) ? $_GET['search'] : '';
+    $page   = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+
+    if ($search != '') {
+
+        $pagination = Delivery::getPage($page, $search);
+
+    } else {
+
+        $pagination = Delivery::getPage($page);
+    }
+
+    $pages = [];
+
+    for ($x = 0; $x < $pagination['pages']; $x++) {
+
+        array_push($pages, [
+            'href' => '/admin/deliveries?' . http_build_query([
+                'page'   => $x + 1,
+                'search' => $search,
+            ]),
+            'text' => $x + 1,
+        ]);
+    }
+
+    $page = new PageAdmin();
+
+    $page->setTpl("deliveries", [
+        "demands" => $pagination['data'],
+        "search"  => $search,
+        "pages"   => $pages,
     ]);
 
 });
