@@ -6,7 +6,8 @@ use \chillerlan\QRCode\QRCode;
 use \chillerlan\QRCode\QROptions;
 use \NewTech\Model\Delivery;
 use \NewTech\Model\Local;
-use \NewTech\Model\User;use \NewTech\PageAdmin;
+use \NewTech\Model\User;
+use \NewTech\PageAdmin;
 ##################### ROTA DELETE DELIVERIES #####################
 $app->get('/admin/deliveries/:iddemand/delete', function ($iddemand) {
 
@@ -22,7 +23,6 @@ $app->get('/admin/deliveries/:iddemand/delete', function ($iddemand) {
     exit;
 
 });
-
 
 ################## ROTA DELIVERY-CREATE ###################
 $app->get("/admin/deliveries/create", function () {
@@ -129,7 +129,7 @@ $app->get("/admin/deliveries/print/:iddemand", function ($iddemand) {
     ]);
 
     $qrData = $data->getdeskid() .
-    " Autenticação de senha.
+        " Autenticação de senha.
     Prefeitura de Centenário do Sul";
 // invoke a fresh QRCode instance
     $qrcode = new QRCode($options);

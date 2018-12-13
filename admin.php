@@ -1,7 +1,7 @@
 <?php
 
-use \NewTech\Model\User;
 use \NewTech\Model\Report;
+use \NewTech\Model\User;
 use \NewTech\PageAdmin;
 
 ################## ROTA ADMIN INICIAL ###################
@@ -18,9 +18,9 @@ $app->get('/admin', function () {
     $page = new PageAdmin();
 
     $page->setTpl("index", [
-        "total" => $total, 
+        "total"  => $total,
         "female" => $female,
-        "male" => $male
+        "male"   => $male,
     ]);
 
 });
@@ -73,5 +73,35 @@ $app->get('/admin/logout', function () {
 
     header("Location: /admin/login");
     exit;
+
+});
+################## ROTA INFO-FAMALE ###################
+$app->get('/admin/info-famale', function () {
+
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("info-famale");
+
+});
+################## ROTA INFO-MALE ###################
+$app->get('/admin/info-male', function () {
+
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("info-male");
+
+});
+################## ROTA INFO-GERAL ###################
+$app->get('/admin/info-geral', function () {
+
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+
+    $page->setTpl("info-geral");
 
 });

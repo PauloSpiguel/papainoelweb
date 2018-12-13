@@ -50,7 +50,7 @@
               <?php $counter1=-1;  if( isset($demands) && ( is_array($demands) || $demands instanceof Traversable ) && sizeof($demands) ) foreach( $demands as $key1 => $value1 ){ $counter1++; ?>
               <tr style="background-color: ">
                 <td>
-                  <a style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal"
+                  <a style="cursor: pointer;" data-toggle="modal" data-target="#infoModal"
                   data-whateverdeskid="<?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverperson="<?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
                 </td>
                 <td><?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
@@ -86,85 +86,156 @@
   </div>
   <!-- /.content-wrapper -->
   <!-- Inicio Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <!-- Modal -->
+  <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">Detalhes</h4>
+          <h4 class="modal-title" id="myModalLabel">Detalhes da Entrega da Senha</h4>
         </div>
         <div class="modal-body">
-          <form id="modalForm" role="form" method="POST" action="">
-            <div class="form-group">
-              <label for="recipient-person" class="control-label">Nome:</label>
-              <input name="desperson" type="text" class="form-control" id="recipient-person" onkeyup="corrigirValor(this)">
-            </div>
-            <div class="form-group">
-              <label for="deskid" class="control-label">Responsável:</label>
-              <input name="deskid" type="text" class="form-control" id="deskid" onkeyup="corrigirValor(this)">
-            </div>
-            <div class="form-group">
-              <label for="nrphone" class="control-label">Telefone:</label>
-              <input name="nrphone" type="text" class="form-control" id="nrphone">
-            </div>
-            <div class="form-group">
-              <label for="email" class="control-label">Email:</label>
-              <input name="desemail" type="email" class="form-control" id="email" style="text-transform: lowercase;">
-            </div>
-            <div class="form-group">
-              <label for="deskid" class="control-label">Escola:</label>
-              <input name="deskid" type="text" class="form-control" id="deskid" onkeyup="corrigirValor(this)">
-            </div>
-            <fieldset class="GRUPO">
-              <legend class="GroupTitle">Endereço:</legend>
-              <div class="form-select">
-                <div class="form-group" style="float: right; width: 100%; margin-right: 5px">
-                  <label for="publicplace" class="control-label">Logradouro:</label>
-                  <input style="width: 100%" name="despublicplace" type="text" class="form-control" id="publicplace" onkeyup="corrigirValor(this)">
-                </div>
-                <div class="form-group">
-                  <label for="nrnumber" class="control-label">Número:</label>
-                  <input name="nrnumber" type="text" class="form-control" id="nrnumber">
-                </div>
+
+          <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+              <div class="col-xs-12">
+                <h2 class="page-header">
+                  <img src="/res/site/img/logo.png" alt="Logo">
+                  <small class="pull-right">Date: </small>
+                </h2>
               </div>
-              <div class="form-select">
-                <div class="form-group" style="float: right; width: 40%; margin-right: 5px;">
-                  <label for="region" class="control-label">Bairro:</label>
-                  <input style="width: 100%" name="desregion" type="text" class="form-control" id="region" onkeyup="corrigirValor(this)">
-                </div>
-                <div style="float: left; margin-right: 5px; width: 40%" class="">
-                  <label for="city" class="control-label">Cidade:</label>
-                  <input name="descity" type="text" class="form-control" id="city" onkeyup="corrigirValor(this)">
-                </div>
-                <div div style="float: right; width: 20%; " class="">
-                  <label for="state" class="control-label">Estado:</label>
-                  <select style="height: 35px; width: 100%" name="desstate" id="state">
-                    <option value="Null">Outro</option>
-                    <option value="Paraná">PR</option>
-                  </select>
-                </div>
+              <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                De
+                <address>
+                  <strong>HCODE</strong><br>
+                  Rua Ademar Saraiva Leão, 234 - Alvarenga<br>
+                  São Bernardo do Campo - SP<br>
+                  Telefone: (11) 3171-3080<br>
+                  E-mail: suporte@hcode.com.br
+                </address>
               </div>
-              <div class="form-select">
-                <div style="float: left; margin-right: 5px; width: 35%" class="form-group">
-                  <label for="country" class="control-label">Pais:</label>
-                  <input name="descountry" type="text" class="form-control" id="country" onkeyup="corrigirValor(this)">
-                </div>
-                <div style="float: right; width: 65%" class="form-group">
-                  <label for="complement" class="control-label">Complemento:</label>
-                  <input name="descomplement" type="text" class="form-control" id="complement" onkeyup="corrigirValor(this)">
-                </div>
-              </div>
-            </fieldset>
-            <input name="id" type="hidden" class="form-control" id="id-curso" value="">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-            <!--<button id="updateButton" type="submit" class="btn btn-danger">Alterar</button>
-              <button id="printButton" type="button" class="btn btn-primary">Imprimir</button>-->
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                Para
+                <address>
+                  <strong>HCODE</strong><br>
+                  Rua Ademar Saraiva Leão, 234 - Alvarenga<br>
+                  São Bernardo do Campo - SP<br>
+                  Telefone: (11) 3171-3080<br>
+                  E-mail: suporte@hcode.com.br
+                </address>
+              </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+              <b>Pedido #</b><br>
+              <br>
+              <b>Emitido em:</b> <br>
+              <b>Pago em:</b> 
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Qtd</th>
+                    <th>Produto</th>
+                    <th>Código #</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-xs-6">
+
+              <p class="lead">Forma de Pagamento</p>
+
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th style="width:180px;">Método de Pagamento:</th>
+                    <td>Boleto</td>
+                  </tr>
+                  <tr>
+                    <th>Parcelas:</th>
+                    <td>1x</td>
+                  </tr>
+                    <!--
+                    <tr>
+                        <th>Valor da Parcela:</th>
+                        <td>R$100,00</td>
+                    </tr>
+                  -->
+                </tbody>
+              </table>
 
             </div>
-          </form>
-        </div>
+            <!-- /.col -->
+            <div class="col-xs-6">
+              <p class="lead">Resumo do Pedido</p>
 
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody><tr>
+                    <th style="width:50%">Subtotal:</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>Frete:</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>Total:</th>
+                    <td></td>
+                  </tr>
+                </tbody></table>
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <!-- this row will not appear when printing -->
+          
+        </section>
+
+        <div class="clearfix"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" id="btnPrint" class="btn btn-primary pull-right" style="margin-right: 5px;" data-dismiss="modal">
+          <i class="fa fa-print"></i> Imprimir
+        </button>
       </div>
     </div>
   </div>
+</div>
+<div class="printable"></div>
   <!-- Fim Modal -->

@@ -215,7 +215,7 @@
   <tr class="sup">
     <td colspan="3" align="center">
       <span>Local de entrega:</span> </br>
-      <b>PRAÇA CENTRAL - ENFRENTE A PREFEITURA</b>
+      <b>PRAÇA CENTRAL - EM FRENTE A PREFEITURA</b>
     </td>
   </tr>
   <tr class="sup">
@@ -225,9 +225,9 @@
   </tr>
   <tr class="sup">
     <td colspan="3" align="center">
-      Seção de Infomática - Centenário do Sul <br/>
+      Seção de Informática - Centenário do Sul <br/>
     P R Spiguel Tecnologia </br>
-    SisPNWEB - V. 1.0
+    SisPNWEB - V. 1.2
   </td>
 </tr>
 

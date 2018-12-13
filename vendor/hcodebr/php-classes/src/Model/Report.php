@@ -4,7 +4,6 @@ namespace NewTech\Model;
 
 use \NewTech\DB\Sql;
 use \NewTech\Model;
-use \NewTech\Mailer;
 
 /**
  *
@@ -12,38 +11,43 @@ use \NewTech\Mailer;
 class Report extends Model
 {
 
-	public static function countDelivery()
-	{ 
-		$sql = new Sql();
+    public static function countDelivery()
+    {
+        $sql = new Sql();
 
-		$count = $sql->select("SELECT COUNT(*) AS nrtotal FROM tb_kids;");
-		
-		if (count($count) > 0) {
-			return $count[0]['nrtotal'];
-		}
-	}
+        $count = $sql->select("SELECT COUNT(*) AS nrtotal FROM tb_demands;");
 
-	public static function countKidsFemale()
-	{ 
-		$sql = new Sql();
+        if (count($count) > 0) {
+            return $count[0]['nrtotal'];
+        }
+    }
 
-		$count = $sql->select("SELECT COUNT(*) AS nrCount FROM tb_kids WHERE dessex = '1'");
+    public static function countKidsFemale()
+    {
+        $sql = new Sql();
 
-		if (count($count) > 0) {
-			return $count[0]['nrCount'];
-		}
-	}
+        $count = $sql->select("SELECT COUNT(*) AS nrCount
+								FROM tb_demands a
+								INNER JOIN tb_kids b ON a.idkid = b.idkid
+								WHERE dessex = '1';");
 
-	public static function countKidsMale()
-	{ 
-		$sql = new Sql();
+        if (count($count) > 0) {
+            return $count[0]['nrCount'];
+        }
+    }
 
-		$count = $sql->select("SELECT COUNT(*) AS nrCount FROM tb_kids WHERE dessex = '2'");
+    public static function countKidsMale()
+    {
+        $sql = new Sql();
 
-		if (count($count) > 0) {
-			return $count[0]['nrCount'];
-		}
-	}
+        $count = $sql->select("SELECT COUNT(*) AS nrCount
+								FROM tb_demands a
+								INNER JOIN tb_kids b ON a.idkid = b.idkid
+								WHERE dessex = '2';");
+
+        if (count($count) > 0) {
+            return $count[0]['nrCount'];
+        }
+    }
 
 }
-

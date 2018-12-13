@@ -96,8 +96,43 @@
   <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../res/admin/dist/js/app.min.js"></script>
+  <!-- Morris.js charts -->
+  <script src="../../res/admin/dist/js/raphael.min.js"></script>
+  <script src="../../res/admin/dist/js/morris.min.js"></script>
+  <script src="../../res/admin/dist/js/printThis.js"></script>
 
   <script type="text/javascript" charset="utf-8" async defer>
+
+    $ $(document).ready(function () {
+      $("#btnPrint").click(function () {
+      //get the modal box content and load it into the printable div
+      $(".printable").html($("#infoModal").html());
+      $(".printable #btnPrint").remove();
+      $(".printable").printThis();
+    });
+    });
+
+  //GRAFICO POR LOCAL
+  $(window).load(function() {
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#3c8dbc", "#f56954", "#FF0", "#F00", "#8B8378", "#008B8B", "#FF1493", "#191970", "#7B68EE"],
+      data: [
+      {label: "Em Loco", value: 1},
+      {label: "E.M Irmã Osmunda", value: 1},
+      {label: "E.M José de Anchieta", value: 1},
+      {label: "E.M São José", value: 1},
+      {label: "E.M Afonso Belenda", value: 1},
+      {label: "CEI Ulisses Pessoa", value: 1},
+      {label: "CEI's Menino Jesus", value: 1},
+      {label: "Escola Aliança", value: 1},
+      {label: "APAE", value: 1},
+      ],
+      hideHover: 'auto'
+    });
+  })
+
   //################ TECLAS DE ATALHO #####################
   shortcut.add("Right",function() 
   {
