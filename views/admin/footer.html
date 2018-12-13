@@ -96,8 +96,27 @@
   <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../res/admin/dist/js/app.min.js"></script>
+  <!-- Morris.js charts -->
+  <script src="../../res/admin/dist/js/raphael.min.js"></script>
+  <script src="../../res/admin/dist/js/morris.min.js"></script>
 
   <script type="text/javascript" charset="utf-8" async defer>
+  //GRAFICO POR LOCAL
+  var donut = new Morris.Donut({
+    element: 'sales-chart',
+    resize: true,
+    colors: ["#3c8dbc", "#f56954", "#00a65a", "#00a65a", "#00a65a", "#00a65a", "#00a65a"],
+    data: [
+    {label: "Em Loco", value: 12},
+    {label: "E.M Irmã Osmunda", value: 30},
+    {label: "E.M José de Anchieta", value: 20},
+    {label: "E.M São José", value: 20},
+    {label: "E.M Afonso Belenda", value: 20},
+    {label: "CEI Ulisses Pessoa", value: 20},
+    {label: "CEI's Menino Jesus", value: 20},
+    ],
+    hideHover: 'auto'
+  });
   //################ TECLAS DE ATALHO #####################
   shortcut.add("Right",function() 
   {
