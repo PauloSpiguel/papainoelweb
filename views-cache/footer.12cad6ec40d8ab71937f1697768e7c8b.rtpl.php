@@ -103,15 +103,6 @@
 
   <script type="text/javascript" charset="utf-8" async defer>
 
-    $ $(document).ready(function () {
-      $("#btnPrint").click(function () {
-      //get the modal box content and load it into the printable div
-      $(".printable").html($("#infoModal").html());
-      $(".printable #btnPrint").remove();
-      $(".printable").printThis();
-    });
-    });
-
   //GRAFICO POR LOCAL
   $(window).load(function() {
     var donut = new Morris.Donut({
@@ -145,43 +136,39 @@
  });
 
   //################ MODAL #####################
-  $('#exampleModal').on('show.bs.modal', function (event) {
+  $('#infoModal').on('show.bs.modal', function (event) {
+
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
+    var recipientid = button.data('whatever') // Extract info from data-* attributes
+    var recipientnrpassword = button.data('whatevernrpassword') // Extract info from data-* attributes
     var recipientdeskid = button.data('whateverdeskid')  
     var recipientdtbirthday = button.data('whateverdtbirthday')
     var recipientperson = button.data('whateverperson')
     var recipientnrphone = button.data('whatevernrphone')
-    var recipientemail = button.data('whateveremail')
+    var recipientdeslocal = button.data('whateverdeslocal')
     var recipientpublicplace = button.data('whateverpublicplace')
     var recipientnrnumber = button.data('whatevernrnumber')
-    var recipientregion = button.data('whateverregion')
-    var recipientcity = button.data('whatevercity')
-    var recipientstate = button.data('whateverstate')
-    var recipientcountry = button.data('whatevercountry')
-    var recipientcomplement = button.data('whatevercomplement')
+    var recipientdtpassword = button.data('whateverdtpassword')
+    var recipientdtregister = button.data('whateverdtregister')
+    var recipientiduser = button.data('whateveriduser')
+   
     //document.write(recipientemail)
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.modal-title').text('Detalhes: ID ' + recipient)
-    modal.find('#id-curso').val(recipient)
-    modal.find('#deskid').val(recipientdeskid)
-    modal.find('#dtbirthday').val(recipientdtbirthday)
-    modal.find('#recipient-person').val(recipientperson)
-    modal.find('#nrphone').val(recipientnrphone)
-    modal.find('#email').val(recipientemail)
-    modal.find('#publicplace').val(recipientpublicplace)
-    modal.find('#nrnumber').val(recipientnrnumber)
-    modal.find('#region').val(recipientregion)
-    modal.find('#city').val(recipientcity)
-    modal.find('#state').val(recipientstate)
-    modal.find('#country').val(recipientcountry)
-    modal.find('#complement').val(recipientcomplement)
-    /*FUNÇÃO PARA ALTER O ACTION DO FORMULARIO*/
-    $('#updateButton').click(function(){
-      $('#modalForm').attr('action', '/admin/deliveries/' + recipient);
-    });
+    modal.find('.modal-title').text("Senha Papai Noel 2018" + " - ID: " + recipientid)
+    modal.find('#nrpassword').text(recipientnrpassword)
+    modal.find('#deskid').text(recipientdeskid)
+    modal.find('#dtbirthday').text(moment(recipientdtbirthday).format('DD/MM/YYYY'))
+    modal.find('#desperson').text(recipientperson)
+    modal.find('#deslocal').text(recipientdeslocal)
+    modal.find('#nrphone').text(recipientnrphone)
+    modal.find('#publicplace').text(recipientpublicplace)
+    modal.find('#nrnumber').text(recipientnrnumber)
+    modal.find('#dtpassword').text(moment(recipientdtpassword).format('DD/MM/YYYY'))
+    modal.find('#dtregister').text(moment(recipientdtregister).format('DD/MM/YYYY HH:mm:ss'))
+    modal.find('#iduser').text(recipientiduser)
+   
   })
 
   // INICIO FUNÇÃO ORDENA TABELA DELIVERIES

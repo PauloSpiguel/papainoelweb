@@ -50,7 +50,7 @@
               {loop="$demands"}
               <tr style="background-color: ">
                 <td>
-                  <a type="button" style="cursor: pointer;" data-toggle="modal" data-target="#infoModal" whatever="{$value.nrpassword}" data-whateverdeskid="{$value.deskid}" data-whateverperson="{$value.desperson}">{$value.nrpassword}</a>
+                  <a type="button" style="cursor: pointer;" data-toggle="modal" data-target="#infoModal" data-whatever="{$value.iddemand}" data-whatevernrpassword="{$value.nrpassword}" data-whateverdeskid="{$value.deskid}" data-whateverperson="{$value.desperson}" data-whateverdtbirthday="{$value.dtbirthday}" data-whateverdeslocal="{$value.deslocal}" data-whateverdtpassword="{$value.dtpassword}" data-whateverdtregister="{$value.dtregister}" data-whateveriduser="{$value.deslogin}">{$value.nrpassword}</a>
                 </td>
                 <td>{$value.deskid}</td>
                 <td>{function="date('d/m/Y', strtotime($value.dtbirthday))"}</td>
@@ -100,7 +100,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <h2 class="page-header">
-                  <img src="../../res/admin/dist/img/logo.png" alt="Logo" style="width: 60%">
+                  <img src="../../res/admin/dist/img/logo.png" alt="Logo" style="width: 40%">
                   <small class="pull-right">Data: {function="date('d/m/Y h:i:s')"}</small>
                 </h2>
               </div>
@@ -114,11 +114,12 @@
                 <div>
                   Nome:
                   <h2 id="deskid"><b>Nome da Criança</b></h2><br>
-                  Responsável: <h4 id="recipient-person" style="display: inline;"></h4><br>
-                  Escola: <h4 id="" style="display: inline;"></h4><br>
-                  Matricula: <h4 id="" style="display: inline;"></h4><br> 
-                  Endereço: <h4 id="" style="display: inline;"></h4><br>
-                  Telefone: <h4 id="" style="display: inline;"></h4><br>
+                  Nascimento: <h4 id="dtbirthday" style="display: inline;"></h4><br>
+                  Responsável: <h4 id="desperson" style="display: inline;"></h4><br>
+                  Local: <h4 id="deslocal" style="display: inline;"></h4><br>
+                  Matricula: <h4 id="nrmatriculation" style="display: inline;"></h4><br> 
+                  Endereço: <h4 id="despublicplace" style="display: inline;"></h4><br>
+                  Telefone: <h4 id="nrphone" style="display: inline;"></h4><br>
                 </div> 
               </div>
               <!-- /.row -->
@@ -129,7 +130,6 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Senha</th>
                       <th>Emitido</th>
                       <th>Usuário</th>
                     </tr>
@@ -137,9 +137,8 @@
                   <tbody>
 
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><span id="dtregister" style="display: inline;"></span></td>
+                      <td><span id="iduser" style="display: inline;"></span></td>
                     </tr>
 
                   </tbody>

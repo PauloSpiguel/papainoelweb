@@ -50,8 +50,7 @@
               <?php $counter1=-1;  if( isset($demands) && ( is_array($demands) || $demands instanceof Traversable ) && sizeof($demands) ) foreach( $demands as $key1 => $value1 ){ $counter1++; ?>
               <tr style="background-color: ">
                 <td>
-                  <a style="cursor: pointer;" data-toggle="modal" data-target="#infoModal"
-                  data-whateverdeskid="<?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverperson="<?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+                  <a type="button" style="cursor: pointer;" data-toggle="modal" data-target="#infoModal" data-whatever="<?php echo htmlspecialchars( $value1["iddemand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whatevernrpassword="<?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdeskid="<?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverperson="<?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtbirthday="<?php echo htmlspecialchars( $value1["dtbirthday"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdeslocal="<?php echo htmlspecialchars( $value1["deslocal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtpassword="<?php echo htmlspecialchars( $value1["dtpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtregister="<?php echo htmlspecialchars( $value1["dtregister"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateveriduser="<?php echo htmlspecialchars( $value1["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
                 </td>
                 <td><?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td><?php echo date('d/m/Y', strtotime($value1["dtbirthday"])); ?></td>
@@ -92,7 +91,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Detalhes da Entrega da Senha</h4>
+          <h4 class="modal-title" id="myModalLabel">ENTREGA DE SENHAS PAPAI NOEL <?php echo date('Y'); ?></h4>
         </div>
         <div class="modal-body">
 
@@ -101,128 +100,59 @@
             <div class="row">
               <div class="col-xs-12">
                 <h2 class="page-header">
-                  <img src="/res/site/img/logo.png" alt="Logo">
-                  <small class="pull-right">Date: </small>
+                  <img src="../../res/admin/dist/img/logo.png" alt="Logo" style="width: 40%">
+                  <small class="pull-right">Data: <?php echo date('d/m/Y h:i:s'); ?></small>
                 </h2>
               </div>
               <!-- /.col -->
             </div>
             <!-- info row -->
-            <div class="row invoice-info">
-              <div class="col-sm-4 invoice-col">
-                De
-                <address>
-                  <strong>HCODE</strong><br>
-                  Rua Ademar Saraiva Leão, 234 - Alvarenga<br>
-                  São Bernardo do Campo - SP<br>
-                  Telefone: (11) 3171-3080<br>
-                  E-mail: suporte@hcode.com.br
-                </address>
+            <div class="row">
+              <div class="col-xs-12">
+                Senha: <h1 id="nrpassword">Nº</h1>
+                Data da Senha: <h3 style="display: inline;" id="dtpassword">00/00/0000</h3>        
+                <div>
+                  Nome:
+                  <h2 id="deskid"><b>Nome da Criança</b></h2><br>
+                  Nascimento: <h4 id="dtbirthday" style="display: inline;"></h4><br>
+                  Responsável: <h4 id="desperson" style="display: inline;"></h4><br>
+                  Local: <h4 id="deslocal" style="display: inline;"></h4><br>
+                  Matricula: <h4 id="nrmatriculation" style="display: inline;"></h4><br> 
+                  Endereço: <h4 id="despublicplace" style="display: inline;"></h4><br>
+                  Telefone: <h4 id="nrphone" style="display: inline;"></h4><br>
+                </div> 
+              </div>
+              <!-- /.row -->
+              <div class="row" >
+               <div class="col-xs-12 table-responsive" style="margin: 15px">
+                <h4 class="lead">Detalhamento</h4>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Emitido</th>
+                      <th>Usuário</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td><span id="dtregister" style="display: inline;"></span></td>
+                      <td><span id="iduser" style="display: inline;"></span></td>
+                    </tr>
+
+                  </tbody>
+                </table>
               </div>
               <!-- /.col -->
-              <div class="col-sm-4 invoice-col">
-                Para
-                <address>
-                  <strong>HCODE</strong><br>
-                  Rua Ademar Saraiva Leão, 234 - Alvarenga<br>
-                  São Bernardo do Campo - SP<br>
-                  Telefone: (11) 3171-3080<br>
-                  E-mail: suporte@hcode.com.br
-                </address>
-              </address>
             </div>
             <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-              <b>Pedido #</b><br>
-              <br>
-              <b>Emitido em:</b> <br>
-              <b>Pago em:</b> 
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
 
-          <!-- Table row -->
-          <div class="row">
-            <div class="col-xs-12 table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Qtd</th>
-                    <th>Produto</th>
-                    <th>Código #</th>
-                    <th>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-
-          <div class="row">
-            <!-- accepted payments column -->
-            <div class="col-xs-6">
-
-              <p class="lead">Forma de Pagamento</p>
-
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <th style="width:180px;">Método de Pagamento:</th>
-                    <td>Boleto</td>
-                  </tr>
-                  <tr>
-                    <th>Parcelas:</th>
-                    <td>1x</td>
-                  </tr>
-                    <!--
-                    <tr>
-                        <th>Valor da Parcela:</th>
-                        <td>R$100,00</td>
-                    </tr>
-                  -->
-                </tbody>
-              </table>
-
-            </div>
-            <!-- /.col -->
-            <div class="col-xs-6">
-              <p class="lead">Resumo do Pedido</p>
-
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody><tr>
-                    <th style="width:50%">Subtotal:</th>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>Frete:</th>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>Total:</th>
-                    <td></td>
-                  </tr>
-                </tbody></table>
-              </div>
-            </div>
-            <!-- /.col -->
           </div>
           <!-- /.row -->
 
           <!-- this row will not appear when printing -->
-          
+
         </section>
 
         <div class="clearfix"></div>
@@ -230,12 +160,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" id="btnPrint" class="btn btn-primary pull-right" style="margin-right: 5px;" data-dismiss="modal">
+        <button type="button" class="btn btn-primary pull-right" onclick="print()" style="margin-right: 5px;" data-dismiss="modal">
           <i class="fa fa-print"></i> Imprimir
         </button>
       </div>
     </div>
   </div>
 </div>
-<div class="printable"></div>
   <!-- Fim Modal -->

@@ -20,7 +20,7 @@
 				<div class="box box-primary">
 					<div class="box-body box-profile">
 						<div class="icon" style="text-align: center;">
-							<i class="icon ion-ios-people" style="font-size: 6em"></i>
+							<i class="icon ion-ios-location" style="font-size: 6em"></i>
 						</div>
 
 						<h3 class="profile-username text-center">Lançamentos por Local</h3>

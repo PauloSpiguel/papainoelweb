@@ -16,11 +16,12 @@ class Delivery extends Model
 
         $sql = new Sql();
 
-        return $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
+        return $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
            FROM tb_demands a
            INNER JOIN tb_kids b ON a.idkid = b.idkid
            INNER JOIN tb_persons c ON b.idperson = c.idperson
            INNER JOIN tb_locals d ON a.idlocal = d.idlocal
+           INNER JOIN tb_users e ON a.iduser = e.iduser
            ORDER BY a.dtpassword");
     }
 
@@ -85,38 +86,6 @@ class Delivery extends Model
         $this->setData($results[0]);
 
     }
-
-/*public function update()
-{
-
-$sql = new Sql();
-
-$results = $sql->select("CALL sp_demandsupdate_save (:iddemand, :desaddress, :desnumber, :zipcode, :desregion, :descomplement, :descity, :desstate, :descountry, :desperson, :desemail, :nrphone, :nrcpf, :deskid, :dessex, :dtbirthday, :nrmatriculation, :dtpassword, :idlocal, :desobservation)", array(
-":iddemand"        => $this->getiddemand(),
-":desaddress"      => $this->getdesaddress(),
-":desnumber"       => $this->getdesnumber(),
-":zipcode"         => $this->getzipcode(),
-":desregion"       => $this->getdesregion(),
-":descomplement"   => $this->getdescomplement(),
-":descity"         => $this->getdescity(),
-":desstate"        => $this->getdesstate(),
-":descountry"      => $this->getdescountry(),
-":desperson"       => $this->getdesperson(),
-":desemail"        => $this->getdesemail(),
-":nrphone"         => $this->getnrphone(),
-":nrcpf"           => $this->getnrcpf(),
-":deskid"          => $this->getdeskid(),
-":dessex"          => $this->getdessex(),
-":dtbirthday"      => $this->getdtbirthday(),
-":nrmatriculation" => $this->getnrmatriculation(),
-":dtpassword"      => $this->getdtpassword(),
-":idlocal"         => $this->getidlocal(),
-":desobservation"  => $this->getdesobservation(),
-));
-
-$this->setData($results[0]);
-
-}*/
 
     public function update()
     {
@@ -186,11 +155,12 @@ $this->setData($results[0]);
         } else {
 
             $results = $sql->select("
-           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
+           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
            FROM tb_demands a
            INNER JOIN tb_kids b ON a.idkid = b.idkid
            INNER JOIN tb_persons c ON b.idperson = c.idperson
            INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
+           INNER JOIN tb_users e ON a.iduser = e.iduser
            ORDER BY a.nrpassword DESC
            LIMIT $start, $itemsPerPage;
            ");
