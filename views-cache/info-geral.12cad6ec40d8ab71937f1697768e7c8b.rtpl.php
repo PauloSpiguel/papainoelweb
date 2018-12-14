@@ -26,18 +26,12 @@
 						<h3 class="profile-username text-center">Lançamentos por Local</h3>
 
 						<p class="text-muted text-center">Detalhamento</p>
-
+						
 						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item">
-								<b>Em Loco</b> <a class="pull-right">0</a>
-							</li>
-							<li class="list-group-item">
-								<b>Escola Municipal Irmã Osmunda</b> <a class="pull-right">0</a>
-							</li>
-							<li class="list-group-item">
-								<b>CEI Menino Jesus I</b> <a class="pull-right">0</a>
-							</li>
-						</ul>
+							<?php $counter1=-1;  if( isset($locals) && ( is_array($locals) || $locals instanceof Traversable ) && sizeof($locals) ) foreach( $locals as $key1 => $value1 ){ $counter1++; ?>
+							<li class="list-group-item"><b id="mylocals"><?php echo htmlspecialchars( $value1["deslocal"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b> <a class="pull-right" id="countByLocals">0</a></li>
+							<?php } ?>
+						</ul>			
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -47,3 +41,31 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script type="text/javascript">
+// CARREGA TABELA INFO POR LOCAL
+$(document).ready(function(){
+	
+	var data = document.getElementById('mylocals').innerHTML;
+	//document.getElementById("countByLocals").innerHTML = data;
+	countLocals(data);
+});
+function countLocals(locals) {
+	var dados = locals;
+	//alert(dados);
+	$.ajax({
+		url : '../../../../vendor/hcodebr/php-classes/src/Advanced/countLocals.php',
+		method : 'POST',
+		data: Array(dados),
+		dataType: 'html',
+		success: function(data){
+			if(data.countByLocals = true) {
+				document.getElementById('countByLocals').innerHTML = data;
+				alert(data);
+			}else{
+				alert(data);
+			}
+		}
+	});
+	return false;   
+}
+</script>

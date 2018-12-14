@@ -99,6 +99,25 @@ function buscaRepetido() {
   });
     return false;    
   }
+  // PREENCHE VALOR TABELA LANÇAMENTOS LOCAIS
+  function countLocals(locals) {
+    alert(locals);
+    /*var dados = $("#mylocals").serialize();
+    $.ajax({
+      url : '../../../../vendor/hcodebr/php-classes/src/Advanced/countLocals.php',
+      method : 'POST',
+      data: dados,
+      dataType: 'html',
+      success: function(data){
+        if(data.countByLocals = true) {
+         $("#countByLocals").empty().val(data);
+       }else{
+        alert(data);
+      }
+    }
+  });
+    return false;*/    
+  }
   /*$(document).ready( function() {
     $('#dtpassword').change(function(){
       var dados = $(this).serialize();

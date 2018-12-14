@@ -151,7 +151,7 @@
     var recipientdtpassword = button.data('whateverdtpassword')
     var recipientdtregister = button.data('whateverdtregister')
     var recipientiduser = button.data('whateveriduser')
-   
+
     //document.write(recipientemail)
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -168,7 +168,7 @@
     modal.find('#dtpassword').text(moment(recipientdtpassword).format('DD/MM/YYYY'))
     modal.find('#dtregister').text(moment(recipientdtregister).format('DD/MM/YYYY HH:mm:ss'))
     modal.find('#iduser').text(recipientiduser)
-   
+
   })
 
   // INICIO FUNÇÃO ORDENA TABELA DELIVERIES

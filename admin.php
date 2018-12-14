@@ -1,5 +1,6 @@
 <?php
 
+use \NewTech\Model\Local;
 use \NewTech\Model\Report;
 use \NewTech\Model\User;
 use \NewTech\PageAdmin;
@@ -100,8 +101,12 @@ $app->get('/admin/info-geral', function () {
 
     User::verifyLogin();
 
+    $locals = local::listAll();
+
     $page = new PageAdmin();
 
-    $page->setTpl("info-geral");
+    $page->setTpl("info-geral", [
+        "locals" => $locals,
+    ]);
 
 });
