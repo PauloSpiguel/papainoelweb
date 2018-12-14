@@ -1,0 +1,25 @@
+/**
+ * ESCONDE ESPECIFICO
+ 
+@media print { 
+	.content-wrapper { visibility:hidden; } 
+	.btn { visibility:hidden; }
+	.main-footer { visibility:hidden; }
+	}*/
+
+/**
+ * ESCONDE TUDO E MOSTRA ESPECIFICO
+ */
+ @media print { 
+ 	.content-wrapper, .main-footer, .btn, .close{
+ 		display: none;
+ 	}
+
+ 	.modal-content {
+ 		display: block;                              
+ 	} 
+
+ 	h3, h2 { 
+ 		display:inline;
+ 		 }         
+ }

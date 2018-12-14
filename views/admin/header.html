@@ -32,25 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.js"></script>
   <!-- tablesorter widgets (optional) -->
   <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.widgets.js"></script>
-   <script src="../../res/admin/dist/js/printThis.js"></script>
-
-  <style type="text/css" media="screen">
-  .destaque{
-    /*background-color: coral;*/
-    font-weight:900;
-  }
-  .printable {
-    display: none;
-  }
-  /* print styles*/
-  @media print {
-    .printable {
-      display: block;
-    }
-    .screen {
-      display: none;
-    }
-  }
+  <script src="../../res/admin/dist/js/printThis.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../res/admin/dist/css/print.css" media="print">
+<style type="text/css">
+.destaque{
+  /*background-color: coral;*/
+  font-weight:900;
+}
 </style>
 </head>
 

@@ -32,13 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.js"></script>
   <!-- tablesorter widgets (optional) -->
   <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.widgets.js"></script>
-
-  <style type="text/css" media="screen">
-  .destaque{
-    /*background-color: coral;*/
-    font-weight:900;
-    
-  }
+  <script src="../../res/admin/dist/js/printThis.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../res/admin/dist/css/print.css" media="print">
+<style type="text/css">
+.destaque{
+  /*background-color: coral;*/
+  font-weight:900;
+}
 </style>
 </head>
 
@@ -69,7 +69,7 @@ desired effect
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="res/admin/index2.html" class="logo">
+      <a href="/admin" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b><span style="color: #F00">NT</span></span>
         <!-- logo for regular state and mobile devices -->

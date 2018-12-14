@@ -103,15 +103,6 @@
 
   <script type="text/javascript" charset="utf-8" async defer>
 
-    $ $(document).ready(function () {
-      $("#btnPrint").click(function () {
-      //get the modal box content and load it into the printable div
-      $(".printable").html($("#infoModal").html());
-      $(".printable #btnPrint").remove();
-      $(".printable").printThis();
-    });
-    });
-
   //GRAFICO POR LOCAL
   $(window).load(function() {
     var donut = new Morris.Donut({
@@ -145,7 +136,7 @@
  });
 
   //################ MODAL #####################
-  $('#exampleModal').on('show.bs.modal', function (event) {
+  $('#infoModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
     var recipientdeskid = button.data('whateverdeskid')  
@@ -164,11 +155,10 @@
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.modal-title').text('Detalhes: ID ' + recipient)
-    modal.find('#id-curso').val(recipient)
-    modal.find('#deskid').val(recipientdeskid)
+    modal.find('#nrpassword').text(recipient)
+    modal.find('#deskid').text(recipientdeskid)
     modal.find('#dtbirthday').val(recipientdtbirthday)
-    modal.find('#recipient-person').val(recipientperson)
+    modal.find('#recipient-person').text(recipientperson)
     modal.find('#nrphone').val(recipientnrphone)
     modal.find('#email').val(recipientemail)
     modal.find('#publicplace').val(recipientpublicplace)
@@ -178,10 +168,6 @@
     modal.find('#state').val(recipientstate)
     modal.find('#country').val(recipientcountry)
     modal.find('#complement').val(recipientcomplement)
-    /*FUNÇÃO PARA ALTER O ACTION DO FORMULARIO*/
-    $('#updateButton').click(function(){
-      $('#modalForm').attr('action', '/admin/deliveries/' + recipient);
-    });
   })
 
   // INICIO FUNÇÃO ORDENA TABELA DELIVERIES

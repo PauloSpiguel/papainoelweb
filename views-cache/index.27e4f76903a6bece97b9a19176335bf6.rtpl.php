@@ -28,7 +28,7 @@
 					<div class="icon">
 						<i class="icon ion-ios-people"></i>
 					</div>
-					<a href="#" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-geral" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -58,7 +58,7 @@
 					<div class="icon">
 						<i class="icon ion-man"></i>
 					</div>
-					<a href="#" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-male" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -73,7 +73,7 @@
 					<div class="icon">
 						<i class="icon ion-woman"></i>
 					</div>
-					<a href="#" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-famale" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="box-body chart-responsive">
-				<div class="chart" id="sales-chart_off" style="height: 300px; position: relative;"></div>
+				<div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
 			</div>
 			<!-- /.box-body -->
 		</div>

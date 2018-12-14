@@ -99,24 +99,31 @@
   <!-- Morris.js charts -->
   <script src="../../res/admin/dist/js/raphael.min.js"></script>
   <script src="../../res/admin/dist/js/morris.min.js"></script>
+  <script src="../../res/admin/dist/js/printThis.js"></script>
 
   <script type="text/javascript" charset="utf-8" async defer>
+
   //GRAFICO POR LOCAL
-  var donut = new Morris.Donut({
-    element: 'sales-chart',
-    resize: true,
-    colors: ["#3c8dbc", "#f56954", "#00a65a", "#00a65a", "#00a65a", "#00a65a", "#00a65a"],
-    data: [
-    {label: "Em Loco", value: 12},
-    {label: "E.M Irmã Osmunda", value: 30},
-    {label: "E.M José de Anchieta", value: 20},
-    {label: "E.M São José", value: 20},
-    {label: "E.M Afonso Belenda", value: 20},
-    {label: "CEI Ulisses Pessoa", value: 20},
-    {label: "CEI's Menino Jesus", value: 20},
-    ],
-    hideHover: 'auto'
-  });
+  $(window).load(function() {
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#3c8dbc", "#f56954", "#FF0", "#F00", "#8B8378", "#008B8B", "#FF1493", "#191970", "#7B68EE"],
+      data: [
+      {label: "Em Loco", value: 1},
+      {label: "E.M Irmã Osmunda", value: 1},
+      {label: "E.M José de Anchieta", value: 1},
+      {label: "E.M São José", value: 1},
+      {label: "E.M Afonso Belenda", value: 1},
+      {label: "CEI Ulisses Pessoa", value: 1},
+      {label: "CEI's Menino Jesus", value: 1},
+      {label: "Escola Aliança", value: 1},
+      {label: "APAE", value: 1},
+      ],
+      hideHover: 'auto'
+    });
+  })
+
   //################ TECLAS DE ATALHO #####################
   shortcut.add("Right",function() 
   {
@@ -129,7 +136,7 @@
  });
 
   //################ MODAL #####################
-  $('#exampleModal').on('show.bs.modal', function (event) {
+  $('#infoModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
     var recipientdeskid = button.data('whateverdeskid')  
@@ -148,11 +155,10 @@
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.modal-title').text('Detalhes: ID ' + recipient)
-    modal.find('#id-curso').val(recipient)
-    modal.find('#deskid').val(recipientdeskid)
+    modal.find('#nrpassword').text(recipient)
+    modal.find('#deskid').text(recipientdeskid)
     modal.find('#dtbirthday').val(recipientdtbirthday)
-    modal.find('#recipient-person').val(recipientperson)
+    modal.find('#recipient-person').text(recipientperson)
     modal.find('#nrphone').val(recipientnrphone)
     modal.find('#email').val(recipientemail)
     modal.find('#publicplace').val(recipientpublicplace)
@@ -162,10 +168,6 @@
     modal.find('#state').val(recipientstate)
     modal.find('#country').val(recipientcountry)
     modal.find('#complement').val(recipientcomplement)
-    /*FUNÇÃO PARA ALTER O ACTION DO FORMULARIO*/
-    $('#updateButton').click(function(){
-      $('#modalForm').attr('action', '/admin/deliveries/' + recipient);
-    });
   })
 
   // INICIO FUNÇÃO ORDENA TABELA DELIVERIES
