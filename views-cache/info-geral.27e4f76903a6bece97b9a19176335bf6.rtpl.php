@@ -1,4 +1,4 @@
-	<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?>	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
@@ -39,19 +39,19 @@
 											<th></th>
 											<th style="width: 40px">Quantidade</th>
 										</tr>
-										{loop="$counts"}
+										<?php $counter1=-1;  if( isset($counts) && ( is_array($counts) || $counts instanceof Traversable ) && sizeof($counts) ) foreach( $counts as $key1 => $value1 ){ $counter1++; ?>
 										<tr>
 											<td></td>
-											<td>{$value.local}</td>
+											<td><?php echo htmlspecialchars( $value1["local"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 											<td>
 												<div class="progress progress-xs">
 												<!--<div class="progress-bar progress-bar-danger" style="width: 55%">
 												</div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-green">{$value.count}</span></td>
+										<td><span class="badge bg-green"><?php echo htmlspecialchars( $value1["count"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
-									{/loop}
+									<?php } ?>
 									
 								</table>
 							</div>

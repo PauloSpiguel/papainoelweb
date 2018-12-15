@@ -55,4 +55,18 @@ class Local extends Model
 		]);
 	}
 
+	public static function CountLocal($deslocal){
+
+		$sql = new Sql();
+
+		$result = $sql->select("SELECT COUNT(deslocal) AS nrTotal FROM tb_demands a 
+			INNER JOIN tb_locals b ON a.idlocal = b.idlocal
+			WHERE deslocal = :deslocal", [
+			":deslocal" => $deslocal
+		]);
+
+		return $result;
+
+	}
+
 }

@@ -140,12 +140,13 @@ class Delivery extends Model
         if ($search != '') {
 
             $results = $sql->select("
-           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal
+           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
            FROM tb_demands a
            INNER JOIN tb_kids b ON a.idkid = b.idkid
            INNER JOIN tb_persons c ON b.idperson = c.idperson
            INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
-           WHERE a.iddemand LIKE :search OR b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
+           INNER JOIN tb_users e ON a.iduser = e.iduser
+           WHERE a.nrpassword LIKE :search OR b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
            ORDER BY a.nrpassword DESC
            LIMIT $start, $itemsPerPage;
            ", [

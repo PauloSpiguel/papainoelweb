@@ -1,5 +1,7 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="animate-bottom" id="loader"></div>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" id="myDiv">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
@@ -28,7 +30,7 @@
 					<div class="icon">
 						<i class="icon ion-ios-people"></i>
 					</div>
-					<a href="/admin/info-geral" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-geral" class="small-box-footer" onclick="myFunction()">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->

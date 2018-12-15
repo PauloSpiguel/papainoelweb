@@ -38,8 +38,6 @@ class Page
             $this->tpl->assign("user", $_SESSION[User::SESSION]);
         }
 
-        //$this->tpl->assign("version", VERSION_SYSTEM);
-
         $this->setData($this->options["data"]);
 
         if ($this->options["header"] === true) {

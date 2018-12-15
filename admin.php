@@ -103,10 +103,39 @@ $app->get('/admin/info-geral', function () {
 
     $locals = local::listAll();
 
+
+
+    //$local = $locals[0]['deslocal'];
+    //
+    $countLocal = array();
+
+    foreach ($locals as $key => $value) {
+        $local = $locals[$key]['deslocal'];        
+        //echo $local."<br>";
+        $count = Local::countLocal($local);
+        foreach ($count as $key => $value) {
+            foreach ($value as $result) {
+                array_push($countLocal, array(
+                    'local' => $local,
+                    'count' => $result
+                ));
+            }
+        }
+        //print_r($count);
+        //echo $local;
+        //echo ($count."<br>");
+    }
+
+    //print_r($countLocal)";
+    //$count = Local::countLocal($local);
+
+    //var_dump($count);
+    
     $page = new PageAdmin();
 
     $page->setTpl("info-geral", [
         "locals" => $locals,
+        "counts" => $countLocal
     ]);
 
 });

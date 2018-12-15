@@ -33,7 +33,7 @@
         </div>
 
         <div class="box-body no-padding">
-          <table class="table table-striped" id="myTable">
+          <table class="table table-hover" id="myTable">
             <thead>
               <tr style="background-color: #b8c7ce">
                 <th style="width: 15px">Senha</th>
@@ -50,7 +50,7 @@
               <?php $counter1=-1;  if( isset($demands) && ( is_array($demands) || $demands instanceof Traversable ) && sizeof($demands) ) foreach( $demands as $key1 => $value1 ){ $counter1++; ?>
               <tr style="background-color: ">
                 <td>
-                  <a type="button" style="cursor: pointer;" data-toggle="modal" data-target="#infoModal" whatever="<?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdeskid="<?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverperson="<?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+                  <a type="button" style="cursor: pointer;" data-toggle="modal" data-target="#infoModal" data-whatever="<?php echo htmlspecialchars( $value1["iddemand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whatevernrpassword="<?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdeskid="<?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverperson="<?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtbirthday="<?php echo htmlspecialchars( $value1["dtbirthday"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdeslocal="<?php echo htmlspecialchars( $value1["deslocal"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtpassword="<?php echo htmlspecialchars( $value1["dtpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateverdtregister="<?php echo htmlspecialchars( $value1["dtregister"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-whateveriduser="<?php echo htmlspecialchars( $value1["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nrpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
                 </td>
                 <td><?php echo htmlspecialchars( $value1["deskid"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                 <td><?php echo date('d/m/Y', strtotime($value1["dtbirthday"])); ?></td>
@@ -100,7 +100,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <h2 class="page-header">
-                  <img src="../../res/admin/dist/img/logo.png" alt="Logo" style="width: 60%">
+                  <img src="../../res/admin/dist/img/logo.png" alt="Logo" style="width: 40%">
                   <small class="pull-right">Data: <?php echo date('d/m/Y h:i:s'); ?></small>
                 </h2>
               </div>
@@ -114,11 +114,12 @@
                 <div>
                   Nome:
                   <h2 id="deskid"><b>Nome da Criança</b></h2><br>
-                  Responsável: <h4 id="recipient-person" style="display: inline;"></h4><br>
-                  Escola: <h4 id="" style="display: inline;"></h4><br>
-                  Matricula: <h4 id="" style="display: inline;"></h4><br> 
-                  Endereço: <h4 id="" style="display: inline;"></h4><br>
-                  Telefone: <h4 id="" style="display: inline;"></h4><br>
+                  Nascimento: <h4 id="dtbirthday" style="display: inline;"></h4><br>
+                  Responsável: <h4 id="desperson" style="display: inline;"></h4><br>
+                  Local: <h4 id="deslocal" style="display: inline;"></h4><br>
+                  Matricula: <h4 id="nrmatriculation" style="display: inline;"></h4><br> 
+                  Endereço: <h4 id="despublicplace" style="display: inline;"></h4><br>
+                  Telefone: <h4 id="nrphone" style="display: inline;"></h4><br>
                 </div> 
               </div>
               <!-- /.row -->
@@ -129,7 +130,6 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Senha</th>
                       <th>Emitido</th>
                       <th>Usuário</th>
                     </tr>
@@ -137,9 +137,8 @@
                   <tbody>
 
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><span id="dtregister" style="display: inline;"></span></td>
+                      <td><span id="iduser" style="display: inline;"></span></td>
                     </tr>
 
                   </tbody>
