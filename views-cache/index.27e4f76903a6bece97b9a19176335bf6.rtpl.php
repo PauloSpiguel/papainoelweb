@@ -1,6 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="animate-bottom" id="loader"></div>
-
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" id="myDiv">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -93,6 +91,7 @@
 					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
+			<div id="loader"></div><!--Responsável pelo carregamento de espera de página-->
 			<div class="box-body chart-responsive">
 				<div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
 			</div>

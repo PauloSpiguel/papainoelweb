@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -46,7 +46,7 @@
 												<!--<div class="progress-bar progress-bar-danger" style="width: 55%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-red">{$countAgeSix}</span></td>
+										<td><span class="badge bg-red"><?php echo htmlspecialchars( $countAgeSix, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>7 a 10 anos</td>
@@ -55,7 +55,7 @@
 												<!--<div class="progress-bar progress-bar-yellow" style="width: 70%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-yellow">{$countAgeTen}</span></td>
+										<td><span class="badge bg-yellow"><?php echo htmlspecialchars( $countAgeTen, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>Maior 10 anos</td>
@@ -64,7 +64,7 @@
 												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-light-blue">{$countAgeBigger}</span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeBigger, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>Total a entregar dia 16/12/2018</td>
@@ -73,7 +73,7 @@
 												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-light-blue">{$countDayOne}</span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayOne, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>Total a entregar dia 17/12/2018</td>
@@ -82,7 +82,7 @@
 												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-light-blue">{$countDayTwo}</span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayTwo, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>Total a entregar dia 18/12/2018</td>
@@ -91,7 +91,7 @@
 												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-green">{$countDayThree}</span></td>
+										<td><span class="badge bg-green"><?php echo htmlspecialchars( $countDayThree, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 								</table>
 							</div>

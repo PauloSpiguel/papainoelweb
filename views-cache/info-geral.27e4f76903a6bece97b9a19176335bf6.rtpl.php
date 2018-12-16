@@ -28,20 +28,18 @@
 
 							<div class="box">
 								<div class="box-header">
-									<h3 class="box-title">Detalhamento de lançamento por local</h3>
+									<h3 class="box-title">Detalhamento de lançamento <small>por local</small></h3>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body no-padding">
 									<table class="table table-striped">
 										<tr>
-											<th style="width: 10px">#</th>
 											<th>Locais</th>
 											<th></th>
 											<th style="width: 40px">Quantidade</th>
 										</tr>
 										<?php $counter1=-1;  if( isset($counts) && ( is_array($counts) || $counts instanceof Traversable ) && sizeof($counts) ) foreach( $counts as $key1 => $value1 ){ $counter1++; ?>
 										<tr>
-											<td></td>
 											<td><?php echo htmlspecialchars( $value1["local"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 											<td>
 												<div class="progress progress-xs">

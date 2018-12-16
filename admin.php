@@ -80,20 +80,49 @@ $app->get('/admin/logout', function () {
 $app->get('/admin/info-famale', function () {
 
     User::verifyLogin();
+    //1: FEMININO, 2: MASCULINO
+    $countAgeSix = Report::countAgeRange('2012', '1');
+    $countAgeTen = Report::countAgeRange('2009', '1');
+    $countAgeBigger = Report::countAgeRange('2008', '1');
+
+    $countDayOne = Report::countByDate('16', '1');
+    $countDayTwo = Report::countByDate('17', '1');
+    $countDayThree = Report::countByDate('18', '1');
 
     $page = new PageAdmin();
 
-    $page->setTpl("info-famale");
-
+    $page->setTpl("info-famale", [
+        "countAgeSix" => $countAgeSix,
+        "countAgeTen" => $countAgeTen,
+        "countAgeBigger" => $countAgeBigger,
+        "countDayOne" => $countDayOne,
+        "countDayTwo" => $countDayTwo,
+        "countDayThree" => $countDayThree
+    ]);
 });
 ################## ROTA INFO-MALE ###################
 $app->get('/admin/info-male', function () {
 
     User::verifyLogin();
 
+    $countAgeSix = Report::countAgeRange('2012', '2');
+    $countAgeTen = Report::countAgeRange('2009', '2');
+    $countAgeBigger = Report::countAgeRange('2008', '2');
+
+    $countDayOne = Report::countByDate('16', '1');
+    $countDayTwo = Report::countByDate('17', '1');
+    $countDayThree = Report::countByDate('18', '1');
+
     $page = new PageAdmin();
 
-    $page->setTpl("info-male");
+    $page->setTpl("info-male", [
+        "countAgeSix" => $countAgeSix,
+        "countAgeTen" => $countAgeTen,
+        "countAgeBigger" => $countAgeBigger,
+         "countDayOne" => $countDayOne,
+        "countDayTwo" => $countDayTwo,
+        "countDayThree" => $countDayThree
+    ]);
 
 });
 ################## ROTA INFO-GERAL ###################
@@ -103,10 +132,8 @@ $app->get('/admin/info-geral', function () {
 
     $locals = local::listAll();
 
-
-
     //$local = $locals[0]['deslocal'];
-    //
+
     $countLocal = array();
 
     foreach ($locals as $key => $value) {
@@ -121,16 +148,8 @@ $app->get('/admin/info-geral', function () {
                 ));
             }
         }
-        //print_r($count);
-        //echo $local;
-        //echo ($count."<br>");
     }
 
-    //print_r($countLocal)";
-    //$count = Local::countLocal($local);
-
-    //var_dump($count);
-    
     $page = new PageAdmin();
 
     $page->setTpl("info-geral", [

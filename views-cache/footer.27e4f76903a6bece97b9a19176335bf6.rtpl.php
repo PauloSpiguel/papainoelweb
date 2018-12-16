@@ -104,11 +104,11 @@
   <script type="text/javascript" charset="utf-8" async defer>
     var myVar;
     function myFunction() {
-      myVar = setTimeout(showPage, 3000);
+      myVar = setTimeout(showPage, 2000);
     }
     function showPage() {
       document.getElementById("loader").style.display = "block";
-      document.getElementById("myDiv").style.display = "none";
+      //document.getElementById("myDiv").style.display = "block";
     }
   //GRAFICO POR LOCAL
   $(window).load(function() {

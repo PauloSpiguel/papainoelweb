@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../../res/admin/dist/js/sweetalert.js"></script>
   <script src="../../res/admin/dist/js/moment-with-locales.min.js"></script>
   <link rel="stylesheet" href="../../res/admin/dist/css/sweetalert.css">
+  <link rel="stylesheet" href="../../res/admin/dist/css/preloader.css">
   <!-- choose a theme file -->
   <link rel="stylesheet" href="../../res/admin/dist/css/theme.default.css">
   <!-- load jQuery and tablesorter scripts -->
@@ -38,56 +39,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   .destaque{
     /*background-color: coral;*/
     font-weight:900;
-  }
-  #loader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 1;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-  }
-
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Add animation to "page content" */
-  .animate-bottom {
-    position: relative;
-    -webkit-animation-name: animatebottom;
-    -webkit-animation-duration: 1s;
-    animation-name: animatebottom;
-    animation-duration: 1s
-  }
-
-  @-webkit-keyframes animatebottom {
-    from { bottom:-100px; opacity:0 } 
-    to { bottom:0px; opacity:1 }
-  }
-
-  @keyframes animatebottom { 
-    from{ bottom:-100px; opacity:0 } 
-    to{ bottom:0; opacity:1 }
-  }
-
-  #myDiv {
-    display: none;
-    text-align: center;
   }
 </style>
 </head>
