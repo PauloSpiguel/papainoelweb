@@ -43,7 +43,7 @@
 					<div class="icon">
 						<i class="ion ion-stats-bars"></i>
 					</div>
-					<a href="#" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer" onclick="myFunction()">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -58,7 +58,7 @@
 					<div class="icon">
 						<i class="icon ion-man"></i>
 					</div>
-					<a href="/admin/info-male" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-male" class="small-box-footer" onclick="myFunction()">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -73,7 +73,7 @@
 					<div class="icon">
 						<i class="icon ion-woman"></i>
 					</div>
-					<a href="/admin/info-famale" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+					<a href="/admin/info-famale" class="small-box-footer" onclick="myFunction()">Mais info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
