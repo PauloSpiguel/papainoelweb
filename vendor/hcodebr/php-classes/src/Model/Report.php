@@ -50,15 +50,16 @@ class Report extends Model
         }
     }
 
-    public static function countAgeRange($date, $sex){
+    public static function countAgeRange($dateStart, $dateStop, $sex){
 
         $sql = new Sql();
 
         $count = $sql->select("SELECT COUNT(iddemand) AS nrCount
             FROM tb_demands a
             INNER JOIN tb_kids b ON a.idkid = b.idkid
-            WHERE dtbirthday <= :dtbirthday AND dessex = :dessex;", [
-                ":dtbirthday" => $date.'-12-31',
+            WHERE dtbirthday BETWEEN (:dtbirthdayStart) AND (:dtbirthdayStop) AND dessex = :dessex;", [
+                ":dtbirthdayStart" => $dateStart.'-01-01',
+                ":dtbirthdayStop" => $dateStop.'-12-31',                
                 ":dessex" => $sex
 
             ]);

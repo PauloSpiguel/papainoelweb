@@ -81,9 +81,11 @@ $app->get('/admin/info-famale', function () {
 
     User::verifyLogin();
     //1: FEMININO, 2: MASCULINO
-    $countAgeSix = Report::countAgeRange('2012', '1');
-    $countAgeTen = Report::countAgeRange('2009', '1');
-    $countAgeBigger = Report::countAgeRange('2008', '1');
+    $countAgeSix = Report::countAgeRange('2012', '2018', '1');
+    $countAgeTen = Report::countAgeRange('2008', '2011', '1');
+    $countAgeBigger = Report::countAgeRange('1990', '2007', '1');
+
+    echo $countAgeSix;
 
     $countDayOne = Report::countByDate('16', '1');
     $countDayTwo = Report::countByDate('17', '1');
@@ -105,13 +107,14 @@ $app->get('/admin/info-male', function () {
 
     User::verifyLogin();
 
-    $countAgeSix = Report::countAgeRange('2012', '2');
-    $countAgeTen = Report::countAgeRange('2009', '2');
-    $countAgeBigger = Report::countAgeRange('2008', '2');
+     $countAgeSix = Report::countAgeRange('2012', '2018', '2');
+    $countAgeTen = Report::countAgeRange('2008', '2011', '2');
+    $countAgeBigger = Report::countAgeRange('1990', '2007', '2');
 
-    $countDayOne = Report::countByDate('16', '1');
-    $countDayTwo = Report::countByDate('17', '1');
-    $countDayThree = Report::countByDate('18', '1');
+
+    $countDayOne = Report::countByDate('16', '2');
+    $countDayTwo = Report::countByDate('17', '2');
+    $countDayThree = Report::countByDate('18', '2');
 
     $page = new PageAdmin();
 

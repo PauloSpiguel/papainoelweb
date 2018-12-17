@@ -46,7 +46,7 @@
 												<!--<div class="progress-bar progress-bar-danger" style="width: 55%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-red"><?php echo htmlspecialchars( $countAgeSix, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeSix, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>7 a 10 anos</td>
@@ -55,7 +55,7 @@
 												<!--<div class="progress-bar progress-bar-yellow" style="width: 70%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-yellow"><?php echo htmlspecialchars( $countAgeTen, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeTen, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 									<tr>
 										<td>Maior 10 anos</td>
@@ -91,7 +91,7 @@
 												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
 											</div>
 										</td>
-										<td><span class="badge bg-green"><?php echo htmlspecialchars( $countDayThree, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayThree, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
 									</tr>
 								</table>
 							</div>
