@@ -94,7 +94,7 @@ class Delivery extends Model
 
         $results = $sql->select("CALL sp_demandsupdate_save (:iddemand, :desaddress, :desnumber, :zipcode, :desregion, :descomplement, :descity, :desstate, :descountry, :desperson, :desemail, :nrphone, :nrcpf, :deskid, :dessex, :dtbirthday, :nrmatriculation, :dtpassword, :idlocal, :desobservation)", array(
             ":iddemand"        => $this->getiddemand(),
-            ":desaddress"      => utf8_decode($this->getdesaddress()),
+            ":desaddress"      => $this->getdesaddress(),
             ":desnumber"       => $this->getdesnumber(),
             ":zipcode"         => $this->getzipcode(),
             ":desregion"       => $this->getdesregion(),
@@ -102,7 +102,7 @@ class Delivery extends Model
             ":descity"         => $this->getdescity(),
             ":desstate"        => $this->getdesstate(),
             ":descountry"      => $this->getdescountry(),
-            ":desperson"       => utf8_decode($this->getdesperson()),
+            ":desperson"       => $this->getdesperson(),
             ":desemail"        => $this->getdesemail(),
             ":nrphone"         => $this->getnrphone(),
             ":nrcpf"           => $this->getnrcpf(),
@@ -180,12 +180,10 @@ class Delivery extends Model
 
     public function dateW()
     {
-
-        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        date_default_timezone_set('America/Sao_Paulo');
         //return strftime('%A, %d de %B de %Y', strtotime($date));
-        return strftime('%A', strtotime($this->getdtpassword()));
+        $dayWeek = strftime('%A', strtotime($this->getdtpassword()));
 
+        return utf8_encode($dayWeek);
     }
 
     public function qrCode()

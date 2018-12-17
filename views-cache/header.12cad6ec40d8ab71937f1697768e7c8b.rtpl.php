@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html">
   <title>Painel Admin | SisPapaiNoelWeb - Centenário do Sul</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../../res/admin/dist/js/sweetalert.js"></script>
   <script src="../../res/admin/dist/js/moment-with-locales.min.js"></script>
   <link rel="stylesheet" href="../../res/admin/dist/css/sweetalert.css">
+  <link rel="stylesheet" href="../../res/admin/dist/css/preloader.css">
   <!-- choose a theme file -->
   <link rel="stylesheet" href="../../res/admin/dist/css/theme.default.css">
   <!-- load jQuery and tablesorter scripts -->
@@ -34,11 +35,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script type="text/javascript" src="../../res/admin/dist/js/jquery.tablesorter.widgets.js"></script>
   <script src="../../res/admin/dist/js/printThis.js"></script>
   <link rel="stylesheet" type="text/css" href="../../res/admin/dist/css/print.css" media="print">
-<style type="text/css">
-.destaque{
-  /*background-color: coral;*/
-  font-weight:900;
-}
+  <style type="text/css">
+  .destaque{
+    /*background-color: coral;*/
+    font-weight:900;
+  }
 </style>
 </head>
 

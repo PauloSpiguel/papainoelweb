@@ -8,14 +8,14 @@ body {
 }
 
 .logo{
-
-  width: 100%
+  width: 85%;
 }
 
-.LogoSisOuv{
-
-  width: 50%
-
+.LogoSisPNWeb{
+ position: relative;
+ left: 50%;
+ top: 50%;
+ margin: -25px 0 0 -125px;
 }
 
 .forms_fieldset{
@@ -216,7 +216,7 @@ body {
 }
 .user-authentication .user_options-forms .forms_buttons-forgot:hover {
   color: #515151;
-    font-weight: 300;
+  font-weight: 300;
 }
 .user-authentication .user_options-forms .forms_buttons-action {
   background-color: #e8716d;

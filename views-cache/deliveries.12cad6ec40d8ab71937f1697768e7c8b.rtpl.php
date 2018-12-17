@@ -33,7 +33,7 @@
         </div>
 
         <div class="box-body no-padding">
-          <table class="table table-striped" id="myTable">
+          <table class="table table-hover" id="myTable">
             <thead>
               <tr style="background-color: #b8c7ce">
                 <th style="width: 15px">Senha</th>

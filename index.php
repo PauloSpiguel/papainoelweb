@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-date_default_timezone_set("America/Sao_Paulo");
-setlocale(LC_ALL, 'pt_BR');
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 session_start();
 require_once "vendor/autoload.php";
 require_once "vendor/hcodebr/php-classes/src/DB/Secret.php";

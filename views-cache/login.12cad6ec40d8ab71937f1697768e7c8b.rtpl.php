@@ -3,94 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log in | SisPapaiNoelWeb - Centenário do Sul</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Favicon HTML -->
-  <link rel="shortcut icon" type="image/png" href="../../res/site/img/favicon32x32.ico">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="../../res/admin/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../res/admin/dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../res/admin/plugins/iCheck/square/blue.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <title>Log in | SisPapaiNoelWeb - Centenário do Sul</title>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/
+  meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="../../res/admin/bootstrap/css/styleLogin.css">
+  <link rel="stylesheet" href="../../res/admin/bootstrap/css/bootstrap.css">
 </head>
-<body class="hold-transition login-page">
-  <div class="login-box">
-    <div class="login-logo">
-      <a href="#"><b style="color: #F00">SPN</b>Web</a>
+
+<body>
+  <!-- Inspiration
+  https://dribbble.com/shots/2311260-Day-1-Sign-Up-and-Login-Animated
+-->
+<section class="user-authentication">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <figure>
+          <img class="LogoSisPNWeb" src="../../res/admin/dist/img/SisLogo.png" alt="Logotipo Sis-PNWeb" />
+          <figcaption style="display:none">LogoTipo Sis-PNWeb Municipal</figcaption>
+        </figure>
+        <h2 class="user_unregistered-title">Sis-PNWeb - Centenário do Sul</h2>
+        <p class="user_unregistered-text">Painel administrativo do Sis-PNWeb - Sistema cadastro e controle de senhas para presentes Programa Municipal Papai Noel Fim do Ano do Município de Centenário do Sul.</p>
+        <!--<button class="user_unregistered-signup" id="signup-button">Sem Acesso?</button>-->
+        <button id="signup-button"></button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Já possue uma conta?</h2>
+        <p class="user_registered-text">Para ter acesso a conta do SisOuvWeb, click em Login logo abaixo para inserir sua credenciais.</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
     </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-     
-    <p class="login-box-msg">Digite suas credenciais para ter acesso</p>
-    <form action="/admin/login" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Login" name="login">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha" name="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Memorizar senha
-            </label>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <figure>
+          <img class="logo" src="../../res/site/img/logo.png" alt="Logotipo Principal Prefeitura de Centenário do Sul" />
+          <figcaption style="display:none">Brasão Prefeitura Municipal de Centenário do Sul</figcaption>
+        </figure>
+        <h2 class="forms_title">Acesso ao Sis-PNWeb</h2>
+        <form class="forms_form" action="/admin/login" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" name="login" placeholder="Login" class="forms_field-input" required autofocus onkeyup="maiuscula(this)" />
+              <span class="glyphicon glyphicon-user form-control-feed"></span>         
+            </div>
+            <div class="forms_field">
+              <input type="password" name="password" placeholder="Senha" class="forms_field-input" required /> 
+              <span class="glyphicon glyphicon-lock form-control-feed"></span>            
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button onclick="window.location.href='/admin/forgot'" type="button" class="forms_buttons-forgot" id="forget-button">Esqueceu a senha?</button>
+            <button type="submit" class="forms_buttons-action">Acessar</button>
+            <!--<a class="forms_buttons-mb-button" id="signup-button-mb">Sign up</a>-->
           </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
-        </div>
-        <!-- /.col -->
+        </form>
       </div>
-    </form>
-
-    <!--<div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-      </div>-->
-      <!-- /.social-auth-links -->
-
-      <a href="/admin/forgot">Esqueceu a senha?</a><br>
-      <!--<a href="register.html" class="text-center">Register a new membership</a>-->
+      <div class="user_forms-signup">
+        <h2 class="forms_title">SOLICITAÇÃO DE ACESSO</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Nome Completo" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="text" placeholder="Motivo" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="submit" class="forms_buttons-action">Enviar Solicitação</button>
+            <a class="forms_buttons-mb-button" id="login-button-mb">Login</a>
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-forgot">
+        <h2 class="forms_title">Esqueci a Senha</h2>
+        <form class="forms_form" action="/admin/forgot" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="email" name="email" placeholder="Email" class="forms_field-input"  />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="submit" class="forms_buttons-action">Resetar senha</button>         
+          </div>
+          <button style="color: #f00" class="user_unregistered-signup" id="back-button">Voltar</button>
+        </form>
+      </div>
     </div>
-    <!-- /.login-box-body -->
   </div>
-  <!-- /.login-box -->
+</section>
 
-  <!-- jQuery 2.2.3 -->
-  <script src="../../res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <!-- Bootstrap 3.3.6 -->
-  <script src="../../res/admin/bootstrap/js/bootstrap.min.js"></script>
-  <!-- iCheck -->
-  <script src="../../res/admin/plugins/iCheck/icheck.min.js"></script>
-  <script>
-    $(function () {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-    });
-  </script>
+<script  src="../../res/admin/bootstrap/js/login.js"></script>
+<script type="text/javascript">
+  //function maiuscula(z){
+    //v = z.value.toUpperCase();
+    //z.value = v;
+ //}
+</script>
 </body>
 </html>
 <!--

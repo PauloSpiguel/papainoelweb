@@ -12,10 +12,17 @@ class Sql
     public function __construct()
     {
 
+        $timezone = "America/Sao_Paulo";
+        $fuso     = '-02:00';
+
         $this->conn = new \PDO(
             "mysql:dbname=" . DBNAME . ";host=" . HOSTNAME,
             USERNAME, PASSWORD
         );
+
+        $this->conn->exec("SET time_zone = '{$timezone}'");
+        $this->conn->exec("SET TIME_ZONE = '{$fuso}'");
+        $this->conn->exec("SET NAMES utf8");
 
     }
 

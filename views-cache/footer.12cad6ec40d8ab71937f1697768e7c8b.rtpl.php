@@ -2,10 +2,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      <b style="color: #f00; font-weight: 900">SisPNWeb</b> <span style="color: #000; font-weight: 900"> V1.2</span>
+      <b style="color: #f00; font-weight: 900">SisPNWeb</b> <span style="color: #000; font-weight: 900"> V<?php echo VERSION_SYSTEM; ?></span>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">Seção de Informática | Governo Municipal de Centenário do sul & P R Spiguel Tecologia</a>.</strong> Todos os direitos Reservados.
+    <strong>Copyright &copy; 2018 <a href="#"><?php echo COMPANY; ?> & P R Spiguel Tecologia</a>.</strong> Todos os direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -102,7 +102,14 @@
   <script src="../../res/admin/dist/js/printThis.js"></script>
 
   <script type="text/javascript" charset="utf-8" async defer>
-
+    var myVar;
+    function myFunction() {
+      myVar = setTimeout(showPage, 2000);
+    }
+    function showPage() {
+      document.getElementById("loader").style.display = "block";
+      //document.getElementById("myDiv").style.display = "block";
+    }
   //GRAFICO POR LOCAL
   $(window).load(function() {
     var donut = new Morris.Donut({

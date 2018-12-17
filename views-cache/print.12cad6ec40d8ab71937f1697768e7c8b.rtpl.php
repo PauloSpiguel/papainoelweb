@@ -1,8 +1,8 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <title>SPN Web | Impressão de Senha</title>
   <link rel="shortcut icon" type="image/png" href="/res/site/img/favicon32x32.ico">
@@ -227,7 +227,7 @@
     <td colspan="3" align="center">
       Seção de Informática - Centenário do Sul <br/>
     P R Spiguel Tecnologia </br>
-    SisPNWEB - V. 1.2
+    SisPNWEB - V. <?php echo VERSION_SYSTEM; ?>
   </td>
 </tr>
 

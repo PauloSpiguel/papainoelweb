@@ -27,17 +27,77 @@
 
 						<p class="text-muted text-center">Detalhamento</p>
 
-						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item">
-								<b>0 a 6 Anos</b> <a class="pull-right">0</a>
-							</li>
-							<li class="list-group-item">
-								<b>7 a 11 Anos</b> <a class="pull-right">0</a>
-							</li>
-							<li class="list-group-item">
-								<b>Maiores de 11 anos</b> <a class="pull-right">0</a>
-							</li>
-						</ul>
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">Detalhamento entrega senha - Masculino <small>por Idade</small></h3>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tr>
+										<th>Faixa</th>
+										<th></th>
+										<th style="width: 40px">Quantidade</th>
+									</tr>
+									<tr>
+										<td>0 a 6 anos</td>
+										<td>
+											<div class="progress progress-xs">
+												<!--<div class="progress-bar progress-bar-danger" style="width: 55%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeSix, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+									<tr>
+										<td>7 a 10 anos</td>
+										<td>
+											<div class="progress progress-xs">
+												<!--<div class="progress-bar progress-bar-yellow" style="width: 70%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeTen, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+									<tr>
+										<td>Maior 10 anos</td>
+										<td>
+											<div class="progress progress-xs progress-striped active">
+												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countAgeBigger, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+									<tr>
+										<td>Total a entregar dia 16/12/2018</td>
+										<td>
+											<div class="progress progress-xs progress-striped active">
+												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayOne, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+									<tr>
+										<td>Total a entregar dia 17/12/2018</td>
+										<td>
+											<div class="progress progress-xs progress-striped active">
+												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayTwo, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+									<tr>
+										<td>Total a entregar dia 18/12/2018</td>
+										<td>
+											<div class="progress progress-xs progress-striped active">
+												<!--<div class="progress-bar progress-bar-primary" style="width: 30%"></div>-->
+											</div>
+										</td>
+										<td><span class="badge bg-light-blue"><?php echo htmlspecialchars( $countDayThree, ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
+									</tr>
+								</table>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
 					</div>
 					<!-- /.box-body -->
 				</div>
