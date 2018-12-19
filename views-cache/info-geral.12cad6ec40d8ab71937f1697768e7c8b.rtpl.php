@@ -43,8 +43,8 @@
 											<td><?php echo htmlspecialchars( $value1["local"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 											<td>
 												<div class="progress progress-xs">
-												<!--<div class="progress-bar progress-bar-danger" style="width: 55%">
-												</div>-->
+												<div class="progress-bar progress-bar-danger" style="width: 55%">
+												</div>
 											</div>
 										</td>
 										<td><span class="badge bg-green"><?php echo htmlspecialchars( $value1["count"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>

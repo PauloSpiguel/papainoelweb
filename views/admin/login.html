@@ -44,6 +44,11 @@
           <figcaption style="display:none">Brasão Prefeitura Municipal de Centenário do Sul</figcaption>
         </figure>
         <h2 class="forms_title">Acesso ao Sis-PNWeb</h2>
+        {if="$error != ''"} 
+        <div class="alert alert-danger">
+          {$error}
+        </div>
+        {/if}
         <form class="forms_form" action="/admin/login" method="post">
           <fieldset class="forms_fieldset">
             <div class="forms_field">

@@ -71,9 +71,9 @@ class User extends Model
         $sql = new Sql();
 
         $results = $sql->select("SELECT * FROM tb_users a
-			JOIN tb_persons b
-			ON a.idperson = b.idperson
-			WHERE a.deslogin = :LOGIN", array(
+            JOIN tb_persons b
+            ON a.idperson = b.idperson
+            WHERE a.deslogin = :LOGIN", array(
             ":LOGIN" => $login,
         ));
 
@@ -135,8 +135,8 @@ class User extends Model
         $sql = new Sql();
 
         $results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
-            ":desperson"   => $this->getdesperson(),
-            ":deslogin"    => $this->getdeslogin(),
+            ":desperson"   => utf8_decode($this->getdesperson()),
+            ":deslogin"    => utf8_decode($this->getdeslogin()),
             ":despassword" => $this->getdespassword(),
             ":desemail"    => $this->getdesemail(),
             ":nrphone"     => $this->getnrphone(),
@@ -156,7 +156,13 @@ class User extends Model
             "iduser" => $iduser,
         ));
 
-        $this->setData($results[0]);
+        //$this->setData($results[0]);
+
+        $data = $results[0];
+
+        $data['desperson'] = utf8_encode($data['desperson']);
+
+        $this->setData($data);
     }
 
     public function update()
@@ -166,8 +172,8 @@ class User extends Model
 
         $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
             ":iduser"      => $this->getiduser(),
-            ":desperson"   => $this->getdesperson(),
-            ":deslogin"    => $this->getdeslogin(),
+            ":desperson"   => utf8_decode($this->getdesperson()),
+            ":deslogin"    => utf8_decode($this->getdeslogin()),
             ":despassword" => $this->getdespassword(),
             ":desemail"    => $this->getdesemail(),
             ":nrphone"     => $this->getnrphone(),
@@ -195,9 +201,9 @@ class User extends Model
         $sql = new Sql();
 
         $results = $sql->select("SELECT *
-			FROM tb_persons a
-			INNER JOIN tb_users b USING(idperson)
-			WHERE a.desemail = :email;", array(
+            FROM tb_persons a
+            INNER JOIN tb_users b USING(idperson)
+            WHERE a.desemail = :email;", array(
             ":email" => $email,
         ));
 
@@ -249,17 +255,12 @@ class User extends Model
         $iv         = mb_substr($result, 0, openssl_cipher_iv_length('aes-256-cbc'), '8bit');
         $idrecovery = openssl_decrypt($code, 'aes-256-cbc', SECRET_KEY, 0, $iv);
         $sql        = new Sql();
-        $results    = $sql->select("
-			SELECT *
-			FROM tb_userspasswordsrecoveries a
-			INNER JOIN tb_users b USING(iduser)
-			INNER JOIN tb_persons c USING(idperson)
-			WHERE
-			a.idrecovery = :idrecovery
-			AND
-			a.dtrecovery IS NULL
-			AND
-			DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();",
+        $results    = $sql->select(" SELECT *
+            FROM tb_userspasswordsrecoveries a
+            INNER JOIN tb_users b USING(iduser)
+            INNER JOIN tb_persons c USING(idperson)
+            WHERE a.idrecovery = :idrecovery AND a.dtrecovery IS NULL
+            AND DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();",
             array(
                 ":idrecovery" => $idrecovery,
             ));
@@ -293,25 +294,44 @@ class User extends Model
         ));
 
     }
-/*
-public static function getError($msg){
 
-$msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
+    public static function setError($msg)
+    {
 
-User::clearError();
+        $_SESSION[User::ERROR] = $msg;
 
-return $msg;
+    }
 
-}
+    public static function getError()
+    {
 
-public static function clearError(){
+        $msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
 
-$_SESSION[User::ERROR] = NULL;
-}
+        User::clearError();
 
-public static function setErrorRegister($msg){
+        return $msg;
 
-$_SESSION[User::ERROR_REGISTER] = $msg;
-}
- */
+    }
+
+    public static function clearError()
+    {
+
+        $_SESSION[User::ERROR] = null;
+    }
+
+    public static function setErrorRegister($msg)
+    {
+
+        $_SESSION[User::ERROR_REGISTER] = $msg;
+    }
+
+    public static function getPasswordHash($password)
+    {
+
+        return password_hash($password, PASSWORD_DEFAULT, [
+            'cont' => 12,
+        ]);
+
+    }
+
 }

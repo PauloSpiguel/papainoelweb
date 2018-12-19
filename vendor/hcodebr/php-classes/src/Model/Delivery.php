@@ -16,40 +16,34 @@ class Delivery extends Model
 
         $sql = new Sql();
 
-        return $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
-           FROM tb_demands a
-           INNER JOIN tb_kids b ON a.idkid = b.idkid
-           INNER JOIN tb_persons c ON b.idperson = c.idperson
-           INNER JOIN tb_locals d ON a.idlocal = d.idlocal
-           INNER JOIN tb_users e ON a.iduser = e.iduser
-           ORDER BY a.dtpassword");
+        $data = $sql->select("SELECT a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
+         FROM tb_demands a
+         INNER JOIN tb_kids b ON a.idkid = b.idkid
+         INNER JOIN tb_persons c ON b.idperson = c.idperson
+         INNER JOIN tb_locals d ON a.idlocal = d.idlocal
+         INNER JOIN tb_users e ON a.iduser = e.iduser
+         ORDER BY a.dtpassword");
+
+        return utf8_encode($data);
+
     }
 
     public function save()
     {
 
-        /*if ($this->getdesaddress() == '') {
-
-        $address = utf8_decode('Endereço não informado');
-
-        } else {
-
-        $address = $this->getdesaddress();
-        }*/
-
         $sql = new Sql();
 
         $results = $sql->select("CALL sp_demands_save (:iddemand, :desaddress, :desnumber, :zipcode, :desregion, :descomplement, :descity, :desstate, :descountry, :desperson, :desemail, :nrphone, :nrcpf, :deskid, :dessex, :dtbirthday, :nrmatriculation, :nrpassword, :dtpassword, :desqrcode, :idlocal, :desobservation, :iduser)", array(
             ":iddemand"        => $this->getiddemand(),
-            ":desaddress"      => $this->getdesaddress(),
+            ":desaddress"      => utf8_decode($this->getdesaddress()),
             ":desnumber"       => $this->getdesnumber(),
             ":zipcode"         => $this->getzipcode(),
-            ":desregion"       => $this->getdesregion(),
-            ":descomplement"   => $this->getdescomplement(),
-            ":descity"         => $this->getdescity(),
+            ":desregion"       => utf8_decode($this->getdesregion()),
+            ":descomplement"   => utf8_decode($this->getdescomplement()),
+            ":descity"         => utf8_decode($this->getdescity()),
             ":desstate"        => $this->getdesstate(),
-            ":descountry"      => $this->getdescountry(),
-            ":desperson"       => $this->getdesperson(),
+            ":descountry"      => utf8_decode($this->getdescountry()),
+            ":desperson"       => utf8_decode($this->getdesperson()),
             ":desemail"        => $this->getdesemail(),
             ":nrphone"         => $this->getnrphone(),
             ":nrcpf"           => $this->getnrcpf(),
@@ -61,7 +55,7 @@ class Delivery extends Model
             ":dtpassword"      => $this->getdtpassword(),
             ":desqrcode"       => $this->getdesqrcode(),
             ":idlocal"         => $this->getidlocal(),
-            ":desobservation"  => $this->getdesobservation(),
+            ":desobservation"  => utf8_decode($this->getdesobservation()),
             ":iduser"          => $this->getiduser(),
         ));
 
@@ -94,15 +88,15 @@ class Delivery extends Model
 
         $results = $sql->select("CALL sp_demandsupdate_save (:iddemand, :desaddress, :desnumber, :zipcode, :desregion, :descomplement, :descity, :desstate, :descountry, :desperson, :desemail, :nrphone, :nrcpf, :deskid, :dessex, :dtbirthday, :nrmatriculation, :dtpassword, :idlocal, :desobservation)", array(
             ":iddemand"        => $this->getiddemand(),
-            ":desaddress"      => $this->getdesaddress(),
+            ":desaddress"      => utf8_decode($this->getdesaddress()),
             ":desnumber"       => $this->getdesnumber(),
             ":zipcode"         => $this->getzipcode(),
-            ":desregion"       => $this->getdesregion(),
-            ":descomplement"   => $this->getdescomplement(),
-            ":descity"         => $this->getdescity(),
-            ":desstate"        => $this->getdesstate(),
-            ":descountry"      => $this->getdescountry(),
-            ":desperson"       => $this->getdesperson(),
+            ":desregion"       => utf8_decode($this->getdesregion()),
+            ":descomplement"   => utf8_decode($this->getdescomplement()),
+            ":descity"         => utf8_decode($this->getdescity()),
+            ":desstate"        => utf8_decode($this->getdesstate()),
+            ":descountry"      => utf8_decode($this->getdescountry()),
+            ":desperson"       => utf8_decode($this->getdesperson()),
             ":desemail"        => $this->getdesemail(),
             ":nrphone"         => $this->getnrphone(),
             ":nrcpf"           => $this->getnrcpf(),
@@ -112,7 +106,7 @@ class Delivery extends Model
             ":nrmatriculation" => $this->getnrmatriculation(),
             ":dtpassword"      => $this->getdtpassword(),
             ":idlocal"         => $this->getidlocal(),
-            ":desobservation"  => $this->getdesobservation(),
+            ":desobservation"  => utf8_decode($this->getdesobservation()),
 
         ));
 
@@ -140,31 +134,31 @@ class Delivery extends Model
         if ($search != '') {
 
             $results = $sql->select("
-           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
-           FROM tb_demands a
-           INNER JOIN tb_kids b ON a.idkid = b.idkid
-           INNER JOIN tb_persons c ON b.idperson = c.idperson
-           INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
-           INNER JOIN tb_users e ON a.iduser = e.iduser
-           WHERE a.nrpassword LIKE :search OR b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
-           ORDER BY a.nrpassword DESC
-           LIMIT $start, $itemsPerPage;
-           ", [
+         SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
+         FROM tb_demands a
+         INNER JOIN tb_kids b ON a.idkid = b.idkid
+         INNER JOIN tb_persons c ON b.idperson = c.idperson
+         INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
+         INNER JOIN tb_users e ON a.iduser = e.iduser
+         WHERE a.nrpassword LIKE :search OR b.deskid LIKE :search OR c.desperson LIKE :search OR b.dessex LIKE :search OR d.deslocal LIKE :search
+         ORDER BY a.nrpassword DESC
+         LIMIT $start, $itemsPerPage;
+         ", [
                 ":search" => '%' . $search . '%',
             ]);
 
         } else {
 
             $results = $sql->select("
-           SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
-           FROM tb_demands a
-           INNER JOIN tb_kids b ON a.idkid = b.idkid
-           INNER JOIN tb_persons c ON b.idperson = c.idperson
-           INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
-           INNER JOIN tb_users e ON a.iduser = e.iduser
-           ORDER BY a.nrpassword DESC
-           LIMIT $start, $itemsPerPage;
-           ");
+         SELECT SQL_CALC_FOUND_ROWS a.*, b.deskid, b.dtbirthday, b.dessex, c.desperson, d.deslocal, e.deslogin
+         FROM tb_demands a
+         INNER JOIN tb_kids b ON a.idkid = b.idkid
+         INNER JOIN tb_persons c ON b.idperson = c.idperson
+         INNER JOIN tb_locals d  ON a.idlocal = d.idlocal
+         INNER JOIN tb_users e ON a.iduser = e.iduser
+         ORDER BY a.nrpassword DESC
+         LIMIT $start, $itemsPerPage;
+         ");
 
         }
 

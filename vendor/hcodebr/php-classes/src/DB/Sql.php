@@ -24,6 +24,13 @@ class Sql
         $this->conn->exec("SET TIME_ZONE = '{$fuso}'");
         $this->conn->exec("SET NAMES utf8");
 
+        // $this->conn = new \PDO(
+        //     "mysql:dbname=" . DBNAME . ";host=" . HOSTNAME,
+        //     USERNAME, PASSWORD, array(
+        //         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8;SET time_zone='America/Sao_Paulo'",
+        //     )
+        // );
+
     }
 
     private function setParams($statement, $parameters = array())

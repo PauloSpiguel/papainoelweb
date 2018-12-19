@@ -4,69 +4,71 @@ namespace NewTech\Model;
 
 use \NewTech\DB\Sql;
 use \NewTech\Model;
-use \NewTech\Mailer;
 
 /**
  *
  */
 class Local extends Model
 {
-	
-	public static function listAll()
-	{
 
-		$sql = new Sql();
+    public static function listAll()
+    {
 
-		return $sql->select("SELECT * FROM tb_locals ORDER BY deslocal");
-	}
+        $sql = new Sql();
 
-	public function save()
-	{
+        return $sql->select("SELECT * FROM tb_locals ORDER BY deslocal");
+    }
 
-		$sql = new Sql();
+    public function save()
+    {
 
-		$results = $sql->select("CALL sp_locals_save(:idlocal, :deslocal)", array(
-			":idlocal" => $this->getidlocal(),
-			":deslocal" => $this->getdeslocal()
-		));
+        $sql = new Sql();
 
-		$this->setData($results[0]);
+        $results = $sql->select("CALL sp_locals_save(:idlocal, :deslocal)", array(
+            ":idlocal"  => $this->getidlocal(),
+            ":deslocal" => utf8_decode($this->getdeslocal()),
+        ));
 
-	}
+        $this->setData($results[0]);
 
-	public function get($idlocal){
+    }
 
-		$sql = new Sql();
+    public function get($idlocal)
+    {
 
-		$results = $sql->select("SELECT * FROM tb_locals WHERE idlocal = :idlocal", [
-			":idlocal" => $idlocal
-		]);
+        $sql = new Sql();
 
-		$this->setdata($results[0]);
+        $results = $sql->select("SELECT * FROM tb_locals WHERE idlocal = :idlocal", [
+            ":idlocal" => $idlocal,
+        ]);
 
-	}
+        $this->setdata($results[0]);
 
-	public function delete(){
+    }
 
-		$sql = new Sql();
+    public function delete()
+    {
 
-		$sql->query("DELETE FROM tb_locals WHERE idlocal = :idlocal", [
-			":idlocal" => $this->getidlocal()
-		]);
-	}
+        $sql = new Sql();
 
-	public static function CountLocal($deslocal){
+        $sql->query("DELETE FROM tb_locals WHERE idlocal = :idlocal", [
+            ":idlocal" => $this->getidlocal(),
+        ]);
+    }
 
-		$sql = new Sql();
+    public static function CountLocal($deslocal)
+    {
 
-		$result = $sql->select("SELECT COUNT(deslocal) AS nrTotal FROM tb_demands a 
+        $sql = new Sql();
+
+        $result = $sql->select("SELECT COUNT(deslocal) AS nrTotal FROM tb_demands a
 			INNER JOIN tb_locals b ON a.idlocal = b.idlocal
 			WHERE deslocal = :deslocal", [
-			":deslocal" => $deslocal
-		]);
+            ":deslocal" => $deslocal,
+        ]);
 
-		return $result;
+        return $result;
 
-	}
+    }
 
 }

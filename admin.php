@@ -43,11 +43,9 @@ $app->get('/admin/login', function () {
         "footer" => false,
     ]);
 
-    //$page->setTpl("login",
-    //    ['error'=>User::getError()
-    //]);
-
-    $page->setTpl("login");
+    $page->setTpl("login", [
+        'error' => User::getError(),
+    ]);
 
 });
 ################ LOGIN ########################
@@ -81,25 +79,25 @@ $app->get('/admin/info-famale', function () {
 
     User::verifyLogin();
     //1: FEMININO, 2: MASCULINO
-    $countAgeSix = Report::countAgeRange('2012', '2018', '1');
-    $countAgeTen = Report::countAgeRange('2008', '2011', '1');
+    $countAgeSix    = Report::countAgeRange('2012', '2018', '1');
+    $countAgeTen    = Report::countAgeRange('2008', '2011', '1');
     $countAgeBigger = Report::countAgeRange('1990', '2007', '1');
 
     echo $countAgeSix;
 
-    $countDayOne = Report::countByDate('16', '1');
-    $countDayTwo = Report::countByDate('17', '1');
+    $countDayOne   = Report::countByDate('16', '1');
+    $countDayTwo   = Report::countByDate('17', '1');
     $countDayThree = Report::countByDate('18', '1');
 
     $page = new PageAdmin();
 
     $page->setTpl("info-famale", [
-        "countAgeSix" => $countAgeSix,
-        "countAgeTen" => $countAgeTen,
+        "countAgeSix"    => $countAgeSix,
+        "countAgeTen"    => $countAgeTen,
         "countAgeBigger" => $countAgeBigger,
-        "countDayOne" => $countDayOne,
-        "countDayTwo" => $countDayTwo,
-        "countDayThree" => $countDayThree
+        "countDayOne"    => $countDayOne,
+        "countDayTwo"    => $countDayTwo,
+        "countDayThree"  => $countDayThree,
     ]);
 });
 ################## ROTA INFO-MALE ###################
@@ -107,24 +105,23 @@ $app->get('/admin/info-male', function () {
 
     User::verifyLogin();
 
-     $countAgeSix = Report::countAgeRange('2012', '2018', '2');
-    $countAgeTen = Report::countAgeRange('2008', '2011', '2');
+    $countAgeSix    = Report::countAgeRange('2012', '2018', '2');
+    $countAgeTen    = Report::countAgeRange('2008', '2011', '2');
     $countAgeBigger = Report::countAgeRange('1990', '2007', '2');
 
-
-    $countDayOne = Report::countByDate('16', '2');
-    $countDayTwo = Report::countByDate('17', '2');
+    $countDayOne   = Report::countByDate('16', '2');
+    $countDayTwo   = Report::countByDate('17', '2');
     $countDayThree = Report::countByDate('18', '2');
 
     $page = new PageAdmin();
 
     $page->setTpl("info-male", [
-        "countAgeSix" => $countAgeSix,
-        "countAgeTen" => $countAgeTen,
+        "countAgeSix"    => $countAgeSix,
+        "countAgeTen"    => $countAgeTen,
         "countAgeBigger" => $countAgeBigger,
-         "countDayOne" => $countDayOne,
-        "countDayTwo" => $countDayTwo,
-        "countDayThree" => $countDayThree
+        "countDayOne"    => $countDayOne,
+        "countDayTwo"    => $countDayTwo,
+        "countDayThree"  => $countDayThree,
     ]);
 
 });
@@ -140,14 +137,14 @@ $app->get('/admin/info-geral', function () {
     $countLocal = array();
 
     foreach ($locals as $key => $value) {
-        $local = $locals[$key]['deslocal'];        
+        $local = $locals[$key]['deslocal'];
         //echo $local."<br>";
         $count = Local::countLocal($local);
         foreach ($count as $key => $value) {
             foreach ($value as $result) {
                 array_push($countLocal, array(
                     'local' => $local,
-                    'count' => $result
+                    'count' => $result,
                 ));
             }
         }
@@ -157,7 +154,7 @@ $app->get('/admin/info-geral', function () {
 
     $page->setTpl("info-geral", [
         "locals" => $locals,
-        "counts" => $countLocal
+        "counts" => $countLocal,
     ]);
 
 });
