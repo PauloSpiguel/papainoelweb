@@ -70,9 +70,11 @@ class User extends Model
 
         $sql = new Sql();
 
-        $results = $sql->select("SELECT * FROM tb_users a
-            JOIN tb_persons b
-            ON a.idperson = b.idperson
+        $results = $sql->select("SELECT a.*, b.desperson, b.idaddress, b.desemail, b.nrphone, b.nrcpf, c.despermission, d.desaddress, d.desnumber
+            FROM tb_users a
+            INNER JOIN tb_persons b ON a.idperson = b.idperson
+            INNER JOIN tb_permissions c ON a.idpermission = c.idpermission
+            INNER JOIN tb_addresses d ON b.idaddress = d.idaddress
             WHERE a.deslogin = :LOGIN", array(
             ":LOGIN" => $login,
         ));
@@ -137,7 +139,7 @@ class User extends Model
         $results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
             ":desperson"   => utf8_decode($this->getdesperson()),
             ":deslogin"    => utf8_decode($this->getdeslogin()),
-            ":despassword" => $this->getdespassword(),
+            ":despassword" => User::getPasswordHash($this->getdespassword()),
             ":desemail"    => $this->getdesemail(),
             ":nrphone"     => $this->getnrphone(),
             ":inadmin"     => $this->getinadmin(),
@@ -174,7 +176,7 @@ class User extends Model
             ":iduser"      => $this->getiduser(),
             ":desperson"   => utf8_decode($this->getdesperson()),
             ":deslogin"    => utf8_decode($this->getdeslogin()),
-            ":despassword" => $this->getdespassword(),
+            ":despassword" => User::getPasswordHash($this->getdespassword()),
             ":desemail"    => $this->getdesemail(),
             ":nrphone"     => $this->getnrphone(),
             ":inadmin"     => $this->getinadmin(),

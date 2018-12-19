@@ -24,5 +24,6 @@ require_once "admin.php";
 require_once "admin-users.php";
 require_once "admin-locals.php";
 require_once "admin-deliveries.php";
+require_once "admin-persons.php";
 
 $app->run();

@@ -83,7 +83,7 @@ $app->get('/admin/info-famale', function () {
     $countAgeTen    = Report::countAgeRange('2008', '2011', '1');
     $countAgeBigger = Report::countAgeRange('1990', '2007', '1');
 
-    echo $countAgeSix;
+    //echo $countAgeSix;
 
     $countDayOne   = Report::countByDate('16', '1');
     $countDayTwo   = Report::countByDate('17', '1');

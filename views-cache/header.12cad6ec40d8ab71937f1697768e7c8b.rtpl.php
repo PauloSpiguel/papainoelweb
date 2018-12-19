@@ -3,13 +3,14 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
   <title>Painel Admin | SisPapaiNoelWeb - Centenário do Sul</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Favicon HTML -->
   <link rel="shortcut icon" type="image/png" href="../../res/site/img/favicon32x32.ico">
   <!-- Bootstrap 3.3.6 -->
@@ -196,8 +197,8 @@ desired effect
                   <img src="../../res/admin/dist/img/papainoel.jpg" class="img-circle" alt="User Image">
 
                   <p>
-                    <?php echo htmlspecialchars( $user["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - Administrador
-                    <small>Member since Nov. 2012</small>
+                    <?php echo htmlspecialchars( $user["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $user["despermission"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <small>Membro desde <?php echo date('M. Y', strtotime($user["dtregister"])); ?></small>
                   </p>
                 </li>
                 <!-- Menu Body -->
@@ -218,7 +219,7 @@ desired effect
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
                     <a href="/admin/logout" class="btn btn-default btn-flat">Sair</a>
@@ -268,19 +269,20 @@ desired effect
         <ul class="sidebar-menu">
           <li class="header">MENU ADMINISTRATIVO</li>
           <!-- Optionally, you can add icons to the links -->
-          <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-          <li><a href="/admin/locals"><i class="fa fa-building-o"></i> <span>Locais</span></a></li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-clipboard"></i> <span>Cadastro</span>
+            <a href="#"><i class="fa fa-clipboard"></i> <span>Administrativo</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">      
-              <li><a href="/admin/deliveries"><i class="fa fa-paper-plane-o"> Entrega de Senha</i></a></li>
-              <!--<li><a href="#"></a></li>-->
+              <li><a href="/admin/users"><i class="fa fa-user"></i> <span>Usuários</span></a></li>
+              <li><a href="/admin/persons"><i class="fa fa-users"></i> <span>Pessoas</span></a></li>
+              <li><a href="/admin/locals"><i class="fa fa-building-o"></i> <span>Locais</span></a></li>
             </ul>
-          </li>
+          </li>          
+          <li><a href="/admin/deliveries"><i class="fa fa-paper-plane-o"></i> <span>Nova Senha</span></i></a></li>
+          <li><a href="/admin/reports"><i class="fa fa-pie-chart"></i> <span>Relatórios</span></i></a></li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>
