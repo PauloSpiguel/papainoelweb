@@ -18,6 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="../../res/admin/bootstrap/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="../../res/admin/dist/css/AdminLTE.css">
   <link rel="stylesheet" href="../../res/admin/dist/css/skins/skin-blue.css">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

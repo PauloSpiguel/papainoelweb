@@ -30,9 +30,19 @@ $app->get('/admin/', function () {
 
     User::verifyLogin();
 
+    $total = Report::countDelivery();
+
+    $female = Report::countKidsFemale();
+
+    $male = Report::countKidsMale();
+
     $page = new PageAdmin();
 
-    $page->setTpl("index");
+    $page->setTpl("index", [
+        "total"  => $total,
+        "female" => $female,
+        "male"   => $male,
+    ]);
 
 });
 ################## ROTA LOGIN ###################

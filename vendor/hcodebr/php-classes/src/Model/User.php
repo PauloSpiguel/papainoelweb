@@ -7,8 +7,9 @@ use \NewTech\Model;
 
 class User extends Model
 {
-    const SESSION = "User";
-    const ERROR   = "UserError";
+    const SESSION        = "User";
+    const ERROR          = "UserError";
+    const ERROR_REGISTER = "UserErrorRegister";
 
     public static function userSession()
     {
@@ -68,14 +69,23 @@ class User extends Model
     public static function login($login, $password)
     {
 
+        // if ($login === 'teste') {
+
+        //     Secret::DBConnect("newtech1_pnweb_teste");
+
+        // } else {
+
+        //     Secret::DBConnect("newtech1_pnweb");
+        // }
+
         $sql = new Sql();
 
         $results = $sql->select("SELECT a.*, b.desperson, b.idaddress, b.desemail, b.nrphone, b.nrcpf, c.despermission, d.desaddress, d.desnumber
-            FROM tb_users a
-            INNER JOIN tb_persons b ON a.idperson = b.idperson
-            INNER JOIN tb_permissions c ON a.idpermission = c.idpermission
-            INNER JOIN tb_addresses d ON b.idaddress = d.idaddress
-            WHERE a.deslogin = :LOGIN", array(
+        FROM tb_users a
+        INNER JOIN tb_persons b ON a.idperson = b.idperson
+        INNER JOIN tb_permissions c ON a.idpermission = c.idpermission
+        INNER JOIN tb_addresses d ON b.idaddress = d.idaddress
+        WHERE a.deslogin = :LOGIN", array(
             ":LOGIN" => $login,
         ));
 
@@ -203,9 +213,9 @@ class User extends Model
         $sql = new Sql();
 
         $results = $sql->select("SELECT *
-            FROM tb_persons a
-            INNER JOIN tb_users b USING(idperson)
-            WHERE a.desemail = :email;", array(
+        FROM tb_persons a
+        INNER JOIN tb_users b USING(idperson)
+        WHERE a.desemail = :email;", array(
             ":email" => $email,
         ));
 
@@ -258,11 +268,11 @@ class User extends Model
         $idrecovery = openssl_decrypt($code, 'aes-256-cbc', SECRET_KEY, 0, $iv);
         $sql        = new Sql();
         $results    = $sql->select(" SELECT *
-            FROM tb_userspasswordsrecoveries a
-            INNER JOIN tb_users b USING(iduser)
-            INNER JOIN tb_persons c USING(idperson)
-            WHERE a.idrecovery = :idrecovery AND a.dtrecovery IS NULL
-            AND DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();",
+        FROM tb_userspasswordsrecoveries a
+        INNER JOIN tb_users b USING(iduser)
+        INNER JOIN tb_persons c USING(idperson)
+        WHERE a.idrecovery = :idrecovery AND a.dtrecovery IS NULL
+        AND DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();",
             array(
                 ":idrecovery" => $idrecovery,
             ));
@@ -325,6 +335,34 @@ class User extends Model
     {
 
         $_SESSION[User::ERROR_REGISTER] = $msg;
+    }
+
+    public static function getErrorRegister()
+    {
+
+        $msg = (isset($_SESSION[User::ERROR_REGISTER]) && $_SESSION[User::ERROR_REGISTER]) ? $_SESSION[User::ERROR_REGISTER] : '';
+
+        User::clearErrorRegister();
+
+        return $msg;
+    }
+
+    public static function clearErrorRegister()
+    {
+
+        $_SESSION[User::ERROR_REGISTER] = null;
+    }
+
+    public static function checkLoginExist($login)
+    {
+
+        $sql = new Sql();
+
+        $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :deslogin", [
+            ":deslogin" => $login,
+        ]);
+
+        return (count($results) > 0);
     }
 
     public static function getPasswordHash($password)

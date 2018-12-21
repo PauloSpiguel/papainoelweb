@@ -1,9 +1,7 @@
 <?php
 
-use \NewTech\Page;
-use \NewTech\PageAdmin;
 use \NewTech\Model\User;
-
+use \NewTech\PageAdmin;
 
 ##################### ROTA USERS #####################
 $app->get('/admin/users', function () {
@@ -26,7 +24,10 @@ $app->get('/admin/users/create', function () {
 
     $page = new PageAdmin();
 
-    $page->setTpl("users-create");
+    $page->setTpl("users-create", [
+        'errorRegister'  => User::getErrorRegister(),
+        'registerValues' => (isset($_SESSION['registerValues'])) ? $_SESSION['registerValues'] : ['desperson' => '', 'deslogin' => '', 'nrphone' => '', 'desemail' => ''],
+    ]);
 
 });
 ##################### ROTA DELETE USURS #####################
@@ -65,13 +66,50 @@ $app->post('/admin/users/create', function () {
 
     User::verifyLogin();
 
+    $_SESSION['registerValues'] = $_POST;
+
+    if (!isset($_POST['desperson']) || $_POST['desperson'] == '') {
+
+        User::setErrorRegister("Preencha o seu nome completo.");
+        header("location: /admin/users/create");
+        exit;
+    }
+
+    if (!isset($_POST['deslogin']) || $_POST['deslogin'] == '') {
+
+        User::setErrorRegister("Preencha o seu nome de usuário.");
+        header("location: /admin/users/create");
+        exit;
+    }
+
+    if (!isset($_POST['desemail']) || $_POST['desemail'] == '') {
+
+        User::setErrorRegister("Preencha o seu nome e-mail.");
+        header("location: /admin/users/create");
+        exit;
+    }
+
+    if (!isset($_POST['despassword']) || $_POST['despassword'] == '') {
+
+        User::setErrorRegister("Preencha uma senha.");
+        header("location: /admin/users/create");
+        exit;
+    }
+
+    if (User::checkLoginExist($_POST['deslogin']) === true) {
+
+        User::setErrorRegister("Este login já está sendo utilizado por outro usuário.");
+        header("location: /admin/users/create");
+        exit;
+    }
+
     $user = new User();
 
     $_POST["inadmin"] = (isset($_POST["inadmin"])) ? 1 : 0;
 
-    $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
-        "cost" => 12,
-    ]);
+    // $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
+    //     "cost" => 12,
+    // ]);
 
     $user->setData($_POST);
 
@@ -175,6 +213,3 @@ $app->post('/admin/forgot/reset', function () {
     $page->setTpl("forgot-reset-success");
 
 });
-
-
-?>

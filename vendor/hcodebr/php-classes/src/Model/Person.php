@@ -15,7 +15,9 @@ class Person extends Model
 
         return $sql->select("SELECT *
             FROM tb_persons a
-            INNER JOIN tb_addresses b ON a.idaddress = b.idaddress");
+            INNER JOIN tb_addresses b ON a.idaddress = b.idaddress
+            WHERE idperson > '1'"
+        );
 
     }
 
@@ -98,25 +100,26 @@ class Person extends Model
         if ($search != '') {
 
             $results = $sql->select("
-             SELECT SQL_CALC_FOUND_ROWS a.*, b.*
-             FROM tb_persons a
-             INNER JOIN tb_addresses b ON a.idaddress = b.idaddress
-             WHERE a.idperson LIKE :search OR a.desperson LIKE :search OR b.desaddress LIKE :search OR b.desnumber LIKE :search OR b.desregion LIKE :search
-             ORDER BY a.idperson DESC
-             LIMIT $start, $itemsPerPage;
-             ", [
+               SELECT SQL_CALC_FOUND_ROWS a.*, b.*
+               FROM tb_persons a
+               INNER JOIN tb_addresses b ON a.idaddress = b.idaddress
+               WHERE a.idperson > '1' AND a.idperson LIKE :search OR a.desperson LIKE :search OR b.desaddress LIKE :search OR b.desnumber LIKE :search OR b.desregion LIKE :search
+               ORDER BY a.idperson DESC
+               LIMIT $start, $itemsPerPage;
+               ", [
                 ":search" => '%' . $search . '%',
             ]);
 
         } else {
 
             $results = $sql->select("
-             SELECT SQL_CALC_FOUND_ROWS a.*, b.*
-             FROM tb_persons a
-             INNER JOIN tb_addresses b ON a.idaddress = b.idaddress
-             ORDER BY a.idperson DESC
-             LIMIT $start, $itemsPerPage;
-             ");
+               SELECT SQL_CALC_FOUND_ROWS a.*, b.*
+               FROM tb_persons a
+               INNER JOIN tb_addresses b ON a.idaddress = b.idaddress
+               WHERE a.idperson > '1'
+               ORDER BY a.idperson DESC
+               LIMIT $start, $itemsPerPage;
+               ");
 
         }
 
