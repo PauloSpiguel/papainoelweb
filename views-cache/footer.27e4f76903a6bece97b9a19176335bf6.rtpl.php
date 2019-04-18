@@ -100,8 +100,13 @@
   <script src="../../res/admin/dist/js/raphael.min.js"></script>
   <script src="../../res/admin/dist/js/morris.min.js"></script>
   <script src="../../res/admin/dist/js/printThis.js"></script>
+  <!-- DataTables -->
+  <script src="../../res/admin/bootstrap/js/jquery.dataTables.js"></script>
+  <script src="../../res/admin/bootstrap/js/dataTables.bootstrap.js"></script>
+  <script src="../../res/admin/bootstrap/js/dataTables.bootstrap.min.js"></script>
 
   <script type="text/javascript" charset="utf-8" async defer>
+
     var myVar;
     function myFunction() {
       myVar = setTimeout(showPage, 2000);
@@ -110,6 +115,19 @@
       document.getElementById("loader").style.display = "block";
       //document.getElementById("myDiv").style.display = "block";
     }
+
+    $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+
   //GRAFICO POR LOCAL
   $(window).load(function() {
     var donut = new Morris.Donut({

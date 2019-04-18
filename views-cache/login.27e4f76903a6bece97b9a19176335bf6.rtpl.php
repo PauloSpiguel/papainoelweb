@@ -21,7 +21,7 @@
     <div class="user_options-text">
       <div class="user_options-unregistered">
         <figure>
-          <img class="LogoSisPNWeb" src="../../res/site/img/SisLogo.png" alt="Logotipo Sis-PNWeb" />
+          <img class="LogoSisPNWeb" src="../../res/admin/dist/img/SisLogo.png" alt="Logotipo Sis-PNWeb" />
           <figcaption style="display:none">LogoTipo Sis-PNWeb Municipal</figcaption>
         </figure>
         <h2 class="user_unregistered-title">Sis-PNWeb - Centenário do Sul</h2>
@@ -44,6 +44,11 @@
           <figcaption style="display:none">Brasão Prefeitura Municipal de Centenário do Sul</figcaption>
         </figure>
         <h2 class="forms_title">Acesso ao Sis-PNWeb</h2>
+        <?php if( $error != '' ){ ?> 
+        <div class="alert alert-danger">
+          <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+        </div>
+        <?php } ?>
         <form class="forms_form" action="/admin/login" method="post">
           <fieldset class="forms_fieldset">
             <div class="forms_field">

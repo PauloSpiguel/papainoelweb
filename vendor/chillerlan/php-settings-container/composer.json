@@ -6,7 +6,7 @@
 	"type": "library",
 	"minimum-stability": "stable",
 	"keywords": [
-		"php7", "helper", "psr-11", "container", "settings"
+		"php7", "helper", "container", "settings"
 	],
 	"authors": [
 		{
@@ -24,7 +24,7 @@
 		"ext-json": "*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^7.3"
+		"phpunit/phpunit": "^8.0"
 	},
 	"autoload": {
 		"psr-4": {
